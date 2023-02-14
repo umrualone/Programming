@@ -31,15 +31,21 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageEnums = new System.Windows.Forms.TabPage();
+            this.groupBoxWeekday = new System.Windows.Forms.GroupBox();
+            this.labelResult = new System.Windows.Forms.Label();
+            this.labelParsing = new System.Windows.Forms.Label();
+            this.textBoxWeekday = new System.Windows.Forms.TextBox();
+            this.buttonParse = new System.Windows.Forms.Button();
             this.groupBoxEnumerations = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelEnumaration = new System.Windows.Forms.Label();
+            this.labelValue = new System.Windows.Forms.Label();
             this.labelIndex = new System.Windows.Forms.Label();
             this.textBoxValue = new System.Windows.Forms.TextBox();
             this.ValuesListBox = new System.Windows.Forms.ListBox();
             this.EnumsListBox = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageEnums.SuspendLayout();
+            this.groupBoxWeekday.SuspendLayout();
             this.groupBoxEnumerations.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +61,8 @@
             // 
             // tabPageEnums
             // 
-            this.tabPageEnums.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPageEnums.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageEnums.Controls.Add(this.groupBoxWeekday);
             this.tabPageEnums.Controls.Add(this.groupBoxEnumerations);
             this.tabPageEnums.Location = new System.Drawing.Point(4, 22);
             this.tabPageEnums.Name = "tabPageEnums";
@@ -65,28 +72,86 @@
             this.tabPageEnums.Text = "Enums";
             this.tabPageEnums.UseVisualStyleBackColor = true;
             // 
+            // groupBoxWeekday
+            // 
+            this.groupBoxWeekday.Controls.Add(this.labelResult);
+            this.groupBoxWeekday.Controls.Add(this.labelParsing);
+            this.groupBoxWeekday.Controls.Add(this.textBoxWeekday);
+            this.groupBoxWeekday.Controls.Add(this.buttonParse);
+            this.groupBoxWeekday.Location = new System.Drawing.Point(7, 263);
+            this.groupBoxWeekday.Name = "groupBoxWeekday";
+            this.groupBoxWeekday.Size = new System.Drawing.Size(372, 161);
+            this.groupBoxWeekday.TabIndex = 3;
+            this.groupBoxWeekday.TabStop = false;
+            this.groupBoxWeekday.Text = "Weekday Parsing";
+            // 
+            // labelResult
+            // 
+            this.labelResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelResult.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.labelResult.Location = new System.Drawing.Point(10, 99);
+            this.labelResult.Name = "labelResult";
+            this.labelResult.Size = new System.Drawing.Size(331, 33);
+            this.labelResult.TabIndex = 3;
+            this.labelResult.Text = "Введите день недели";
+            // 
+            // labelParsing
+            // 
+            this.labelParsing.Location = new System.Drawing.Point(10, 40);
+            this.labelParsing.Name = "labelParsing";
+            this.labelParsing.Size = new System.Drawing.Size(204, 15);
+            this.labelParsing.TabIndex = 2;
+            this.labelParsing.Text = "Type value for pasring:";
+            // 
+            // textBoxWeekday
+            // 
+            this.textBoxWeekday.Location = new System.Drawing.Point(10, 58);
+            this.textBoxWeekday.Name = "textBoxWeekday";
+            this.textBoxWeekday.Size = new System.Drawing.Size(204, 20);
+            this.textBoxWeekday.TabIndex = 1;
+            // 
+            // buttonParse
+            // 
+            this.buttonParse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonParse.Location = new System.Drawing.Point(220, 58);
+            this.buttonParse.Name = "buttonParse";
+            this.buttonParse.Size = new System.Drawing.Size(85, 20);
+            this.buttonParse.TabIndex = 0;
+            this.buttonParse.Text = "Parse";
+            this.buttonParse.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonParse.UseVisualStyleBackColor = true;
+            this.buttonParse.Click += new System.EventHandler(this.buttonParse_Click);
+            // 
             // groupBoxEnumerations
             // 
-            this.groupBoxEnumerations.Controls.Add(this.label2);
-            this.groupBoxEnumerations.Controls.Add(this.label1);
+            this.groupBoxEnumerations.Controls.Add(this.labelEnumaration);
+            this.groupBoxEnumerations.Controls.Add(this.labelValue);
             this.groupBoxEnumerations.Controls.Add(this.labelIndex);
             this.groupBoxEnumerations.Controls.Add(this.textBoxValue);
             this.groupBoxEnumerations.Controls.Add(this.ValuesListBox);
             this.groupBoxEnumerations.Controls.Add(this.EnumsListBox);
-            this.groupBoxEnumerations.Location = new System.Drawing.Point(6, 1);
+            this.groupBoxEnumerations.Location = new System.Drawing.Point(7, 3);
             this.groupBoxEnumerations.Name = "groupBoxEnumerations";
-            this.groupBoxEnumerations.Size = new System.Drawing.Size(776, 413);
+            this.groupBoxEnumerations.Size = new System.Drawing.Size(774, 255);
             this.groupBoxEnumerations.TabIndex = 2;
             this.groupBoxEnumerations.TabStop = false;
             this.groupBoxEnumerations.Text = "Enumerations";
             // 
-            // label1
+            // labelEnumaration
             // 
-            this.label1.Location = new System.Drawing.Point(206, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 14);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Choose value:";
+            this.labelEnumaration.Location = new System.Drawing.Point(27, 25);
+            this.labelEnumaration.Name = "labelEnumaration";
+            this.labelEnumaration.Size = new System.Drawing.Size(135, 17);
+            this.labelEnumaration.TabIndex = 5;
+            this.labelEnumaration.Text = "Choose enumaration:";
+            // 
+            // labelValue
+            // 
+            this.labelValue.Location = new System.Drawing.Point(206, 25);
+            this.labelValue.Name = "labelValue";
+            this.labelValue.Size = new System.Drawing.Size(135, 14);
+            this.labelValue.TabIndex = 4;
+            this.labelValue.Text = "Choose value:";
             // 
             // labelIndex
             // 
@@ -108,7 +173,7 @@
             this.ValuesListBox.FormattingEnabled = true;
             this.ValuesListBox.Location = new System.Drawing.Point(206, 42);
             this.ValuesListBox.Name = "ValuesListBox";
-            this.ValuesListBox.Size = new System.Drawing.Size(152, 225);
+            this.ValuesListBox.Size = new System.Drawing.Size(152, 186);
             this.ValuesListBox.TabIndex = 1;
             this.ValuesListBox.SelectedIndexChanged += new System.EventHandler(this.ValuesListBox_SelectedIndexChanged);
             // 
@@ -117,17 +182,9 @@
             this.EnumsListBox.FormattingEnabled = true;
             this.EnumsListBox.Location = new System.Drawing.Point(27, 42);
             this.EnumsListBox.Name = "EnumsListBox";
-            this.EnumsListBox.Size = new System.Drawing.Size(152, 225);
+            this.EnumsListBox.Size = new System.Drawing.Size(152, 186);
             this.EnumsListBox.TabIndex = 0;
             this.EnumsListBox.SelectedIndexChanged += new System.EventHandler(this.EnumsListBox_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(27, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Choose enumaration:";
             // 
             // MainForm
             // 
@@ -136,17 +193,29 @@
             this.ClientSize = new System.Drawing.Size(799, 459);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Programming Demo";
             this.tabControl1.ResumeLayout(false);
             this.tabPageEnums.ResumeLayout(false);
+            this.groupBoxWeekday.ResumeLayout(false);
+            this.groupBoxWeekday.PerformLayout();
             this.groupBoxEnumerations.ResumeLayout(false);
             this.groupBoxEnumerations.PerformLayout();
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelParsing;
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelResult;
+
+        private System.Windows.Forms.TextBox textBoxWeekday;
+
+        private System.Windows.Forms.Button buttonParse;
+
+        private System.Windows.Forms.GroupBox groupBoxWeekday;
+
+        private System.Windows.Forms.Label labelEnumaration;
+
+        private System.Windows.Forms.Label labelValue;
 
         private System.Windows.Forms.Label labelIndex;
 

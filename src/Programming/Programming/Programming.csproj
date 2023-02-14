@@ -46,6 +46,12 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="model\Color.cs" />
+        <Compile Include="model\EducationForm.cs" />
+        <Compile Include="model\Genre.cs" />
+        <Compile Include="model\Manufactures.cs" />
+        <Compile Include="model\Season.cs" />
+        <Compile Include="model\Weekday.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="view\MainForm.cs">

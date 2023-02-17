@@ -12,6 +12,10 @@ namespace Programming
             InitializeComponent();
             
             EnumsListBox.Items.AddRange(enums);
+            SeasonComboBox.Items.AddRange(Enum.GetNames(typeof(Season)));
+
+            EnumsListBox.SelectedIndex = 0;
+            SeasonComboBox.SelectedIndex = 0;
         }
         
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -32,24 +36,43 @@ namespace Programming
 
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBoxValue.Text = ValuesListBox.SelectedIndex.ToString();
+            ValueTextBox.Text = ValuesListBox.SelectedIndex.ToString();
         }
-
-        private void buttonParse_Click(object sender, EventArgs e)
+        
+        private void ParseButton_Click(object sender, EventArgs e)
         {
-            string text = textBoxWeekday.Text;
-            string[] weekdayValues = Enum.GetNames(typeof(Weekday));
+            var values = Enum.GetValues(typeof(Weekday));
             bool flag = false;
-            for (int i = 0; i < weekdayValues.Length; i++)
+            foreach (var value in values)
             {
-                if (text == weekdayValues[i])
+                string strValue = value.ToString();
+                if (WeekdayTextBox.Text == strValue)
                 {
                     flag = !flag;
-                    labelResult.Text = $"Это день недели ({weekdayValues[i]} = {i + 1})";
-                }   
+                    ResultParsing.Text = $"Это день недели ({strValue} = {(int)Enum.Parse(typeof(Weekday), strValue)})";
+                }       
             }
             if (!flag)
-                labelResult.Text = "Нет такого дня недели";
+                ResultParsing.Text = "Нет такого дня недели";
+        }
+        
+        private void GoButton_Click(object sender, EventArgs e)
+        {
+            switch (SeasonComboBox.Text)
+            {
+                case "Spring":
+                    SeasonGroupBox.BackColor = System.Drawing.Color.Green;
+                    break;
+                case "Summer":
+                    MessageBox.Show("Ура! Солнце!");
+                    break;
+                case "Fall":
+                    SeasonGroupBox.BackColor = System.Drawing.Color.Orange;
+                    break;
+                case "Winter":
+                    MessageBox.Show("Бррр! Холодно!");
+                    break;
+            }
         }
     }
 }

@@ -5,7 +5,15 @@ namespace Programming
 {
     public partial class MainForm : Form
     {
-        object[] enums = new object[] { typeof(Color), typeof(Genre), typeof(EducationForm), typeof(Manufactures), typeof(Season), typeof(Weekday) };
+        object[] enums = new object[]
+        {
+            typeof(Color),
+            typeof(Genre),
+            typeof(EducationForm),
+            typeof(Manufactures),
+            typeof(Season),
+            typeof(Weekday)
+        };
         
         public MainForm()
         {
@@ -41,15 +49,16 @@ namespace Programming
         
         private void ParseButton_Click(object sender, EventArgs e)
         {
-            var values = Enum.GetValues(typeof(Weekday));
-            bool flag = false;
-            foreach (var value in values)
+            var enumValues = Enum.GetValues(typeof(Weekday));
+            var flag = false;
+            foreach (var enymValue in enumValues)
             {
-                string strValue = value.ToString();
-                if (WeekdayTextBox.Text == strValue)
+                var stringValue = enymValue.ToString();
+                if (WeekdayTextBox.Text == stringValue)
                 {
                     flag = !flag;
-                    ResultParsing.Text = $"Это день недели ({strValue} = {(int)Enum.Parse(typeof(Weekday), strValue)})";
+                    ResultParsing.Text = $"Это день недели ({stringValue} = " +
+                                         $"{(int)Enum.Parse(typeof(Weekday), stringValue)})";
                 }       
             }
             if (!flag)

@@ -46,6 +46,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Model\Classes\Collor.cs" />
         <Compile Include="Model\Enums\Color.cs" />
         <Compile Include="Model\Enums\EducationForm.cs" />
         <Compile Include="Model\Enums\Genre.cs" />

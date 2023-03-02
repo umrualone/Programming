@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.enumsTabPage = new System.Windows.Forms.TabPage();
             this.seasonGroupBox = new System.Windows.Forms.GroupBox();
@@ -316,6 +317,7 @@
             this.colorTextBox.Name = "colorTextBox";
             this.colorTextBox.Size = new System.Drawing.Size(92, 20);
             this.colorTextBox.TabIndex = 4;
+            this.colorTextBox.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
             // 
             // widthTextBox
             // 
@@ -324,6 +326,7 @@
             this.widthTextBox.Name = "widthTextBox";
             this.widthTextBox.Size = new System.Drawing.Size(92, 20);
             this.widthTextBox.TabIndex = 3;
+            this.widthTextBox.TextChanged += new System.EventHandler(this.WidthTextBox_TextChanged);
             // 
             // lengthTextBox
             // 
@@ -332,6 +335,7 @@
             this.lengthTextBox.Name = "lengthTextBox";
             this.lengthTextBox.Size = new System.Drawing.Size(92, 20);
             this.lengthTextBox.TabIndex = 2;
+            this.lengthTextBox.TextChanged += new System.EventHandler(this.LengthTextBox_TextChanged);
             // 
             // findButton
             // 
@@ -343,14 +347,17 @@
             this.findButton.TabIndex = 1;
             this.findButton.Text = "Find";
             this.findButton.UseVisualStyleBackColor = false;
+            this.findButton.Click += new System.EventHandler(this.FindButton_Click);
             // 
             // rectanglesListBox
             // 
             this.rectanglesListBox.FormattingEnabled = true;
+            this.rectanglesListBox.Items.AddRange(new object[] { "Rectangle 1", "Rectangle 2", "Rectangle 3", "Rectangle 4", "Rectangle 5" });
             this.rectanglesListBox.Location = new System.Drawing.Point(16, 29);
             this.rectanglesListBox.Name = "rectanglesListBox";
             this.rectanglesListBox.Size = new System.Drawing.Size(112, 147);
             this.rectanglesListBox.TabIndex = 0;
+            this.rectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -360,6 +367,7 @@
             this.ClientSize = new System.Drawing.Size(796, 458);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(15, 15);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

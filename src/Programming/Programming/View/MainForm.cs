@@ -14,36 +14,45 @@ namespace Programming
             typeof(Season),
             typeof(Weekday)
         };
-        
+        private Rectangle[] _rectangles = new Rectangle[5];
+        private Random _random = new Random();
         public MainForm()
         {
             InitializeComponent();
             
-            EnumsListBox.Items.AddRange(enums);
-            SeasonComboBox.Items.AddRange(Enum.GetNames(typeof(Season)));
-            EnumsListBox.SelectedIndex = 0;
-            SeasonComboBox.SelectedIndex = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                var colorValues = Enum.GetValues(typeof(Color));
+                double length = _random.NextDouble() * 10 + 1; // длина от 1 до 11
+                double width = _random.NextDouble() * 10 + 1; // ширина от 1 до 11
+                string color = colorValues.GetValue(_random.Next(0, 6)).ToString();
+                _rectangles[i] = new Rectangle(length, width, color);
+            }
+            enumsListBox.Items.AddRange(enums);
+            seasonComboBox.Items.AddRange(Enum.GetNames(typeof(Season)));
+            enumsListBox.SelectedIndex = 0;
+            seasonComboBox.SelectedIndex = 0;
         }
         
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (EnumsListBox.SelectedItem == null)
+            if (enumsListBox.SelectedItem == null)
             {
                 return;
             }
 
-            var selectedEnum = (Type)EnumsListBox.SelectedItem;
+            var selectedEnum = (Type)enumsListBox.SelectedItem;
             var enumValues = Enum.GetValues(selectedEnum);
-            ValuesListBox.Items.Clear();
+            valuesListBox.Items.Clear();
             foreach (var enumValue in enumValues)
             {
-                ValuesListBox.Items.Add(enumValue);
+                valuesListBox.Items.Add(enumValue);
             }
         }
 
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValueTextBox.Text = ValuesListBox.SelectedIndex.ToString();
+            intValueTextBox.Text = valuesListBox.SelectedIndex.ToString();
         }
         
         private void ParseButton_Click(object sender, EventArgs e)
@@ -53,29 +62,29 @@ namespace Programming
             foreach (var enymValue in enumValues)
             {
                 var stringValue = enymValue.ToString();
-                if (WeekdayTextBox.Text == stringValue)
+                if (weekdayTextBox.Text == stringValue)
                 {
                     flag = !flag;
-                    ResultParsing.Text = $"Это день недели ({stringValue} = " +
+                    resultParsingLabel.Text = $"Это день недели ({stringValue} = " +
                                          $"{(int)Enum.Parse(typeof(Weekday), stringValue)})";
                 }       
             }
             if (!flag)
-                ResultParsing.Text = "Нет такого дня недели";
+                resultParsingLabel.Text = "Нет такого дня недели";
         }
         
         private void GoButton_Click(object sender, EventArgs e)
         {
-            switch (SeasonComboBox.Text)
+            switch (seasonComboBox.Text)
             {
                 case "Spring":
-                    SeasonGroupBox.BackColor = System.Drawing.Color.Green;
+                    seasonGroupBox.BackColor = System.Drawing.Color.Green;
                     break;
                 case "Summer":
                     MessageBox.Show("Ура! Солнце!");
                     break;
                 case "Fall":
-                    SeasonGroupBox.BackColor = System.Drawing.Color.Orange;
+                    seasonGroupBox.BackColor = System.Drawing.Color.Orange;
                     break;
                 case "Winter":
                     MessageBox.Show("Бррр! Холодно!");

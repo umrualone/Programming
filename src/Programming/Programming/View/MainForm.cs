@@ -5,7 +5,7 @@ namespace Programming
 {
     public partial class MainForm : Form
     {
-        object[] enums = new object[]
+        private object[] enums = new object[]
         {
             typeof(Color),
             typeof(Genre),
@@ -21,7 +21,6 @@ namespace Programming
             
             EnumsListBox.Items.AddRange(enums);
             SeasonComboBox.Items.AddRange(Enum.GetNames(typeof(Season)));
-
             EnumsListBox.SelectedIndex = 0;
             SeasonComboBox.SelectedIndex = 0;
         }

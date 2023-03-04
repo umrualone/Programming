@@ -2,16 +2,16 @@
 {
     private string title;
     private int durationMinutes;
-    private int released;
+    private int year;
     private string genre;
     private double rating;
 
 
-    public Movie(string title, int durationMinutes, int released, string genre, double rating)
+    public Movie(string title, int durationMinutes, int year, string genre, double rating)
     {
         Title = title;
         DurationMinutes = durationMinutes;
-        Released = released;
+        Year = year;
         Genre = genre;
         Rating = rating;
     }
@@ -20,7 +20,7 @@
     {
         Title = null;
         DurationMinutes = 1;
-        Released = 1900;
+        Year = 1900;
         Genre = null;
         Rating = 0;
     }
@@ -42,9 +42,9 @@
         }
     }
 
-    public int Released
+    public int Year
     {
-        get => released;
+        get => year;
         set
         {
             if (value < 1900 || value > 2023)
@@ -53,7 +53,7 @@
             }
             else
             {
-                released = value;
+                year = value;
             }
         }
     }

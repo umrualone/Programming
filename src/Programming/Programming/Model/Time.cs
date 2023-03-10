@@ -1,8 +1,8 @@
 ﻿public class Time
 {
-    private int hours;
-    private int minutes;
-    private int seconds;
+    private int _hours;
+    private int _minutes;
+    private int _seconds;
 
     public Time(int hours, int minutes, int seconds)
     {
@@ -19,7 +19,7 @@
     }
     public int Hours
     {
-        get => hours;
+        get => _hours;
         set
         {
             if (value < 0 || value > 23)
@@ -28,14 +28,14 @@
             }
             else
             {
-                hours = value;
+                _hours = value;
             }
         }
     }
 
     public int Minutes
     {
-        get => minutes;
+        get => _minutes;
         set
         {
             if (value < 0 || value > 60)
@@ -44,14 +44,14 @@
             }
             else
             {
-                minutes = value;
+                _minutes = value;
             }
         }
     }
 
     public int Seconds
     {
-        get => seconds;
+        get => _seconds;
         set
         {
             if (value < 0 || value > 60)
@@ -60,7 +60,7 @@
             }
             else
             {
-                seconds = value;
+                _seconds = value;
             }
         }
     }

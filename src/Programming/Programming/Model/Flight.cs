@@ -1,9 +1,8 @@
-﻿
-public class Flight
+﻿public class Flight
 {
-    private string departurePoint;
-    private string destination;
-    private int flightTimeMinutes;
+    private string _departurePoint;
+    private string _destination;
+    private int _flightTimeMinutes;
 
     public Flight(string departurePoint, string destination, int flightTimeMinutes)
     {
@@ -12,33 +11,34 @@ public class Flight
         FlightTimeMinutes = flightTimeMinutes;
     }
 
-    private Flight()
+    public Flight()
     {
         DeparturePoint = null;
         Destination = null;
         FlightTimeMinutes = 1;
     }
+    
     public string DeparturePoint
     {
-        get => departurePoint;
-        set => departurePoint = value;
+        get => _departurePoint;
+        set => _departurePoint = value;
     }
 
     public string Destination
     {
-        get => destination;
-        set => destination = value;
+        get => _destination;
+        set => _destination = value;
     }
 
     public int FlightTimeMinutes
     {
-        get => flightTimeMinutes;
+        get => _flightTimeMinutes;
         set
         {
             if (value <= 0)
                 throw new System.ArgumentException("Время должно быть больше 0");
             else
-                flightTimeMinutes = value;
+                _flightTimeMinutes = value;
         }
     }
 }

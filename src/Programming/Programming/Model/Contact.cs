@@ -1,8 +1,8 @@
 ﻿public class Contact
 {
-    private string firstName;
-    private string lastName;
-    private int number;
+    private string _firstName;
+    private string _lastName;
+    private int _number;
 
     public Contact(string firstName, string lastName, int number)
     {
@@ -19,19 +19,19 @@
     }
     public string FirstName
     {
-        get => firstName;
-        set => firstName = value;
+        get => _firstName;
+        set => _firstName = value;
     }
 
     public string LastName
     {
-        get => lastName;
-        set => lastName = value;
+        get => _lastName;
+        set => _lastName = value;
     }
 
     public int Number
     {
-        get => number;
-        set => number = value;
+        get => _number;
+        set => _number = value;
     }
 }

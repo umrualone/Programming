@@ -64,9 +64,9 @@ namespace Programming
         {
             var enumValues = Enum.GetValues(typeof(Weekday));
             var flag = false;
-            foreach (var enymValue in enumValues)
+            foreach (var enumValue in enumValues)
             {
-                var stringValue = enymValue.ToString();
+                var stringValue = enumValue.ToString();
                 if (weekdayTextBox.Text == stringValue)
                 {
                     flag = !flag;
@@ -122,12 +122,12 @@ namespace Programming
         {
             try
             {
-                rectanglesGroupBox.BackColor = System.Drawing.Color.Transparent;
+                lengthTextBox.BackColor = System.Drawing.Color.White;
                 _currentRectangle.Length = Convert.ToDouble(lengthTextBox.Text);
             }
             catch
             {
-                rectanglesGroupBox.BackColor = System.Drawing.Color.Red;
+                lengthTextBox.BackColor = System.Drawing.Color.Red;
             }
         }
 
@@ -135,12 +135,12 @@ namespace Programming
         {
             try
             {
-                rectanglesGroupBox.BackColor = System.Drawing.Color.Transparent;
+                widthTextBox.BackColor = System.Drawing.Color.White;
                 _currentRectangle.Width = Convert.ToDouble(widthTextBox.Text);
             }
             catch
             {
-                rectanglesGroupBox.BackColor = System.Drawing.Color.Red;
+                widthTextBox.BackColor = System.Drawing.Color.Red;
             }
         }
         
@@ -203,12 +203,12 @@ namespace Programming
         {
             try
             {
-                moviesGroupBox.BackColor = System.Drawing.Color.Transparent;
+                timeTextBox.BackColor = System.Drawing.Color.White;
                 _currentMovie.DurationMinutes = Convert.ToInt32(timeTextBox.Text);
             }
             catch
             {
-                moviesGroupBox.BackColor = System.Drawing.Color.Red;
+                timeTextBox.BackColor = System.Drawing.Color.Red;
             }
         }
         
@@ -216,12 +216,12 @@ namespace Programming
         {
             try
             {
-                moviesGroupBox.BackColor = System.Drawing.Color.Transparent;
+                yearTextBox.BackColor = System.Drawing.Color.White;
                 _currentMovie.Year = Convert.ToInt32(yearTextBox.Text);
             }
             catch
             {
-                moviesGroupBox.BackColor = System.Drawing.Color.Red;
+                yearTextBox.BackColor = System.Drawing.Color.Red;
             }
         }
         
@@ -234,16 +234,16 @@ namespace Programming
         {
             try
             {
-                moviesGroupBox.BackColor = System.Drawing.Color.Transparent;
+                ratingTextBox.BackColor = System.Drawing.Color.White;
                 _currentMovie.Rating = Convert.ToInt32(ratingTextBox.Text);
             }
             catch
             {
-                moviesGroupBox.BackColor = System.Drawing.Color.Red;
+                ratingTextBox.BackColor = System.Drawing.Color.Red;
             }
         }
         
-        private int FindMovieeWithMaxRating(Movie[] movies)
+        private int FindMoviesWithMaxRating(Movie[] movies)
         {
             int index = 0;
             double maxRating = 0;
@@ -260,7 +260,7 @@ namespace Programming
 
         private void FindMovieButton_Click(object sender, EventArgs e)
         {
-            int index = FindMovieeWithMaxRating(_movies);
+            int index = FindMoviesWithMaxRating(_movies);
             moviesListBox.SelectedIndex = index;
         }
     }

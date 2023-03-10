@@ -1,10 +1,10 @@
 ﻿public class Movie
 {
-    private string title;
-    private int durationMinutes;
-    private int year;
-    private string genre;
-    private double rating;
+    private string _title;
+    private int _durationMinutes;
+    private int _year;
+    private string _genre;
+    private double _rating;
 
 
     public Movie(string title, int durationMinutes, int year, string genre, double rating)
@@ -26,25 +26,25 @@
     }
     public string Title
     {
-        get => title;
-        set => title = value;
+        get => _title;
+        set => _title = value;
     }
 
     public int DurationMinutes
     {
-        get => durationMinutes;
+        get => _durationMinutes;
         set
         {
             if (value <= 0)
                 throw new System.ArgumentException("Время должно быть больше 0");
             else
-                durationMinutes = value;
+                _durationMinutes = value;
         }
     }
 
     public int Year
     {
-        get => year;
+        get => _year;
         set
         {
             if (value < 1900 || value > 2023)
@@ -53,20 +53,20 @@
             }
             else
             {
-                year = value;
+                _year = value;
             }
         }
     }
 
     public string Genre
     {
-        get => genre;
-        set => genre = value;
+        get => _genre;
+        set => _genre = value;
     }
 
     public double Rating
     {
-        get => rating;
+        get => _rating;
         set
         {
             if (value < 0 || value > 10)
@@ -75,7 +75,7 @@
             }
             else
             {
-                rating = value;
+                _rating = value;
             }
         }
     }

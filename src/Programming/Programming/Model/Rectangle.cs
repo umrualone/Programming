@@ -1,8 +1,8 @@
 ﻿public class Rectangle
 {
-    private double length;
-    private double width;
-    private string color;
+    private double _length;
+    private double _width;
+    private string _color;
 
     public Rectangle(double length, double width, string color)
     {
@@ -13,28 +13,28 @@
 
     public Rectangle()
     {
-        Length = 0;
-        Width = 0;
+        Length = 1;
+        Width = 1;
         Color = null;
     }
 
     public double Length
     {
-        get { return length; }
-        set
-        {
-            if (value <= 0)
+        get { return _length; }
+            set
             {
-                throw new System.ArgumentException("Длина должна быть больше нуля");
-            }
+                if (value <= 0)
+                {
+                    throw new System.ArgumentException("Длина должна быть больше нуля");
+                }
 
-            length = value;
-        }
+                _length = value;
+            }
     }
 
     public double Width
     {
-        get { return width; }
+        get { return _width; }
         set
         {
             if (value <= 0)
@@ -42,13 +42,13 @@
                 throw new System.ArgumentException("Ширина должна быть больше нуля");
             }
 
-            width = value;
+            _width = value;
         }
     }
 
     public string Color
     {
-        get { return color; }
-        set { color = value; }
+        get { return _color; }
+        set { _color = value; }
     }
 }

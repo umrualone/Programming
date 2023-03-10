@@ -1,8 +1,8 @@
 ﻿public class Song
 {
-    private string author;
-    private string nameSong;
-    private int durationSeconds;
+    private string _author;
+    private string _nameSong;
+    private int _durationSeconds;
 
     public Song(string author, string nameSong, int durationSeconds)
     {
@@ -15,29 +15,29 @@
     {
         Author = null;
         NameSong = null;
-        durationSeconds = 1;
+        DurationSeconds = 1;
     }
     public string Author
     {
-        get => author;
-        set => author = value;
+        get => _author;
+        set => _author = value;
     }
 
     public string NameSong
     {
-        get => nameSong;
-        set => nameSong = value;
+        get => _nameSong;
+        set => _nameSong = value;
     }
 
     public int DurationSeconds
     {
-        get => durationSeconds;
+        get => _durationSeconds;
         set
         {
             if (value <= 0)
                 throw new System.ArgumentException("Время должно быть больше 0");
             else
-                durationSeconds = value;
+                _durationSeconds = value;
         }
     }
 }

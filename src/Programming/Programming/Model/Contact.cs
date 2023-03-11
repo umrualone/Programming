@@ -11,12 +11,8 @@
         Number = number;
     }
 
-    public Contact()
-    {
-        FirstName = null;
-        LastName = null;
-        Number = 0;
-    }
+    public Contact() { }
+    
     public string FirstName
     {
         get => _firstName;

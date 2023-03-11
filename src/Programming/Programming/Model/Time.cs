@@ -11,12 +11,8 @@
         Seconds = seconds;
     }
 
-    public Time()
-    {
-        Hours = 0;
-        Minutes = 0;
-        Seconds = 0;
-    }
+    public Time() { }
+    
     public int Hours
     {
         get => _hours;

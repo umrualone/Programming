@@ -16,14 +16,8 @@
         Rating = rating;
     }
 
-    public Movie()
-    {
-        Title = null;
-        DurationMinutes = 1;
-        Year = 1900;
-        Genre = null;
-        Rating = 0;
-    }
+    public Movie() { }
+    
     public string Title
     {
         get => _title;
@@ -36,9 +30,13 @@
         set
         {
             if (value <= 0)
+            {
                 throw new System.ArgumentException("Время должно быть больше 0");
+            }
             else
-                _durationMinutes = value;
+            {
+                _durationMinutes = value;   
+            }
         }
     }
 

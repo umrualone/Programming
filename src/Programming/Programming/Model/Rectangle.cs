@@ -11,44 +11,43 @@
         Color = color;
     }
 
-    public Rectangle()
-    {
-        Length = 1;
-        Width = 1;
-        Color = null;
-    }
+    public Rectangle() { }
 
     public double Length
     {
-        get { return _length; }
+        get => _length;
             set
             {
                 if (value <= 0)
                 {
                     throw new System.ArgumentException("Длина должна быть больше нуля");
                 }
-
-                _length = value;
+                else
+                {
+                    _length = value;
+                }
             }
     }
 
     public double Width
     {
-        get { return _width; }
+        get => _width;
         set
         {
             if (value <= 0)
             {
                 throw new System.ArgumentException("Ширина должна быть больше нуля");
             }
-
-            _width = value;
+            else
+            {
+                _width = value;
+            }
         }
     }
 
     public string Color
     {
-        get { return _color; }
-        set { _color = value; }
+        get => _color;
+        set => _color = value;
     }
 }

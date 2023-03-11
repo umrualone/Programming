@@ -11,12 +11,7 @@
         FlightTimeMinutes = flightTimeMinutes;
     }
 
-    public Flight()
-    {
-        DeparturePoint = null;
-        Destination = null;
-        FlightTimeMinutes = 1;
-    }
+    public Flight() { }
     
     public string DeparturePoint
     {
@@ -36,9 +31,13 @@
         set
         {
             if (value <= 0)
-                throw new System.ArgumentException("Время должно быть больше 0");
+            { 
+                throw new System.ArgumentException("Время должно быть больше 0");   
+            }
             else
+            {
                 _flightTimeMinutes = value;
+            }
         }
     }
 }

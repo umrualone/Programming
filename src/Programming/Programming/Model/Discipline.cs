@@ -13,13 +13,8 @@
         SemesterGrade = semesterGrade;
     }
 
-    public Discipline()
-    {
-        NameDiscipline = null;
-        NameTeacher = null;
-        SemesterNumber = 1;
-        SemesterGrade = 2;
-    }
+    public Discipline() { }
+    
     public string NameDiscipline
     {
         get => _nameDiscipline;
@@ -38,9 +33,13 @@
         set
         {
             if (value <= 0 || value > 8)
+            {
                 throw new System.ArgumentException("Номер семастра от 1 до 8");
+            }
             else
-                _semesterNumber = value;
+            {
+                _semesterNumber = value;   
+            }
         }
     }
 
@@ -50,9 +49,13 @@
         set
         {
             if (value < 2 || value > 5)
-                throw new System.ArgumentException("Оценка от 2 до 5");
+            {
+                throw new System.ArgumentException("Оценка от 2 до 5");   
+            }
             else
+            {
                 _semesterGrade = value;
+            }
         }
     }
 }

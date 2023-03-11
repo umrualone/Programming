@@ -5,7 +5,7 @@ namespace Programming
 {
     public partial class MainForm : Form
     {
-        private object[] enums = new object[]
+        private object[] _enums = new object[]
         {
             typeof(Color),
             typeof(Genre),
@@ -30,7 +30,7 @@ namespace Programming
             FillRectangles(_rectangles);
             FillMovies(_movies);
 
-            enumsListBox.Items.AddRange(enums);
+            enumsListBox.Items.AddRange(_enums);
             seasonComboBox.Items.AddRange(Enum.GetNames(typeof(Season)));
             
             enumsListBox.SelectedIndex = 0;
@@ -100,7 +100,7 @@ namespace Programming
 
         private void FillRectangles(Rectangle[] rectangles)
         {
-            var colorValues = Enum.GetValues((Type)enums[0]);
+            var colorValues = Enum.GetValues((Type)_enums[0]);
             for (int i = 0; i < 5; i++)
             {
                 int length = _random.Next(1, 30);
@@ -127,7 +127,7 @@ namespace Programming
             }
             catch
             {
-                lengthTextBox.BackColor = System.Drawing.Color.Red;
+                lengthTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
@@ -140,7 +140,7 @@ namespace Programming
             }
             catch
             {
-                widthTextBox.BackColor = System.Drawing.Color.Red;
+                widthTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
         
@@ -167,13 +167,13 @@ namespace Programming
 
         private void FindRectangleButton_Click(object sender, EventArgs e)
         {
-            int index = FindRectangleWithMaxWidth(_rectangles);
+            var index = FindRectangleWithMaxWidth(_rectangles);
             rectanglesListBox.SelectedIndex = index;
         }
         
         private void FillMovies(Movie[] movies)
         {
-            var genreValues = Enum.GetValues((Type)enums[1]);
+            var genreValues = Enum.GetValues((Type)_enums[1]);
             for (int i = 0; i < 5; i++)
             {
                 int year = _random.Next(1900, 2024);
@@ -208,7 +208,7 @@ namespace Programming
             }
             catch
             {
-                timeTextBox.BackColor = System.Drawing.Color.Red;
+                timeTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
         
@@ -221,7 +221,7 @@ namespace Programming
             }
             catch
             {
-                yearTextBox.BackColor = System.Drawing.Color.Red;
+                yearTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
         
@@ -235,11 +235,11 @@ namespace Programming
             try
             {
                 ratingTextBox.BackColor = System.Drawing.Color.White;
-                _currentMovie.Rating = Convert.ToInt32(ratingTextBox.Text);
+                _currentMovie.Rating = Convert.ToDouble(ratingTextBox.Text);
             }
             catch
             {
-                ratingTextBox.BackColor = System.Drawing.Color.Red;
+                ratingTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
         
@@ -260,7 +260,7 @@ namespace Programming
 
         private void FindMovieButton_Click(object sender, EventArgs e)
         {
-            int index = FindMoviesWithMaxRating(_movies);
+            var index = FindMoviesWithMaxRating(_movies);
             moviesListBox.SelectedIndex = index;
         }
     }

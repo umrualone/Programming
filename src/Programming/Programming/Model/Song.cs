@@ -11,12 +11,8 @@
         DurationSeconds = durationSeconds;
     }
 
-    public Song()
-    {
-        Author = null;
-        NameSong = null;
-        DurationSeconds = 1;
-    }
+    public Song() { }
+    
     public string Author
     {
         get => _author;
@@ -35,9 +31,13 @@
         set
         {
             if (value <= 0)
-                throw new System.ArgumentException("Время должно быть больше 0");
+            {
+                throw new System.ArgumentException("Время должно быть больше 0");   
+            }
             else
-                _durationSeconds = value;
+            {
+                _durationSeconds = value;   
+            }
         }
     }
 }

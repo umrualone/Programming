@@ -84,17 +84,25 @@ namespace Programming
             switch (seasonComboBox.Text)
             {
                 case "Spring":
+                {
                     seasonGroupBox.BackColor = System.Drawing.Color.Green;
                     break;
+                }
                 case "Summer":
+                {
                     MessageBox.Show("Ура! Солнце!");
                     break;
+                }
                 case "Fall":
+                {
                     seasonGroupBox.BackColor = System.Drawing.Color.Orange;
                     break;
+                }
                 case "Winter":
+                {
                     MessageBox.Show("Бррр! Холодно!");
                     break;
+                }
             }
         }
 

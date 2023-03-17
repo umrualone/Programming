@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
+using Programming.Model.Enums;
+using Programming.Model.Classes;
 
 namespace Programming
 {
@@ -31,6 +35,21 @@ namespace Programming
             FillMovies(_movies);
 
             enumsListBox.Items.AddRange(_enums);
+            enumsListBox.DisplayMember = nameof(FileInfo.Name);
+            
+            var rectangles = new List<string>() {"Rectangle 1","Rectangle 2","Rectangle 3",
+                "Rectangle 4","Rectangle 5"};
+            foreach (var rectangle in rectangles)
+            {
+                rectanglesListBox.Items.Add(rectangle);
+            }
+            
+            var movies = new List<string>() {"Movie 1","Movie 2","Movie 3","Movie 4","Movie 5"};
+            foreach (var movie in movies)
+            {
+                moviesListBox.Items.Add(movie);
+            }
+            
             seasonComboBox.Items.AddRange(Enum.GetNames(typeof(Season)));
             
             enumsListBox.SelectedIndex = 0;

@@ -53,6 +53,7 @@
             this.classesTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.rectanglesGroupBox = new System.Windows.Forms.GroupBox();
+            this.rectanglesListBox = new System.Windows.Forms.ListBox();
             this.lengthLabel = new System.Windows.Forms.Label();
             this.widthLabel = new System.Windows.Forms.Label();
             this.colorLabel = new System.Windows.Forms.Label();
@@ -60,14 +61,13 @@
             this.widthTextBox = new System.Windows.Forms.TextBox();
             this.lengthTextBox = new System.Windows.Forms.TextBox();
             this.findRectangleButton = new System.Windows.Forms.Button();
-            this.rectanglesListBox = new System.Windows.Forms.ListBox();
             this.moviesGroupBox = new System.Windows.Forms.GroupBox();
+            this.moviesListBox = new System.Windows.Forms.ListBox();
             this.ratingLabel = new System.Windows.Forms.Label();
             this.genreLabel = new System.Windows.Forms.Label();
             this.yearLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.moviesListBox = new System.Windows.Forms.ListBox();
             this.findMovieButton = new System.Windows.Forms.Button();
             this.ratingTextBox = new System.Windows.Forms.TextBox();
             this.genreTextBox = new System.Windows.Forms.TextBox();
@@ -339,6 +339,7 @@
             // rectanglesGroupBox
             // 
             this.rectanglesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.rectanglesGroupBox.Controls.Add(this.rectanglesListBox);
             this.rectanglesGroupBox.Controls.Add(this.lengthLabel);
             this.rectanglesGroupBox.Controls.Add(this.widthLabel);
             this.rectanglesGroupBox.Controls.Add(this.colorLabel);
@@ -346,13 +347,22 @@
             this.rectanglesGroupBox.Controls.Add(this.widthTextBox);
             this.rectanglesGroupBox.Controls.Add(this.lengthTextBox);
             this.rectanglesGroupBox.Controls.Add(this.findRectangleButton);
-            this.rectanglesGroupBox.Controls.Add(this.rectanglesListBox);
             this.rectanglesGroupBox.Location = new System.Drawing.Point(3, 3);
             this.rectanglesGroupBox.Name = "rectanglesGroupBox";
             this.rectanglesGroupBox.Size = new System.Drawing.Size(384, 418);
             this.rectanglesGroupBox.TabIndex = 0;
             this.rectanglesGroupBox.TabStop = false;
             this.rectanglesGroupBox.Text = "Rectangles";
+            // 
+            // rectanglesListBox
+            // 
+            this.rectanglesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
+            this.rectanglesListBox.FormattingEnabled = true;
+            this.rectanglesListBox.Location = new System.Drawing.Point(15, 19);
+            this.rectanglesListBox.Name = "rectanglesListBox";
+            this.rectanglesListBox.Size = new System.Drawing.Size(112, 394);
+            this.rectanglesListBox.TabIndex = 8;
+            this.rectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
             // 
             // lengthLabel
             // 
@@ -420,26 +430,15 @@
             this.findRectangleButton.UseVisualStyleBackColor = false;
             this.findRectangleButton.Click += new System.EventHandler(this.FindRectangleButton_Click);
             // 
-            // rectanglesListBox
-            // 
-            this.rectanglesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
-            this.rectanglesListBox.FormattingEnabled = true;
-            this.rectanglesListBox.Items.AddRange(new object[] { "Rectangle 1", "Rectangle 2", "Rectangle 3", "Rectangle 4", "Rectangle 5" });
-            this.rectanglesListBox.Location = new System.Drawing.Point(15, 19);
-            this.rectanglesListBox.Name = "rectanglesListBox";
-            this.rectanglesListBox.Size = new System.Drawing.Size(112, 394);
-            this.rectanglesListBox.TabIndex = 0;
-            this.rectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
-            // 
             // moviesGroupBox
             // 
             this.moviesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.moviesGroupBox.Controls.Add(this.moviesListBox);
             this.moviesGroupBox.Controls.Add(this.ratingLabel);
             this.moviesGroupBox.Controls.Add(this.genreLabel);
             this.moviesGroupBox.Controls.Add(this.yearLabel);
             this.moviesGroupBox.Controls.Add(this.timeLabel);
             this.moviesGroupBox.Controls.Add(this.titleLabel);
-            this.moviesGroupBox.Controls.Add(this.moviesListBox);
             this.moviesGroupBox.Controls.Add(this.findMovieButton);
             this.moviesGroupBox.Controls.Add(this.ratingTextBox);
             this.moviesGroupBox.Controls.Add(this.genreTextBox);
@@ -452,6 +451,16 @@
             this.moviesGroupBox.TabIndex = 1;
             this.moviesGroupBox.TabStop = false;
             this.moviesGroupBox.Text = "Movies";
+            // 
+            // moviesListBox
+            // 
+            this.moviesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
+            this.moviesListBox.FormattingEnabled = true;
+            this.moviesListBox.Location = new System.Drawing.Point(14, 19);
+            this.moviesListBox.Name = "moviesListBox";
+            this.moviesListBox.Size = new System.Drawing.Size(112, 394);
+            this.moviesListBox.TabIndex = 9;
+            this.moviesListBox.SelectedIndexChanged += new System.EventHandler(this.MoviesListBox_SelectedIndexChanged);
             // 
             // ratingLabel
             // 
@@ -497,17 +506,6 @@
             this.titleLabel.TabIndex = 8;
             this.titleLabel.Text = "Title:";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // moviesListBox
-            // 
-            this.moviesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
-            this.moviesListBox.FormattingEnabled = true;
-            this.moviesListBox.Items.AddRange(new object[] { "Movie 1", "Movie 2", "Movie 3", "Movie 4", "Movie 5" });
-            this.moviesListBox.Location = new System.Drawing.Point(16, 19);
-            this.moviesListBox.Name = "moviesListBox";
-            this.moviesListBox.Size = new System.Drawing.Size(112, 394);
-            this.moviesListBox.TabIndex = 8;
-            this.moviesListBox.SelectedIndexChanged += new System.EventHandler(this.MoviesListBox_SelectedIndexChanged);
             // 
             // findMovieButton
             // 
@@ -597,6 +595,9 @@
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.ListBox rectanglesListBox;
+        private System.Windows.Forms.ListBox moviesListBox;
+
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
 
         private System.Windows.Forms.Label chooseValueLabel;
@@ -642,7 +643,6 @@
         private System.Windows.Forms.TextBox yearTextBox;
         private System.Windows.Forms.TextBox genreTextBox;
         private System.Windows.Forms.TextBox ratingTextBox;
-        private System.Windows.Forms.ListBox moviesListBox;
 
         private System.Windows.Forms.GroupBox moviesGroupBox;
 
@@ -658,7 +658,6 @@
         private System.Windows.Forms.Button findRectangleButton;
 
         private System.Windows.Forms.GroupBox rectanglesGroupBox;
-        private System.Windows.Forms.ListBox rectanglesListBox;
 
         private System.Windows.Forms.TabPage classesTabPage;
 

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using Programming.Model.Enums;
 using Programming.Model.Classes;
+using Programming.Model.Enums;
 
-namespace Programming
+namespace Programming.View
 {
     public partial class MainForm : Form
     {

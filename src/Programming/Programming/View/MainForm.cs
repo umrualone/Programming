@@ -25,12 +25,12 @@ namespace Programming.View
         private Movie[] _movies = new Movie[5];
         private Movie _currentMovie;
         
-        private Random _random = new Random();
-        
+        private Random _random = new Random();      
+
         public MainForm()
         {
             InitializeComponent();
-
+            
             FillRectangles(_rectangles);
             FillMovies(_movies);
 
@@ -135,7 +135,7 @@ namespace Programming.View
                 string color = colorValues.GetValue(_random.Next(0, 6)).ToString();
                 rectangles[i] = new Rectangle(length, width, color); 
             }
-        }
+        }   
         
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {

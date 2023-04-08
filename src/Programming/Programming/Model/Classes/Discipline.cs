@@ -34,14 +34,8 @@
             get => _semesterNumber;
             set
             {
-                if (value <= 0 || value > 8)
-                {
-                    throw new System.ArgumentException("Номер семастра от 1 до 8");
-                }
-                else
-                {
-                    _semesterNumber = value;   
-                }
+                Validator.AssertValueInRange(value, "SemesterNumber", 1, 8);
+                _semesterNumber = value;
             }
         }
 
@@ -50,14 +44,8 @@
             get => _semesterGrade;
             set
             {
-                if (value < 2 || value > 5)
-                {
-                    throw new System.ArgumentException("Оценка от 2 до 5");   
-                }
-                else
-                {
-                    _semesterGrade = value;
-                }
+                Validator.AssertValueInRange(value, "SemesterGrade", 2, 5);
+                _semesterGrade = value;
             }
         }
     }

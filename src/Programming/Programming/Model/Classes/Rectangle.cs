@@ -1,56 +1,44 @@
 ﻿namespace Programming.Model.Classes
 {
-    public class Rectangle
-    {
-        private double _length;
-        private double _width;
-        private string _color;
-
-        public Rectangle(double length, double width, string color)
+        public class Rectangle
         {
-            Length = length;
-            Width = width;
-            Color = color;
-        }
+            private double _length;
+            private double _width;
+            private string _color;
 
-        public Rectangle() { }
-
-        public double Length
-        {
-            get => _length;
-            set
+            public Rectangle(double length, double width, string color)
             {
-                if (value <= 0)
+                Length = length;
+                Width = width;
+                Color = color;
+            }
+
+            public Rectangle() { }
+
+            public double Length
+            {
+                get => _length;
+                set
                 {
-                    throw new System.ArgumentException("Длина должна быть больше нуля");
-                }
-                else
-                {
+                    Validator.AssertOnPositiveValue(value, "Length");
                     _length = value;
                 }
             }
-        }
 
-        public double Width
-        {
-            get => _width;
-            set
+            public double Width
             {
-                if (value <= 0)
+                get => _width;
+                set
                 {
-                    throw new System.ArgumentException("Ширина должна быть больше нуля");
-                }
-                else
-                {
+                    Validator.AssertOnPositiveValue(value, "Width");
                     _width = value;
                 }
             }
-        }
 
-        public string Color
-        {
-            get => _color;
-            set => _color = value;
+            public string Color
+            {
+                get => _color;
+                set => _color = value;
+            }
         }
-    }
 }

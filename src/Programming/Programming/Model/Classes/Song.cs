@@ -32,14 +32,8 @@
             get => _durationSeconds;
             set
             {
-                if (value <= 0)
-                {
-                    throw new System.ArgumentException("Время должно быть больше 0");   
-                }
-                else
-                {
-                    _durationSeconds = value;   
-                }
+                Validator.AssertOnPositiveValue(value, "DurationSeconds");
+                _durationSeconds = value;
             }
         }
     }

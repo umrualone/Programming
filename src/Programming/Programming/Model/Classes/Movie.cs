@@ -31,14 +31,8 @@
             get => _durationMinutes;
             set
             {
-                if (value <= 0)
-                {
-                    throw new System.ArgumentException("Время должно быть больше 0");
-                }
-                else
-                {
-                    _durationMinutes = value;   
-                }
+                Validator.AssertOnPositiveValue(value, "FlightTimeMinutes");
+                _durationMinutes = value;
             }
         }
 
@@ -47,14 +41,8 @@
             get => _year;
             set
             {
-                if (value < 1900 || value > 2023)
-                {
-                    throw new System.ArgumentException("Дата должна быть от 1900 до текущего года");
-                }
-                else
-                {
-                    _year = value;
-                }
+                Validator.AssertValueInRange(value, "Year", 1900, 2023);
+                _year = value;
             }
         }
 
@@ -69,14 +57,8 @@
             get => _rating;
             set
             {
-                if (value < 0 || value > 10)
-                {
-                    throw new System.ArgumentException("Оценка должна быть от 0 до 10");
-                }
-                else
-                {
-                    _rating = value;
-                }
+                Validator.AssertValueInRange(value, "Rating", 0, 10);
+                _rating = value;
             }
         }
     }

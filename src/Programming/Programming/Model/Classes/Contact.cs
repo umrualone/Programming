@@ -1,4 +1,6 @@
-﻿namespace Programming.Model.Classes
+﻿using System.Text.RegularExpressions;
+
+namespace Programming.Model.Classes
 {
     public class Contact
     {
@@ -18,19 +20,36 @@
         public string FirstName
         {
             get => _firstName;
-            set => _firstName = value;
+            set
+            {
+                AssertStringContainsOnlyLetters(value, "Name");
+                _firstName = value;
+            } 
         }
 
         public string LastName
         {
             get => _lastName;
-            set => _lastName = value;
+            set
+            {
+                AssertStringContainsOnlyLetters(value, "Last name");
+                _lastName = value;  
+            } 
         }
 
         public int Number
         {
             get => _number;
             set => _number = value;
+        }
+
+        private void AssertStringContainsOnlyLetters(string value, string name)
+        {
+            Regex regex = new Regex(@"^[a-zA-Z]+$");
+            if (!regex.IsMatch(value))
+            {
+                throw new System.ArgumentException($"{name} введено не корректно");
+            }
         }
     }
 }

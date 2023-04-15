@@ -32,14 +32,8 @@
             get => _flightTimeMinutes;
             set
             {
-                if (value <= 0)
-                { 
-                    throw new System.ArgumentException("Время должно быть больше 0");   
-                }
-                else
-                {
-                    _flightTimeMinutes = value;
-                }
+                Validator.AssertOnPositiveValue(value, "FlightTimeMinutes");
+                _flightTimeMinutes = value;
             }
         }
     }

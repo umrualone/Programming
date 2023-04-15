@@ -20,14 +20,8 @@
             get => _hours;
             set
             {
-                if (value < 0 || value > 23)
-                {
-                    throw new System.ArgumentException("Часы должны быть от 0 до 23");
-                }
-                else
-                {
-                    _hours = value;
-                }
+                Validator.AssertValueInRange(value, "Hours", 0, 23);
+                _hours = value;
             }
         }
 
@@ -36,14 +30,8 @@
             get => _minutes;
             set
             {
-                if (value < 0 || value > 60)
-                {
-                    throw new System.ArgumentException("Минуты должны быть от 0 до 60");
-                }
-                else
-                {
-                    _minutes = value;
-                }
+                Validator.AssertValueInRange(value, "Minutes", 0, 59);
+                _minutes = value;
             }
         }
 
@@ -52,14 +40,8 @@
             get => _seconds;
             set
             {
-                if (value < 0 || value > 60)
-                {
-                    throw new System.ArgumentException("Секунды должно быть от 0 до 60");
-                }
-                else
-                {
-                    _seconds = value;
-                }
+                Validator.AssertValueInRange(value, "Seconds", 0, 59);
+                _seconds = value;
             }
         }
     }   

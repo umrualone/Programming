@@ -48,7 +48,7 @@ namespace Programming.Model.Classes
             Regex regex = new Regex(@"^[a-zA-Z]+$");
             if (!regex.IsMatch(value))
             {
-                throw new System.ArgumentException($"{name} введено не корректно");
+                throw new System.ArgumentException($"{name}: {value}. Введено не корректно");
             }
         }
     }

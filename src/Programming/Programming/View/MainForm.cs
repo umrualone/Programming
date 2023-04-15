@@ -133,7 +133,10 @@ namespace Programming.View
                 int length = _random.Next(1, 30);
                 int width = _random.Next(1, 30);
                 string color = colorValues.GetValue(_random.Next(0, 6)).ToString();
-                rectangles[i] = new Rectangle(length, width, color); 
+                int x = _random.Next(1, 30);
+                int y = _random.Next(1, 30);
+                Point2D coordinate = new Point2D(x, y);
+                rectangles[i] = new Rectangle(length, width, color, coordinate); 
             }
         }   
         
@@ -143,6 +146,9 @@ namespace Programming.View
             lengthTextBox.Text = _rectangles[rectanglesListBox.SelectedIndex].Length.ToString();
             widthTextBox.Text = _rectangles[rectanglesListBox.SelectedIndex].Width.ToString();
             colorTextBox.Text = _rectangles[rectanglesListBox.SelectedIndex].Color;
+            xTextBox.Text = _currentRectangle.Center.X.ToString();
+            yTextBox.Text = _currentRectangle.Center.Y.ToString();
+            idTextBox.Text = _currentRectangle.Id.ToString();
         }
 
         private void LengthTextBox_TextChanged(object sender, EventArgs e)
@@ -289,6 +295,22 @@ namespace Programming.View
         {
             var index = FindMoviesWithMaxRating(_movies);
             moviesListBox.SelectedIndex = index;
+        }
+        
+
+        private void XTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void YTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void IdTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

@@ -53,6 +53,12 @@
             this.classesTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.rectanglesGroupBox = new System.Windows.Forms.GroupBox();
+            this.idLabel = new System.Windows.Forms.Label();
+            this.yLabel = new System.Windows.Forms.Label();
+            this.xLabel = new System.Windows.Forms.Label();
+            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.yTextBox = new System.Windows.Forms.TextBox();
+            this.xTextBox = new System.Windows.Forms.TextBox();
             this.rectanglesListBox = new System.Windows.Forms.ListBox();
             this.lengthLabel = new System.Windows.Forms.Label();
             this.widthLabel = new System.Windows.Forms.Label();
@@ -339,6 +345,12 @@
             // rectanglesGroupBox
             // 
             this.rectanglesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.rectanglesGroupBox.Controls.Add(this.idLabel);
+            this.rectanglesGroupBox.Controls.Add(this.yLabel);
+            this.rectanglesGroupBox.Controls.Add(this.xLabel);
+            this.rectanglesGroupBox.Controls.Add(this.idTextBox);
+            this.rectanglesGroupBox.Controls.Add(this.yTextBox);
+            this.rectanglesGroupBox.Controls.Add(this.xTextBox);
             this.rectanglesGroupBox.Controls.Add(this.rectanglesListBox);
             this.rectanglesGroupBox.Controls.Add(this.lengthLabel);
             this.rectanglesGroupBox.Controls.Add(this.widthLabel);
@@ -353,6 +365,57 @@
             this.rectanglesGroupBox.TabIndex = 0;
             this.rectanglesGroupBox.TabStop = false;
             this.rectanglesGroupBox.Text = "Rectangles";
+            // 
+            // idLabel
+            // 
+            this.idLabel.Location = new System.Drawing.Point(148, 251);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(92, 16);
+            this.idLabel.TabIndex = 14;
+            this.idLabel.Text = "Id:";
+            // 
+            // yLabel
+            // 
+            this.yLabel.Location = new System.Drawing.Point(148, 207);
+            this.yLabel.Name = "yLabel";
+            this.yLabel.Size = new System.Drawing.Size(92, 16);
+            this.yLabel.TabIndex = 13;
+            this.yLabel.Text = "Coordinate y:";
+            // 
+            // xLabel
+            // 
+            this.xLabel.Location = new System.Drawing.Point(148, 161);
+            this.xLabel.Name = "xLabel";
+            this.xLabel.Size = new System.Drawing.Size(92, 16);
+            this.xLabel.TabIndex = 12;
+            this.xLabel.Text = "Coordinate x:";
+            // 
+            // idTextBox
+            // 
+            this.idTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.idTextBox.Location = new System.Drawing.Point(148, 270);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(92, 20);
+            this.idTextBox.TabIndex = 11;
+            this.idTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IdTextBox_KeyPress);
+            // 
+            // yTextBox
+            // 
+            this.yTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.yTextBox.Location = new System.Drawing.Point(148, 225);
+            this.yTextBox.Name = "yTextBox";
+            this.yTextBox.Size = new System.Drawing.Size(92, 20);
+            this.yTextBox.TabIndex = 10;
+            this.yTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.YTextBox_KeyPress);
+            // 
+            // xTextBox
+            // 
+            this.xTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.xTextBox.Location = new System.Drawing.Point(148, 179);
+            this.xTextBox.Name = "xTextBox";
+            this.xTextBox.Size = new System.Drawing.Size(92, 20);
+            this.xTextBox.TabIndex = 9;
+            this.xTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.XTextBox_KeyPress);
             // 
             // rectanglesListBox
             // 
@@ -422,7 +485,7 @@
             // 
             this.findRectangleButton.BackColor = System.Drawing.Color.Silver;
             this.findRectangleButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.findRectangleButton.Location = new System.Drawing.Point(148, 174);
+            this.findRectangleButton.Location = new System.Drawing.Point(148, 314);
             this.findRectangleButton.Name = "findRectangleButton";
             this.findRectangleButton.Size = new System.Drawing.Size(55, 19);
             this.findRectangleButton.TabIndex = 1;
@@ -511,7 +574,7 @@
             // 
             this.findMovieButton.BackColor = System.Drawing.Color.Silver;
             this.findMovieButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.findMovieButton.Location = new System.Drawing.Point(138, 264);
+            this.findMovieButton.Location = new System.Drawing.Point(137, 270);
             this.findMovieButton.Name = "findMovieButton";
             this.findMovieButton.Size = new System.Drawing.Size(55, 19);
             this.findMovieButton.TabIndex = 8;
@@ -594,6 +657,14 @@
             this.moviesGroupBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label yLabel;
+        private System.Windows.Forms.Label idLabel;
+
+        private System.Windows.Forms.TextBox xTextBox;
+        private System.Windows.Forms.TextBox yTextBox;
+        private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.Label xLabel;
 
         private System.Windows.Forms.ListBox rectanglesListBox;
         private System.Windows.Forms.ListBox moviesListBox;

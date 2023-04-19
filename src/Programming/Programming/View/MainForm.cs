@@ -88,9 +88,9 @@ namespace Programming.View
                 var stringValue = enumValue.ToString();
                 if (weekdayTextBox.Text == stringValue)
                 {
+                    var day = (int)Enum.Parse(typeof(Weekday), stringValue); 
                     flag = !flag;
-                    resultParsingLabel.Text = $"Это день недели ({stringValue} = " +
-                                              $"{(int)Enum.Parse(typeof(Weekday), stringValue)})";
+                    resultParsingLabel.Text = $"Это день недели ({stringValue} = {day})";
                 }
             }
 

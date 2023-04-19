@@ -2,8 +2,6 @@
 { 
     public class Song
     {
-        private string _author;
-        private string _nameSong;
         private int _durationSeconds;
 
         public Song(string author, string nameSong, int durationSeconds)
@@ -15,24 +13,16 @@
 
         public Song() { }
     
-        public string Author
-        {
-            get => _author;
-            set => _author = value;
-        }
+        public string Author { get; set; }
 
-        public string NameSong
-        {
-            get => _nameSong;
-            set => _nameSong = value;
-        }
+        public string NameSong { get; set; }
 
         public int DurationSeconds
         {
             get => _durationSeconds;
             set
             {
-                Validator.AssertOnPositiveValue(value, "DurationSeconds");
+                Validator.AssertOnPositiveValue(value, nameof(DurationSeconds));
                 _durationSeconds = value;
             }
         }

@@ -6,7 +6,6 @@ namespace Programming.Model.Classes
     {
         private string _firstName;
         private string _lastName;
-        private int _number;
 
         public Contact(string firstName, string lastName, int number)
         {
@@ -22,7 +21,7 @@ namespace Programming.Model.Classes
             get => _firstName;
             set
             {
-                AssertStringContainsOnlyLetters(value, "Name");
+                AssertStringContainsOnlyLetters(value, nameof(FirstName));
                 _firstName = value;
             } 
         }
@@ -32,16 +31,12 @@ namespace Programming.Model.Classes
             get => _lastName;
             set
             {
-                AssertStringContainsOnlyLetters(value, "Last name");
+                AssertStringContainsOnlyLetters(value, nameof(LastName));
                 _lastName = value;  
             } 
         }
 
-        public int Number
-        {
-            get => _number;
-            set => _number = value;
-        }
+        public int Number { get; set; }
 
         private void AssertStringContainsOnlyLetters(string value, string name)
         {

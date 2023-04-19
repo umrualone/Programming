@@ -2,8 +2,6 @@
 {
     public class Discipline
     {
-        private string _nameDiscipline;
-        private string _nameTeacher;
         private int _semesterNumber;
         private int _semesterGrade;
 
@@ -17,24 +15,16 @@
 
         public Discipline() { }
     
-        public string NameDiscipline
-        {
-            get => _nameDiscipline;
-            set => _nameDiscipline = value;  
-        }
-    
-        public string NameTeacher
-        {       
-            get => _nameTeacher;
-            set => _nameTeacher = value;
-        }
+        public string NameDiscipline { get; set; }
+
+        public string NameTeacher { get; set; }
 
         public int SemesterNumber
         {
             get => _semesterNumber;
             set
             {
-                Validator.AssertValueInRange(value, "SemesterNumber", 1, 8);
+                Validator.AssertValueInRange(value, nameof(SemesterNumber), 1, 8);
                 _semesterNumber = value;
             }
         }
@@ -44,7 +34,7 @@
             get => _semesterGrade;
             set
             {
-                Validator.AssertValueInRange(value, "SemesterGrade", 2, 5);
+                Validator.AssertValueInRange(value, nameof(SemesterGrade), 2, 5);
                 _semesterGrade = value;
             }
         }

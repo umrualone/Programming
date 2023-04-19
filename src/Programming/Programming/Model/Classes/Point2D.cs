@@ -16,7 +16,7 @@
             get => _x; 
             private set 
             {
-                Validator.AssertOnPositiveValue(value, "X");
+                Validator.AssertOnPositiveValue(value, nameof(X));
                 _x = value;
             } 
         }
@@ -26,7 +26,7 @@
             get => _y; 
             private set 
             {
-                Validator.AssertOnPositiveValue(value, "Y");
+                Validator.AssertOnPositiveValue(value, nameof(Y));
                 _y = value;
             } 
         }

@@ -2,10 +2,8 @@
 {
     public class Movie
     {
-        private string _title;
         private int _durationMinutes;
         private int _year;
-        private string _genre;
         private double _rating;
 
 
@@ -20,18 +18,14 @@
 
         public Movie() { }
     
-        public string Title
-        {
-            get => _title;
-            set => _title = value;
-        }
+        public string Title { get; set; }
 
         public int DurationMinutes
         {
             get => _durationMinutes;
             set
             {
-                Validator.AssertOnPositiveValue(value, "FlightTimeMinutes");
+                Validator.AssertOnPositiveValue(value, nameof(DurationMinutes));
                 _durationMinutes = value;
             }
         }
@@ -41,23 +35,19 @@
             get => _year;
             set
             {
-                Validator.AssertValueInRange(value, "Year", 1900, 2023);
+                Validator.AssertValueInRange(value, nameof(Year), 1900, 2023);
                 _year = value;
             }
         }
 
-        public string Genre
-        {
-            get => _genre;
-            set => _genre = value;
-        }
+        public string Genre { get; set; }
 
         public double Rating
         {
             get => _rating;
             set
             {
-                Validator.AssertValueInRange(value, "Rating", 0, 10);
+                Validator.AssertValueInRange(value, nameof(Rating), 0, 10);
                 _rating = value;
             }
         }

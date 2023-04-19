@@ -1,4 +1,6 @@
-﻿namespace Programming.Model.Classes
+﻿using System;
+
+namespace Programming.Model.Classes
 {
     public class Ring
     {
@@ -19,7 +21,7 @@
             get => _outerRadius;
             set
             {
-                Validator.AssertOnPositiveValue(value, "OuterRadius");
+                Validator.AssertOnPositiveValue(value, nameof(OuterRadius));
                 if (value < _innerRadius)
                 {
                     throw new System.AggregateException("OuterRadius не может быть больше InnerRadius");
@@ -36,7 +38,7 @@
             get => _innerRadius;
             set
             {
-                Validator.AssertOnPositiveValue(value, "InnerRadius");
+                Validator.AssertOnPositiveValue(value, nameof(InnerRadius));
                 if (value > _outerRadius)
                 {
                     throw new System.AggregateException("InnerRadius не может быть больше OuterRadius");
@@ -50,7 +52,7 @@
 
         public double Area
         {
-            get => (3.14 * _outerRadius * _outerRadius) - (3.14 * _innerRadius * _innerRadius);
+            get => (Math.PI * _outerRadius * _outerRadius) - (Math.PI * _innerRadius * _innerRadius);
         }
     }
 }

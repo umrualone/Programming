@@ -4,10 +4,7 @@
         {
             private double _length;
             private double _width;
-            private string _color;
-            public Point2D Center { get; private set; }
             private static int _allRectanglesCount = 0;
-            private int _id;
 
             public Rectangle(double length, double width, string color, Point2D center)
             {
@@ -45,24 +42,12 @@
                 }
             }
 
-            public string Color
-            {
-                get => _color;
-                set => _color = value;
-            }
+            public string Color { get; set; }
+            
+            public Point2D Center { get; private set; }
+            
+            public static int AllRectanglesCount => _allRectanglesCount;
 
-            public int AllRectanglesCount
-            {
-                get => _allRectanglesCount;
-            }
-
-            public int Id
-            {
-                get => _id;
-                private set
-                {
-                    _id = value;
-                }
-            }
+            public int Id { get; private set; }
         }
 }

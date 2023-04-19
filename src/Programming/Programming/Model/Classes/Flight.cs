@@ -2,8 +2,6 @@
 {
     public class Flight
     {
-        private string _departurePoint;
-        private string _destination;
         private int _flightTimeMinutes;
 
         public Flight(string departurePoint, string destination, int flightTimeMinutes)
@@ -15,24 +13,16 @@
 
         public Flight() { }
     
-        public string DeparturePoint
-        {
-            get => _departurePoint;
-            set => _departurePoint = value;
-        }
+        public string DeparturePoint { get; set; }
 
-        public string Destination
-        {
-            get => _destination;
-            set => _destination = value;
-        }
+        public string Destination { get; set; }
 
         public int FlightTimeMinutes
         {
             get => _flightTimeMinutes;
             set
             {
-                Validator.AssertOnPositiveValue(value, "FlightTimeMinutes");
+                Validator.AssertOnPositiveValue(value, nameof(FlightTimeMinutes));
                 _flightTimeMinutes = value;
             }
         }

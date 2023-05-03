@@ -1,13 +1,12 @@
 ﻿using System;
 
-namespace Programming.Model.Classes
+namespace Programming.Model.Geometry
 {
     public class Ring
     {
         private double _outerRadius;
         private double _innerRadius;
         
-        public Point2D Center { get; private set; }
 
         public Ring(double outerRadius, double innerRadius, Point2D center)
         {
@@ -16,6 +15,8 @@ namespace Programming.Model.Classes
             Center = center;
         }
         
+        public Point2D Center { get; set; }
+
         public double OuterRadius
         {
             get => _outerRadius;
@@ -24,7 +25,7 @@ namespace Programming.Model.Classes
                 Validator.AssertOnPositiveValue(value, nameof(OuterRadius));
                 if (value < _innerRadius)
                 {
-                    throw new System.AggregateException("OuterRadius не может быть больше InnerRadius");
+                    throw new System.AggregateException("OuterRadius не может быть меньше InnerRadius");
                 }
                 else
                 {
@@ -52,7 +53,7 @@ namespace Programming.Model.Classes
 
         public double Area
         {
-            get => (Math.PI * _outerRadius * _outerRadius) - (Math.PI * _innerRadius * _innerRadius);
+            get => (Math.PI * Math.Pow(_outerRadius, 2)) - (Math.PI * Math.Pow(_innerRadius, 2));
         }
     }
 }

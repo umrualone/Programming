@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Programming.Model.Classes
+namespace Programming.Model
 {
     public class Contact
     {

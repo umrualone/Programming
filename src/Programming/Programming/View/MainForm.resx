@@ -117,7 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="widthLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="idLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="yLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="xLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="lengthLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="colorLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="deleteRectangleButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        7AAAAOwBeShxvQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFKSURBVFhH7ZTB
+        LgRBFEXbmvALJHwEtkiwFj7H2oI/EEts8AlsCXuJlRBiy5pzOtMTM6qnulVJkL7JSbqqb933pqp6ir+k
+        MViEjQgLoDerDDyD94acQtYm/OUGv8BxBD165yGb3FpDLRCTHr2uaaVRZ7wLht72nkehR6/PoazgHWl7
+        xql8uSOxMz6BO7hviF7XhLKCd8StcVLDT8sa1rJmX6vg5DX4YglyfkZmLYPZN2Ata/Y1BY/giwqbyCWL
+        f85+gEkY0AzsgWeoaWCLElUdsdnWmIZaBc8oUVUDje5YrIHzHsOqm1dZG/CdDKtuXnUNdA10DfyvBi4g
+        9IdTN6+yNvAddQ20auAQNG+WozzaAjOPylFE26B5vxzl0QGYuVOOIpqDN3DBJbhtKVyBWa8wC420Ds/g
+        whw8wRq00gSsgBcoBTPG4TeqKD4AvqoDiGZEyEgAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="addRectangleButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        7AAAAOwBeShxvQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFXSURBVFhH7Zdb
+        SsNAFEDzpy7CJyi6CVH8UPx3DyJuQRSX4wbUFSjqWnz8+zonZqSt09ppZqSVHjjQTJp770wm5KYaZ5Zw
+        Hw9aaoxFHJodfMCPzN7hNg7kGN/QCx7xEi9aagxjGfMVjzCKMze5nuAM5mIWT9HYFrGFP7hHqzR5Kc7Q
+        HLf1UQcrGJY958x7cSWe0FxdG3MPHfR+leYKzbVbHzX4uDjopimNOcxlzm9GLWCtMYWsBbw0ppC1AK/R
+        FKYFTGYB7nQ3W0j4m8+4ijEms4B+hIQpTAv4XwX4avUVnkLWAjZw/evn0GQtYBSiBfxlQ3KN5upqSJbR
+        Qe+nbVMp5jC0ZAsOdGLf7gm711Kcozlu6qMe/GiwZbZ1tnvNuRLO3OTvaI5NjOJHg3+wSpfKBtJN00Zj
+        hGU39iEOxI8G+3YvyKnL3nfmMdwkPh0+Lm00xjyOI1X1Cd5V7m6inj6cAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAXl4AAAEAIACgjgAAFgAAACgAAABeAAAAvAAAAAEAIAAAAAAAEIoAABMLAAATCwAAAAAAAAAA

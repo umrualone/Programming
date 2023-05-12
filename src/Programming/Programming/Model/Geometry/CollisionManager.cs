@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Programming.Model.Classes
+namespace Programming.Model.Geometry
 {
     public static class CollisionManager
     {
@@ -15,7 +15,7 @@ namespace Programming.Model.Classes
             var dX = Math.Abs(rectangle1.Center.X - rectangle2.Center.X);
             var dY = Math.Abs(rectangle1.Center.Y - rectangle2.Center.Y);
             
-            return dX < width1 + width2 && dY < length1 + length2;
+            return dX < (width1 + width2) / 2 && dY < (length1 + length2) / 2;
         }
         
         public static bool IsCollision(Ring ring1, Ring ring2)

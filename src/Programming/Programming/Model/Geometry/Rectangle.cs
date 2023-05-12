@@ -1,4 +1,4 @@
-﻿namespace Programming.Model.Classes
+﻿namespace Programming.Model.Geometry
 {
         public class Rectangle
         {
@@ -27,7 +27,7 @@
                 get => _length;
                 set
                 {
-                    Validator.AssertOnPositiveValue(value, "Length");
+                    Validator.AssertOnPositiveValue(value, nameof(Length));
                     _length = value;
                 }
             }
@@ -37,14 +37,14 @@
                 get => _width;
                 set
                 {
-                    Validator.AssertOnPositiveValue(value, "Width");
+                    Validator.AssertOnPositiveValue(value, nameof(Width));
                     _width = value;
                 }
             }
 
             public string Color { get; set; }
             
-            public Point2D Center { get; private set; }
+            public Point2D Center { get; set; }
             
             public static int AllRectanglesCount => _allRectanglesCount;
 

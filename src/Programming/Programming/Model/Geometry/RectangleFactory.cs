@@ -8,7 +8,7 @@ namespace Programming.Model.Geometry
         private static Random _random = new Random();
         
         public static Rectangle Randomize()
-        {
+        {   
             var width = _random.Next(30, 50);
             var length = _random.Next(30, 60);
             

@@ -1,7 +1,6 @@
 ﻿using System;
-using Programming.Model.Geometry;
 
-namespace Programming.Model
+namespace Programming.Model.Geometry
 {
     public static class CollisionManager
     {

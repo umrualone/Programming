@@ -6,17 +6,30 @@ using Programming.Model.Geometry;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Предоставляет шаблон пользовательского интерфейса RectanglesControl.
+    /// </summary>
     public partial class RectanglesControl : UserControl
     {
+        /// <summary>
+        /// Массив прямоугольников.
+        /// </summary>
         private Rectangle[] _rectangles = new Rectangle[5];
+        
+        /// <summary>
+        /// Текущий выбранный прямоугольник.
+        /// </summary>
         private Rectangle _currentRectangle;
         
+        /// <summary>
+        /// Создает экземпляр класса RectanglesControl.
+        /// </summary>
         public RectanglesControl()
         {
             InitializeComponent();
-  
             FillRectangles(_rectangles);
             
+            // Заполнение rectanglesListBox.
             var rectangles = new List<string>() {"Rectangle 1","Rectangle 2","Rectangle 3",
                 "Rectangle 4","Rectangle 5"};
             foreach (var rectangle in rectangles)
@@ -27,6 +40,10 @@ namespace Programming.View.Panels
             rectanglesListBox.SelectedIndex = 0;
         }
         
+        /// <summary>
+        /// Заполнение массива прямоугольников случайными прямоугольниками.
+        /// </summary>
+        /// <param name="rectangles">Массив прямоугольников.</param>
         private static void FillRectangles(Rectangle[] rectangles)
         {
             for (int i = 0; i < 5; i++)
@@ -35,6 +52,11 @@ namespace Programming.View.Panels
             }
         }   
         
+        /// <summary>
+        /// Выбор элемента в rectanglesListBox с последующим обновлением информации в TextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentRectangle = _rectangles[rectanglesListBox.SelectedIndex];
@@ -47,6 +69,11 @@ namespace Programming.View.Panels
             idTextBox.Text = _currentRectangle.Id.ToString();
         }
         
+        /// <summary>
+        /// Изменение данных в lengthTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LengthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -60,6 +87,11 @@ namespace Programming.View.Panels
             }
         }
         
+        /// <summary>
+        /// Изменение данных в widthTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -73,16 +105,31 @@ namespace Programming.View.Panels
             }
         }
         
+        /// <summary>
+        /// Изменение данных в colorTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ColorTextBox_TextChanged(object sender, EventArgs e)
         {
             _currentRectangle.Color = colorTextBox.Text;
         }
         
+        /// <summary>
+        /// Запрет на изменение TextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BanToChangeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
         
+        /// <summary>
+        /// Возвращает индекс прямоугольника с самой большой шириной. 
+        /// </summary>
+        /// <param name="rectangles">Массив прямоугольников.</param>
+        /// <returns>Индекс.</returns>
         private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
         {
             var index = 0;
@@ -97,6 +144,11 @@ namespace Programming.View.Panels
             return index;
         }
         
+        /// <summary>
+        /// Обработчик, который выбирает элемент с максимальной шириной.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RectangleButton_Click(object sender, EventArgs e)
         {
             var index = FindRectangleWithMaxWidth(_rectangles);

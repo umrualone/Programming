@@ -6,19 +6,34 @@ using Programming.Model.Enums;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Предоставляет шаблон пользовательского интерфейса MoviesControl.
+    /// </summary>
     public partial class MoviesControl : UserControl
     {
+        /// <summary>
+        /// Массив фильмов.
+        /// </summary>
         private Movie[] _movies = new Movie[5];
+        /// <summary>
+        /// Текущий выбранный фильм.
+        /// </summary>
         private Movie _currentMovie;
         
+        /// <summary>
+        /// Экземпляр класса Random.
+        /// </summary>
         private Random _random = new Random();
         
+        /// <summary>
+        /// Создает экземпляр класса MoviesControl.
+        /// </summary>
         public MoviesControl()
         {
             InitializeComponent();
-            
             FillMovies(_movies);
             
+            // Заполнение moviesListBox.
             var movies = new List<string>() {"Movie 1","Movie 2","Movie 3","Movie 4","Movie 5"};
             foreach (var movie in movies)
             {
@@ -28,6 +43,10 @@ namespace Programming.View.Panels
             moviesListBox.SelectedIndex = 0;
         }
         
+        /// <summary>
+        /// Заполнение массива фильмов со случайными значениями.
+        /// </summary>
+        /// <param name="movies">Массив фильмов.</param>
         private void FillMovies(Movie[] movies)
         {
             var genreValues = Enum.GetValues(typeof(Genre));
@@ -41,6 +60,11 @@ namespace Programming.View.Panels
             }
         }
         
+        /// <summary>
+        /// Выбор элемента в moviesListBox с последующим обновлением информации в TextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentMovie = _movies[moviesListBox.SelectedIndex];
@@ -52,11 +76,21 @@ namespace Programming.View.Panels
             ratingTextBox.Text = _currentMovie.Rating.ToString();
         }
         
+        /// <summary>
+        /// Изменение данных в titleTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TitleTextBox_TextChanged(object sender, EventArgs e)
         {
             _currentMovie.Title = titleTextBox.Text;
         }
         
+        /// <summary>
+        /// Изменение данных в timeTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimeTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -70,6 +104,11 @@ namespace Programming.View.Panels
             }
         }
         
+        /// <summary>
+        /// Изменение данных в yearTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void YearTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -83,11 +122,21 @@ namespace Programming.View.Panels
             }
         }
         
+        /// <summary>
+        /// Изменение данных в genreTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GenreTextBox_TextChanged(object sender, EventArgs e)
         {
             _currentMovie.Genre = genreTextBox.Text;
         }
         
+        /// <summary>
+        /// Изменение данных в ratingTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RatingTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -101,6 +150,11 @@ namespace Programming.View.Panels
             }
         }
         
+        /// <summary>
+        /// Возвращает индекс фильма с самым большим рейтингом. 
+        /// </summary>
+        /// <param name="movies">Массив фильмов.</param>
+        /// <returns>Индекс.</returns>
         private static int FindMoviesWithMaxRating(Movie[] movies)
         {
             var index = 0;
@@ -114,6 +168,11 @@ namespace Programming.View.Panels
             return index;
         }
 
+        /// <summary>
+        /// Обработчик, который выбирает элемент с максимальным рейтингом.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FindMovieButton_Click(object sender, EventArgs e)
         {
             var index = FindMoviesWithMaxRating(_movies);

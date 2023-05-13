@@ -209,7 +209,7 @@ namespace Programming.View.Panels
             this.rectanglesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rectanglesPanel.Location = new System.Drawing.Point(338, 13);
             this.rectanglesPanel.Name = "rectanglesPanel";
-            this.rectanglesPanel.Size = new System.Drawing.Size(378, 393);
+            this.rectanglesPanel.Size = new System.Drawing.Size(377, 398);
             this.rectanglesPanel.TabIndex = 16;
             // 
             // RectanglesCollisionControl
@@ -233,7 +233,7 @@ namespace Programming.View.Panels
             this.Controls.Add(this.addRectangleButton);
             this.Controls.Add(this.rectanglesPanel);
             this.Name = "RectanglesCollisionControl";
-            this.Size = new System.Drawing.Size(728, 424);
+            this.Size = new System.Drawing.Size(727, 429);
             this.ResumeLayout(false);
             this.PerformLayout();
         }

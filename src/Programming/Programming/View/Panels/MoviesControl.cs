@@ -25,7 +25,6 @@ namespace Programming.View.Panels
         public MoviesControl()
         {
             InitializeComponent();
-            
             FillMovies(_movies);
             
             // Заполнение moviesListBox.

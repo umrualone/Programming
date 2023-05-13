@@ -11,6 +11,7 @@ namespace Programming.Model
         /// Имя.
         /// </summary>
         private string _firstName;
+        
         /// <summary>
         /// Фамилия.
         /// </summary>

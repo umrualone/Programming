@@ -5,6 +5,9 @@ using Programming.Model.Enums;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Предоставляет шаблон пользовательского интерфейса EnumerationsControl.
+    /// </summary>
     public partial class EnumerationsControl : UserControl
     {
         /// <summary>
@@ -20,6 +23,9 @@ namespace Programming.View.Panels
             typeof(Weekday)
         };
         
+        /// <summary>
+        /// Создает экземпляр класса EnumerationsControl.
+        /// </summary>
         public EnumerationsControl()
         {
             InitializeComponent();

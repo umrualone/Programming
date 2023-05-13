@@ -8,21 +8,29 @@ using Rectangle = Programming.Model.Geometry.Rectangle;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Предоставляет шаблон пользовательского интерфейса RectanglesCollisionControl.
+    /// </summary>
     public partial class RectanglesCollisionControl : UserControl
     {
         /// <summary>
         /// Список прямоугольников.
         /// </summary>
         private List<Rectangle> _rectangles = new List<Rectangle>();
+        
         /// <summary>
         /// Текущий выбранный прямоугольник.
         /// </summary>
         private Rectangle _currentRectangle;
+        
         /// <summary>
         /// Список панелей прямоугольника.
         /// </summary>
         private List<Panel> _rectanglePanel = new List<Panel>();
         
+        /// <summary>
+        /// Создает экземпляр класса RectanglesCollisionControl.
+        /// </summary>
         public RectanglesCollisionControl()
         {
             InitializeComponent();

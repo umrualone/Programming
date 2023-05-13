@@ -9,6 +9,7 @@
         /// Координата x.
         /// </summary>
         private double _x;
+        
         /// <summary>
         /// Координата y.
         /// </summary>

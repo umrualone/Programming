@@ -4,8 +4,14 @@ using Programming.Model.Enums;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Предоставляет шаблон пользовательского интерфейса SeasonHandleControl.
+    /// </summary>
     public partial class SeasonHandleControl : UserControl
     {
+        /// <summary>
+        /// Создает экземпляр класса SeasonHandleControl.
+        /// </summary>
         public SeasonHandleControl()
         {
             InitializeComponent();
@@ -18,7 +24,7 @@ namespace Programming.View.Panels
         }
         
         /// <summary>
-        /// Клик, который выводит сообщение в зависимости от выбранного времени года в seasonComboBox.
+        /// Обработчик, который выводит сообщение в зависимости от выбранного времени года в seasonComboBox.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

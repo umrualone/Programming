@@ -6,21 +6,27 @@ using Programming.Model.Geometry;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Предоставляет шаблон пользовательского интерфейса RectanglesControl.
+    /// </summary>
     public partial class RectanglesControl : UserControl
     {
         /// <summary>
         /// Массив прямоугольников.
         /// </summary>
         private Rectangle[] _rectangles = new Rectangle[5];
+        
         /// <summary>
-        /// 
+        /// Текущий выбранный прямоугольник.
         /// </summary>
         private Rectangle _currentRectangle;
         
+        /// <summary>
+        /// Создает экземпляр класса RectanglesControl.
+        /// </summary>
         public RectanglesControl()
         {
             InitializeComponent();
-  
             FillRectangles(_rectangles);
             
             // Заполнение rectanglesListBox.
@@ -139,7 +145,7 @@ namespace Programming.View.Panels
         }
         
         /// <summary>
-        /// Клик, который выбирает элемент с максимальной шириной.
+        /// Обработчик, который выбирает элемент с максимальной шириной.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

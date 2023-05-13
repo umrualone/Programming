@@ -6,6 +6,9 @@ using Programming.Model.Enums;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Предоставляет шаблон пользовательского интерфейса MoviesControl.
+    /// </summary>
     public partial class MoviesControl : UserControl
     {
         /// <summary>
@@ -22,6 +25,9 @@ namespace Programming.View.Panels
         /// </summary>
         private Random _random = new Random();
         
+        /// <summary>
+        /// Создает экземпляр класса MoviesControl.
+        /// </summary>
         public MoviesControl()
         {
             InitializeComponent();
@@ -163,7 +169,7 @@ namespace Programming.View.Panels
         }
 
         /// <summary>
-        /// Клик, который выбирает элемент с максимальным рейтингом.
+        /// Обработчик, который выбирает элемент с максимальным рейтингом.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

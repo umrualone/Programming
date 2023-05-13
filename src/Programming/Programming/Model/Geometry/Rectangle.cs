@@ -9,10 +9,12 @@
         /// Высота.
         /// </summary>
         private double _length; 
+        
         /// <summary>
         /// Ширина.
         /// </summary>
         private double _width;
+        
         /// <summary>
         /// Количество созданных прямоугольников.
         /// </summary>

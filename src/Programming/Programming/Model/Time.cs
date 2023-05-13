@@ -9,10 +9,12 @@
         /// Часы.
         /// </summary>
         private int _hours;
+        
         /// <summary>
         /// Минуты.
         /// </summary>
         private int _minutes;
+        
         /// <summary>
         /// Секунды.
         /// </summary>

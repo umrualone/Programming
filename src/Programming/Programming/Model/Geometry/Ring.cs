@@ -11,6 +11,7 @@ namespace Programming.Model.Geometry
         /// Внешний радиус.
         /// </summary>
         private double _outerRadius;
+        
         /// <summary>
         /// Внутренний радиус.
         /// </summary>

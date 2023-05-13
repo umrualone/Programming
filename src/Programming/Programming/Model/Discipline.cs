@@ -9,6 +9,7 @@
         /// Номер семестра.
         /// </summary>
         private int _semesterNumber;
+        
         /// <summary>
         /// Оценка за семестр.
         /// </summary>

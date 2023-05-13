@@ -9,10 +9,12 @@
         /// Продолжительность фильма в минутах.
         /// </summary>
         private int _durationMinutes;
+        
         /// <summary>
         /// Год выхода.
         /// </summary>
         private int _year;
+        
         /// <summary>
         /// Рейтинг фильма.
         /// </summary>

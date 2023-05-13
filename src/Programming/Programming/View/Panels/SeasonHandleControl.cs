@@ -9,13 +9,19 @@ namespace Programming.View.Panels
         public SeasonHandleControl()
         {
             InitializeComponent();
-
+            
             var items = Enum.GetNames(typeof(Season));    
             
+            // Заполнение seasonComboBox.
             seasonComboBox.Items.AddRange(items);
             seasonComboBox.SelectedIndex = 0;
         }
         
+        /// <summary>
+        /// Клик, который выводит сообщение в зависимости от выбранного времени года в seasonComboBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoButton_Click(object sender, EventArgs e)
         {
             switch (seasonComboBox.Text)

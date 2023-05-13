@@ -11,6 +11,12 @@ namespace Programming.View.Panels
             InitializeComponent();
         }
         
+        /// <summary>
+        /// Клик, который считывает текст из weekdayTextBox и проверяет есть ли такой день недели.
+        /// Если он есть изменяет label "Это день недели ({имя дня} = {номер дня})", иначе "Нет такого дня недели" 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ParseButton_Click(object sender, EventArgs e)
         {
             var enumValues = Enum.GetValues(typeof(Weekday));

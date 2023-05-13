@@ -10,15 +10,29 @@ namespace Programming.View.Panels
 {
     public partial class RectanglesCollisionControl : UserControl
     {
+        /// <summary>
+        /// Список прямоугольников.
+        /// </summary>
         private List<Rectangle> _rectangles = new List<Rectangle>();
+        /// <summary>
+        /// Текущий выбранный прямоугольник.
+        /// </summary>
         private Rectangle _currentRectangle;
+        /// <summary>
+        /// Список панелей прямоугольника.
+        /// </summary>
         private List<Panel> _rectanglePanel = new List<Panel>();
         
         public RectanglesCollisionControl()
         {
             InitializeComponent();
         }
-
+        
+        /// <summary>
+        /// Возвращает строку с данными о прямоугольнике.
+        /// </summary>
+        /// <param name="rectangle">Прямоугольник.</param>
+        /// <returns>Строка с данными о прямоугольнике.</returns>
         private static string TakeInfoFromRectangle(Rectangle rectangle)
         {
             var info = $"{rectangle.Id}. " +
@@ -30,6 +44,10 @@ namespace Programming.View.Panels
             return info;
         }
         
+        /// <summary>
+        /// Обновление данных в TextBox.
+        /// </summary>
+        /// <param name="rectangle">Прямоугольник.</param>
         private void UpdateRectangleInfo(ref Rectangle rectangle)
         {
             rectangle = _rectangles[rectanglesListBox.SelectedIndex];
@@ -41,6 +59,9 @@ namespace Programming.View.Panels
             lengthTextBox.Text = rectangle.Length.ToString();
         }
         
+        /// <summary>
+        /// Очистка данных в TextBox.
+        /// </summary>
         private void ClearRectangleInfo()
         {
             idTextBox.Text = string.Empty;
@@ -55,15 +76,17 @@ namespace Programming.View.Panels
             lengthTextBox.BackColor = AppColors.NormalColor;
         }
         
-         private void AddRectangleButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Добавление нового прямоугольника.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddRectangleButton_Click(object sender, EventArgs e)
         {
             var rectangle = RectangleFactory.Randomize();
             var panel = new Panel();
 
             var info = TakeInfoFromRectangle(rectangle);
-            
-            _rectangles.Add(rectangle);
-            rectanglesListBox.Items.Add(info);
             
             panel.Height = Convert.ToInt32(rectangle.Length);
             panel.Width = Convert.ToInt32(rectangle.Width);
@@ -72,11 +95,20 @@ namespace Programming.View.Panels
             panel.Location = new Point(x, y);
             panel.BackColor = AppColors.CollisionFalse;
             
+            // Добавление в списки и на экран приложения.
+            _rectangles.Add(rectangle);
+            rectanglesListBox.Items.Add(info);
             _rectanglePanel.Add(panel);
             rectanglesPanel.Controls.Add(panel);
+            
             FindCollision();
         }
         
+        /// <summary>
+        /// Удаление выбранного прямоугольника.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteRectangleButton_Click(object sender, EventArgs e)
         {
             try
@@ -93,23 +125,38 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Выбор элемента в rectanglesListBox с последующим обновлением информации в TextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-                try
-                {
-                    UpdateRectangleInfo(ref _currentRectangle);
-                }
-                catch
-                {
-                    ClearRectangleInfo();
-                }
+            try
+            { 
+                UpdateRectangleInfo(ref _currentRectangle);
+            }
+            catch
+            { 
+                ClearRectangleInfo(); 
+            }
         }
 
+        /// <summary>
+        /// Запрет на изменения idTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void IdTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
         
+        /// <summary>
+        /// Изменения данных в xTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void XTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -133,6 +180,11 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Изменения данных в yTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void YTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -156,6 +208,11 @@ namespace Programming.View.Panels
             }
         }   
         
+        /// <summary>
+        /// Изменения данных в widthTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -176,6 +233,11 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Изменение данных в lengthTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LengthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -196,6 +258,9 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Проверка на пересечение прямоугольников. В случаи пересечения, прямоугольники меняют свой цвет.
+        /// </summary>
         private void FindCollision()
         {
             foreach (Panel rectangle in rectanglesPanel.Controls)

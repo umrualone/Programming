@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -6,27 +7,34 @@ using System.Text.Json;
 namespace NotesApp.Model
 {
     /// <summary>
-    /// Реализует чтение данных и их запись.
+    /// Реализует статическую сериализацию и десериализацию json файла.
     /// </summary>
-    public class DataBase
+    public static class DataBase
     {
-        /// <summary>
-        /// Возвращает путь файла.
-        /// </summary>
-        public string Path { get; private set; }
         
         /// <summary>
-        /// Создает экземпляр класса DataBase.
+        /// Путь до папки.
         /// </summary>
-        /// <param name="path">Путь файла.</param>
-        public DataBase(string path)
+        private static string directoryPath = Environment.ExpandEnvironmentVariables(@"%appdata%\NotesApps");
+        
+        /// <summary>
+        /// Путь до файла.
+        /// </summary>
+        private static string filePath = Path.Combine(directoryPath, "Notes.json");
+
+        /// <summary>
+        /// Проверка на наличия папки и файла.
+        /// </summary>
+        public static void IsCreateFolderAndFile()
         {
-            Path = path;
-            
-            // Проверка на существования файла. Если его нет, создать новый. 
-            if (File.Exists(Path) == false)
+            if (Directory.Exists(directoryPath) == false)
             {
-                using (FileStream fstream = new FileStream(Path, FileMode.Create))
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            if (File.Exists(filePath) == false)
+            {
+                using (FileStream fstream = new FileStream(filePath, FileMode.Create))
                 {
                     var text = "[]";
                     var buffer = Encoding.Default.GetBytes(text);
@@ -34,14 +42,14 @@ namespace NotesApp.Model
                 }
             }
         }
-
+        
         /// <summary>
-        /// Считывает данные файла и возвращает их List<Note>. 
+        /// Считывает данные файла и возвращает их список. 
         /// </summary>
         /// <returns>Данные файла.</returns>
-        public List<Note> GetData()
+        public static List<Note> GetData()
         {
-            using (FileStream fstream = new FileStream(Path, FileMode.OpenOrCreate))
+            using (FileStream fstream = new FileStream(filePath, FileMode.OpenOrCreate))
             {
                 return JsonSerializer.Deserialize<List<Note>>(fstream);   
             }
@@ -51,10 +59,10 @@ namespace NotesApp.Model
         /// Записывает новые данные в файл.
         /// </summary>
         /// <param name="notes">Новые данные.</param>
-        public void UpdateData(List<Note> notes)
+        public static void UpdateData(List<Note> notes)
         {
             string newDate = JsonSerializer.Serialize(notes);
-            using (FileStream fstream = new FileStream(Path, FileMode.Create))
+            using (FileStream fstream = new FileStream(filePath, FileMode.Create))
             {
                 byte[] buffer = Encoding.Default.GetBytes(newDate);
                 

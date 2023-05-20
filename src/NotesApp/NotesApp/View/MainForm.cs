@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using NotesApp.Model;
 using NotesApp.Model.Enums;
@@ -14,17 +15,12 @@ namespace NotesApp.View
         /// <summary>
         /// Перечисления категорий.
         /// </summary>
-        private object[] categories = Enum.GetNames(typeof(Category));
-        
-        /// <summary>
-        /// Подключение данных файла.
-        /// </summary>
-        private static DataBase _file = new DataBase(@"Notes.json");
+        private object[] _categories = Enum.GetNames(typeof(Category));
         
         /// <summary>
         /// Список записок.
         /// </summary>
-        private List<Note> _notes = _file.GetData();
+        private List<Note> _notes;
         
         /// <summary>
         /// Текущая выбранная записка.
@@ -38,6 +34,9 @@ namespace NotesApp.View
         {
             InitializeComponent();
             
+            DataBase.IsCreateFolderAndFile();
+            _notes = DataBase.GetData();
+            
             if (_notes.Count > 0)
             {
                 foreach (var note in _notes)
@@ -46,14 +45,12 @@ namespace NotesApp.View
                 }
             }
             
-            categoryСomboBox.Items.AddRange(categories);
+            categoryСomboBox.Items.AddRange(_categories);
         }
         
         /// <summary>
         /// Выбор элемента в notesListBox с последующим обновлением информации в TextBox.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void NotesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -75,8 +72,6 @@ namespace NotesApp.View
         /// <summary>
         /// Событие добавления записки.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void AddNoteButton_Click(object sender, EventArgs e)
         {
             EnableAddButtonsEvents();
@@ -89,8 +84,6 @@ namespace NotesApp.View
         /// <summary>
         /// Событие, которое принимает добавление записки.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void AddNoteButtonAccept_Click(object sender, EventArgs e)
         {
             Note newNote = new Note(titleTextBox.Text, descriptionTextBox.Text, categoryСomboBox.Text);
@@ -98,7 +91,7 @@ namespace NotesApp.View
             _notes.Insert(0, newNote);
             notesListBox.Items.Insert(0, newNote.Title);
             
-            _file.UpdateData(_notes);
+            DataBase.UpdateData(_notes);
             
             DisableElements();
             DisableVisibleButtons();
@@ -110,8 +103,6 @@ namespace NotesApp.View
         /// <summary>
         /// Событие отмены добавления записки.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void AddNoteButtonCancel_Click(object sender, EventArgs e)
         {
             ClearTextBox();
@@ -125,8 +116,6 @@ namespace NotesApp.View
         /// <summary>
         /// Событие изменения записки.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void EditNoteButton_Click(object sender, EventArgs e)
         {
             EnableEditButtonsEvents();
@@ -138,8 +127,6 @@ namespace NotesApp.View
         /// <summary>
         /// Событие, которое принимает изменения записки.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void EditNoteButtonAccept_Click(object sender, EventArgs e)
         {
             Note newNote = new Note(titleTextBox.Text, descriptionTextBox.Text, categoryСomboBox.Text);
@@ -149,7 +136,7 @@ namespace NotesApp.View
             notesListBox.Items.RemoveAt(notesListBox.SelectedIndex);
             notesListBox.Items.Insert(0, newNote.Title);
             
-            _file.UpdateData(_notes);
+            DataBase.UpdateData(_notes);
             
             DisableElements();
             DisableVisibleButtons();
@@ -162,8 +149,6 @@ namespace NotesApp.View
         /// <summary>
         /// Событие отмены изменения записки.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void EditNoteButtonCancel_Click(object sender, EventArgs e)
         {
             ClearTextBox();
@@ -177,15 +162,13 @@ namespace NotesApp.View
         /// <summary>
         /// Событие удаления записки.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void DeleteNoteButton_Click(object sender, EventArgs e)
         {
             try
             {
                 _notes.RemoveAt(notesListBox.SelectedIndex);
                 notesListBox.Items.RemoveAt(notesListBox.SelectedIndex);
-                _file.UpdateData(_notes);
+                DataBase.UpdateData(_notes);
                 ClearTextBox();
             }
             catch
@@ -200,9 +183,9 @@ namespace NotesApp.View
         private void EnableElements()
         {
             notesListBox.Enabled = false;
-            titleTextBox.ReadOnly = false;
-            descriptionTextBox.ReadOnly = false;
-            categoryСomboBox.Enabled = true;
+            titleTextBox.Enabled = true;
+            descriptionTextBox.Enabled = true;
+            categoryСomboBox.Enabled= true;
         }
 
         /// <summary>
@@ -211,8 +194,8 @@ namespace NotesApp.View
         private void DisableElements()
         {
             notesListBox.Enabled = true;
-            titleTextBox.ReadOnly = true;
-            descriptionTextBox.ReadOnly = true;
+            titleTextBox.Enabled = false;
+            descriptionTextBox.Enabled = false;
             categoryСomboBox.Enabled = false;
         }
 
@@ -232,6 +215,8 @@ namespace NotesApp.View
         /// </summary>
         private void EnableVisibleButtons()
         {
+            timeOfCreationTextBox.Visible = false;
+            timeOfCreationLabel.Visible = false;
             cancelButton.Visible = true;
             acceptButton.Visible = true;
         }
@@ -241,6 +226,8 @@ namespace NotesApp.View
         /// </summary>
         private void DisableVisibleButtons()
         {
+            timeOfCreationTextBox.Visible = true;
+            timeOfCreationLabel.Visible = true;
             cancelButton.Visible = false;
             acceptButton.Visible = false;
         }
@@ -297,6 +284,28 @@ namespace NotesApp.View
         {
             acceptButton.Click -= EditNoteButtonAccept_Click;
             cancelButton.Click -= EditNoteButtonCancel_Click; 
+        }
+
+        /// <summary>
+        /// Валидация titleTextBox на количество символов.
+        /// </summary>
+        private void TitleTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (titleTextBox.Text.Length > 50)
+            {
+                acceptButton.Enabled = false;
+                titleTextBox.BackColor = Color.Red;
+            }
+            else if (titleTextBox.Text.Length == 0)
+            {
+                acceptButton.Enabled = false;
+                titleTextBox.BackColor = Color.White;
+            }
+            else
+            {
+                acceptButton.Enabled = true;
+                titleTextBox.BackColor = Color.White;
+            }
         }
     }
 }

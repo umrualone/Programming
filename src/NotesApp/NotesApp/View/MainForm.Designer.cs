@@ -33,10 +33,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.Label categoryLabel;
             System.Windows.Forms.Label descriptionLabel;
-            System.Windows.Forms.Label timeOfCreationLabel;
             System.Windows.Forms.Label titleLabel;
             this.cancelButton = new System.Windows.Forms.Button();
             this.acceptButton = new System.Windows.Forms.Button();
+            this.timeOfCreationLabel = new System.Windows.Forms.Label();
             this.timeOfCreationTextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.titleTextBox = new System.Windows.Forms.TextBox();
@@ -48,7 +48,6 @@
             groupBox = new System.Windows.Forms.GroupBox();
             categoryLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
-            timeOfCreationLabel = new System.Windows.Forms.Label();
             titleLabel = new System.Windows.Forms.Label();
             groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -60,22 +59,23 @@
             groupBox.Controls.Add(this.acceptButton);
             groupBox.Controls.Add(categoryLabel);
             groupBox.Controls.Add(descriptionLabel);
-            groupBox.Controls.Add(timeOfCreationLabel);
+            groupBox.Controls.Add(this.timeOfCreationLabel);
             groupBox.Controls.Add(titleLabel);
             groupBox.Controls.Add(this.timeOfCreationTextBox);
             groupBox.Controls.Add(this.descriptionTextBox);
             groupBox.Controls.Add(this.titleTextBox);
             groupBox.Controls.Add(this.categoryСomboBox);
+            groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             groupBox.Location = new System.Drawing.Point(307, 12);
             groupBox.Name = "groupBox";
-            groupBox.Size = new System.Drawing.Size(432, 293);
+            groupBox.Size = new System.Drawing.Size(500, 293);
             groupBox.TabIndex = 1;
             groupBox.TabStop = false;
             groupBox.Text = "Selected Note";
             // 
             // cancelButton
             // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cancelButton.BackgroundImage")));
             this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -83,7 +83,7 @@
             this.cancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.cancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Location = new System.Drawing.Point(304, 224);
+            this.cancelButton.Location = new System.Drawing.Point(357, 238);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(40, 40);
             this.cancelButton.TabIndex = 5;
@@ -92,7 +92,7 @@
             // 
             // acceptButton
             // 
-            this.acceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.acceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.acceptButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("acceptButton.BackgroundImage")));
             this.acceptButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.acceptButton.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -100,7 +100,7 @@
             this.acceptButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.acceptButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.acceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.acceptButton.Location = new System.Drawing.Point(373, 224);
+            this.acceptButton.Location = new System.Drawing.Point(432, 238);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(40, 40);
             this.acceptButton.TabIndex = 6;
@@ -109,36 +109,39 @@
             // 
             // categoryLabel
             // 
-            categoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            categoryLabel.Location = new System.Drawing.Point(6, 243);
+            categoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            categoryLabel.Location = new System.Drawing.Point(30, 69);
             categoryLabel.Name = "categoryLabel";
-            categoryLabel.Size = new System.Drawing.Size(89, 21);
+            categoryLabel.Size = new System.Drawing.Size(91, 21);
             categoryLabel.TabIndex = 8;
             categoryLabel.Text = "Category:";
             categoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // descriptionLabel
             // 
-            descriptionLabel.Location = new System.Drawing.Point(6, 66);
+            descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            descriptionLabel.Location = new System.Drawing.Point(6, 105);
             descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(89, 31);
+            descriptionLabel.Size = new System.Drawing.Size(115, 31);
             descriptionLabel.TabIndex = 7;
             descriptionLabel.Text = "Description:";
             descriptionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // timeOfCreationLabel
             // 
-            timeOfCreationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            timeOfCreationLabel.Location = new System.Drawing.Point(6, 194);
-            timeOfCreationLabel.Name = "timeOfCreationLabel";
-            timeOfCreationLabel.Size = new System.Drawing.Size(89, 20);
-            timeOfCreationLabel.TabIndex = 6;
-            timeOfCreationLabel.Text = "Time of creation:";
-            timeOfCreationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.timeOfCreationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.timeOfCreationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeOfCreationLabel.Location = new System.Drawing.Point(6, 234);
+            this.timeOfCreationLabel.Name = "timeOfCreationLabel";
+            this.timeOfCreationLabel.Size = new System.Drawing.Size(115, 20);
+            this.timeOfCreationLabel.TabIndex = 6;
+            this.timeOfCreationLabel.Text = "Time of creation:";
+            this.timeOfCreationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // titleLabel
             // 
-            titleLabel.Location = new System.Drawing.Point(6, 27);
+            titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            titleLabel.Location = new System.Drawing.Point(32, 33);
             titleLabel.Name = "titleLabel";
             titleLabel.Size = new System.Drawing.Size(89, 20);
             titleLabel.TabIndex = 5;
@@ -150,53 +153,62 @@
             this.timeOfCreationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.timeOfCreationTextBox.BackColor = System.Drawing.Color.White;
             this.timeOfCreationTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.timeOfCreationTextBox.Location = new System.Drawing.Point(101, 196);
+            this.timeOfCreationTextBox.Enabled = false;
+            this.timeOfCreationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeOfCreationTextBox.Location = new System.Drawing.Point(127, 234);
             this.timeOfCreationTextBox.Name = "timeOfCreationTextBox";
             this.timeOfCreationTextBox.ReadOnly = true;
-            this.timeOfCreationTextBox.Size = new System.Drawing.Size(150, 20);
+            this.timeOfCreationTextBox.ShortcutsEnabled = false;
+            this.timeOfCreationTextBox.Size = new System.Drawing.Size(150, 23);
             this.timeOfCreationTextBox.TabIndex = 4;
             // 
             // descriptionTextBox
             // 
             this.descriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.descriptionTextBox.BackColor = System.Drawing.Color.White;
+            this.descriptionTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.descriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.descriptionTextBox.Location = new System.Drawing.Point(101, 64);
+            this.descriptionTextBox.Enabled = false;
+            this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.descriptionTextBox.Location = new System.Drawing.Point(127, 103);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.ReadOnly = true;
             this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionTextBox.Size = new System.Drawing.Size(312, 115);
+            this.descriptionTextBox.Size = new System.Drawing.Size(355, 115);
             this.descriptionTextBox.TabIndex = 3;
             // 
             // titleTextBox
             // 
             this.titleTextBox.BackColor = System.Drawing.Color.White;
             this.titleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.titleTextBox.Location = new System.Drawing.Point(101, 27);
+            this.titleTextBox.Enabled = false;
+            this.titleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.titleTextBox.Location = new System.Drawing.Point(127, 33);
             this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.ReadOnly = true;
-            this.titleTextBox.Size = new System.Drawing.Size(312, 20);
+            this.titleTextBox.Size = new System.Drawing.Size(270, 23);
             this.titleTextBox.TabIndex = 2;
+            this.titleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
             // categoryСomboBox
             // 
-            this.categoryСomboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.categoryСomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.categoryСomboBox.BackColor = System.Drawing.Color.White;
             this.categoryСomboBox.Enabled = false;
+            this.categoryСomboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.categoryСomboBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.categoryСomboBox.FormattingEnabled = true;
-            this.categoryСomboBox.Location = new System.Drawing.Point(101, 243);
+            this.categoryСomboBox.Location = new System.Drawing.Point(127, 69);
             this.categoryСomboBox.Name = "categoryСomboBox";
-            this.categoryСomboBox.Size = new System.Drawing.Size(150, 21);
+            this.categoryСomboBox.Size = new System.Drawing.Size(150, 24);
             this.categoryСomboBox.TabIndex = 1;
             // 
             // notesListBox
             // 
             this.notesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
+            this.notesListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.notesListBox.FormattingEnabled = true;
+            this.notesListBox.ItemHeight = 16;
             this.notesListBox.Location = new System.Drawing.Point(12, 12);
             this.notesListBox.Name = "notesListBox";
-            this.notesListBox.Size = new System.Drawing.Size(289, 368);
+            this.notesListBox.Size = new System.Drawing.Size(289, 356);
             this.notesListBox.TabIndex = 0;
             this.notesListBox.SelectedIndexChanged += new System.EventHandler(this.NotesListBox_SelectedIndexChanged);
             // 
@@ -256,20 +268,22 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 441);
+            this.ClientSize = new System.Drawing.Size(812, 441);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(groupBox);
             this.Controls.Add(this.notesListBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(760, 480);
+            this.MinimumSize = new System.Drawing.Size(828, 480);
             this.Name = "MainForm";
             this.Text = "NotesApp";
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label timeOfCreationLabel;
 
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button acceptButton;

@@ -21,7 +21,7 @@ DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Projects\C#\Programming\src\NotesApp
+OutputDir=.
 OutputBaseFilename=setup
 SetupIconFile=NotesApp\Resources\icon-256x256.ico
 Compression=lzma

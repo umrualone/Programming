@@ -26,6 +26,11 @@ namespace NotesApp.View
         /// Текущая выбранная записка.
         /// </summary>
         private Note _currentNote;
+
+        /// <summary>
+        /// Флаг для смены события AcceptButton. Если он == true добавляем записку, иначе редактируем.
+        /// </summary>
+        private bool _flagButton = false;
         
         /// <summary>
         /// Создает экземпляр класса MainForm.
@@ -57,7 +62,7 @@ namespace NotesApp.View
             {
                 _currentNote = _notes[notesListBox.SelectedIndex];
                 editButton.Enabled = true;
-                
+                deleteButton.Enabled = true;
                 titleTextBox.Text = _currentNote.Title;
                 descriptionTextBox.Text = _currentNote.Description;
                 timeOfCreationTextBox.Text = _currentNote.Date;
@@ -65,6 +70,7 @@ namespace NotesApp.View
             }
             catch
             {
+                deleteButton.Enabled = false;
                 editButton.Enabled = false;
             }
         }
@@ -74,7 +80,8 @@ namespace NotesApp.View
         /// </summary>
         private void AddNoteButton_Click(object sender, EventArgs e)
         {
-            EnableAddButtonsEvents();
+            notesListBox.SelectedIndex = -1;
+            _flagButton = true;
             DisableButtonsClicks();
             EnableVisibleButtons();
             EnableElements();
@@ -82,9 +89,9 @@ namespace NotesApp.View
         }
         
         /// <summary>
-        /// Событие, которое принимает добавление записки.
+        /// Добавление записки.
         /// </summary>
-        private void AddNoteButtonAccept_Click(object sender, EventArgs e)
+        private void AddNoteButtonAccept()
         {
             Note newNote = new Note(titleTextBox.Text, descriptionTextBox.Text, categoryСomboBox.Text);
             
@@ -97,20 +104,7 @@ namespace NotesApp.View
             DisableVisibleButtons();
             EnableButtonsClicks();
             ClearTextBox();
-            DisableAddButtonsEvents();
-        }
-        
-        /// <summary>
-        /// Событие отмены добавления записки.
-        /// </summary>
-        private void AddNoteButtonCancel_Click(object sender, EventArgs e)
-        {
-            ClearTextBox();
-            notesListBox.SelectedIndex = -1;
-            EnableButtonsClicks();
-            DisableElements();
-            DisableVisibleButtons();
-            DisableAddButtonsEvents();
+            notesListBox.SelectedIndex = 0;
         }
         
         /// <summary>
@@ -118,16 +112,16 @@ namespace NotesApp.View
         /// </summary>
         private void EditNoteButton_Click(object sender, EventArgs e)
         {
-            EnableEditButtonsEvents();
+            _flagButton = false;
             DisableButtonsClicks();
             EnableVisibleButtons();
             EnableElements();
         }
         
         /// <summary>
-        /// Событие, которое принимает изменения записки.
+        /// Изменения записки.
         /// </summary>
-        private void EditNoteButtonAccept_Click(object sender, EventArgs e)
+        private void EditNoteButtonAccept()
         {
             Note newNote = new Note(titleTextBox.Text, descriptionTextBox.Text, categoryСomboBox.Text);
             
@@ -142,21 +136,35 @@ namespace NotesApp.View
             DisableVisibleButtons();
             EnableButtonsClicks();
             ClearTextBox();
-
-            DisableEditButtonsEvents();
+            notesListBox.SelectedIndex = 0;
         }
         
         /// <summary>
-        /// Событие отмены изменения записки.
+        /// Событие принятия добавления или редактирования записки.
         /// </summary>
-        private void EditNoteButtonCancel_Click(object sender, EventArgs e)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AcceptButton_Click(object sender, EventArgs e)
+        {
+            if (_flagButton)
+            {
+                AddNoteButtonAccept();
+            }
+            else
+            {
+                EditNoteButtonAccept();
+            }
+        }
+        
+        /// <summary>
+        /// Событие отмены добавления или редактирования записки.
+        /// </summary>
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             ClearTextBox();
-            notesListBox.SelectedIndex = -1;
             EnableButtonsClicks();
             DisableElements();
             DisableVisibleButtons();
-            DisableEditButtonsEvents();
         }
         
         /// <summary>
@@ -164,17 +172,10 @@ namespace NotesApp.View
         /// </summary>
         private void DeleteNoteButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                _notes.RemoveAt(notesListBox.SelectedIndex);
-                notesListBox.Items.RemoveAt(notesListBox.SelectedIndex);
-                DataBase.UpdateData(_notes);
-                ClearTextBox();
-            }
-            catch
-            {
-                // ignored
-            }
+            _notes.RemoveAt(notesListBox.SelectedIndex); 
+            notesListBox.Items.RemoveAt(notesListBox.SelectedIndex); 
+            DataBase.UpdateData(_notes); 
+            ClearTextBox();
         }
         
         /// <summary>
@@ -249,43 +250,7 @@ namespace NotesApp.View
             addButton.Enabled = false;
             deleteButton.Enabled = false;
         }
-
-        /// <summary>
-        /// Включение событий кнопки добавить.
-        /// </summary>
-        private void EnableAddButtonsEvents()
-        {
-            acceptButton.Click += AddNoteButtonAccept_Click;
-            cancelButton.Click += AddNoteButtonCancel_Click; 
-        }
-
-        /// <summary>
-        /// Отключение событий кнопки добавить.
-        /// </summary>
-        private void DisableAddButtonsEvents()
-        {
-            cancelButton.Click -= AddNoteButtonCancel_Click;
-            acceptButton.Click -= AddNoteButtonAccept_Click;
-        }
         
-        /// <summary>
-        /// Включение событий кнопки изменить.
-        /// </summary>
-        private void EnableEditButtonsEvents()
-        {
-            acceptButton.Click += EditNoteButtonAccept_Click;
-            cancelButton.Click += EditNoteButtonCancel_Click; 
-        }
-
-        /// <summary>
-        /// Отключение событий кнопки изменить.
-        /// </summary>
-        private void DisableEditButtonsEvents()
-        {
-            acceptButton.Click -= EditNoteButtonAccept_Click;
-            cancelButton.Click -= EditNoteButtonCancel_Click; 
-        }
-
         /// <summary>
         /// Валидация titleTextBox на количество символов.
         /// </summary>

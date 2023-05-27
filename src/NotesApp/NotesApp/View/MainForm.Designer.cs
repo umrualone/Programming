@@ -68,44 +68,46 @@
             groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             groupBox.Location = new System.Drawing.Point(307, 12);
             groupBox.Name = "groupBox";
-            groupBox.Size = new System.Drawing.Size(500, 293);
+            groupBox.Size = new System.Drawing.Size(500, 381);
             groupBox.TabIndex = 1;
             groupBox.TabStop = false;
             groupBox.Text = "Selected Note";
             // 
             // cancelButton
             // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cancelButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cancelButton.BackgroundImage")));
             this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelButton.FlatAppearance.BorderSize = 0;
-            this.cancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
-            this.cancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Location = new System.Drawing.Point(357, 238);
+            this.cancelButton.Location = new System.Drawing.Point(30, 323);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(40, 40);
             this.cancelButton.TabIndex = 5;
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Visible = false;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // acceptButton
             // 
-            this.acceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.acceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.acceptButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("acceptButton.BackgroundImage")));
             this.acceptButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.acceptButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.acceptButton.FlatAppearance.BorderSize = 0;
-            this.acceptButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
-            this.acceptButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.acceptButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.acceptButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.acceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.acceptButton.Location = new System.Drawing.Point(432, 238);
+            this.acceptButton.Location = new System.Drawing.Point(94, 323);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(40, 40);
             this.acceptButton.TabIndex = 6;
             this.acceptButton.UseVisualStyleBackColor = true;
             this.acceptButton.Visible = false;
+            this.acceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
             // categoryLabel
             // 
@@ -120,7 +122,7 @@
             // descriptionLabel
             // 
             descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            descriptionLabel.Location = new System.Drawing.Point(6, 105);
+            descriptionLabel.Location = new System.Drawing.Point(6, 156);
             descriptionLabel.Name = "descriptionLabel";
             descriptionLabel.Size = new System.Drawing.Size(115, 31);
             descriptionLabel.TabIndex = 7;
@@ -129,9 +131,8 @@
             // 
             // timeOfCreationLabel
             // 
-            this.timeOfCreationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.timeOfCreationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timeOfCreationLabel.Location = new System.Drawing.Point(6, 234);
+            this.timeOfCreationLabel.Location = new System.Drawing.Point(6, 108);
             this.timeOfCreationLabel.Name = "timeOfCreationLabel";
             this.timeOfCreationLabel.Size = new System.Drawing.Size(115, 20);
             this.timeOfCreationLabel.TabIndex = 6;
@@ -150,12 +151,11 @@
             // 
             // timeOfCreationTextBox
             // 
-            this.timeOfCreationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.timeOfCreationTextBox.BackColor = System.Drawing.Color.White;
             this.timeOfCreationTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.timeOfCreationTextBox.Enabled = false;
             this.timeOfCreationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timeOfCreationTextBox.Location = new System.Drawing.Point(127, 234);
+            this.timeOfCreationTextBox.Location = new System.Drawing.Point(127, 108);
             this.timeOfCreationTextBox.Name = "timeOfCreationTextBox";
             this.timeOfCreationTextBox.ReadOnly = true;
             this.timeOfCreationTextBox.ShortcutsEnabled = false;
@@ -169,11 +169,11 @@
             this.descriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.descriptionTextBox.Enabled = false;
             this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.descriptionTextBox.Location = new System.Drawing.Point(127, 103);
+            this.descriptionTextBox.Location = new System.Drawing.Point(127, 154);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionTextBox.Size = new System.Drawing.Size(355, 115);
+            this.descriptionTextBox.Size = new System.Drawing.Size(355, 141);
             this.descriptionTextBox.TabIndex = 3;
             // 
             // titleTextBox
@@ -195,7 +195,7 @@
             this.categoryСomboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.categoryСomboBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.categoryСomboBox.FormattingEnabled = true;
-            this.categoryСomboBox.Location = new System.Drawing.Point(127, 69);
+            this.categoryСomboBox.Location = new System.Drawing.Point(127, 68);
             this.categoryСomboBox.Name = "categoryСomboBox";
             this.categoryСomboBox.Size = new System.Drawing.Size(150, 24);
             this.categoryСomboBox.TabIndex = 1;
@@ -208,7 +208,7 @@
             this.notesListBox.ItemHeight = 16;
             this.notesListBox.Location = new System.Drawing.Point(12, 12);
             this.notesListBox.Name = "notesListBox";
-            this.notesListBox.Size = new System.Drawing.Size(289, 356);
+            this.notesListBox.Size = new System.Drawing.Size(289, 372);
             this.notesListBox.TabIndex = 0;
             this.notesListBox.SelectedIndexChanged += new System.EventHandler(this.NotesListBox_SelectedIndexChanged);
             // 
@@ -219,10 +219,10 @@
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addButton.FlatAppearance.BorderSize = 0;
-            this.addButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
-            this.addButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.addButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.addButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addButton.Location = new System.Drawing.Point(21, 393);
+            this.addButton.Location = new System.Drawing.Point(12, 393);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(40, 40);
             this.addButton.TabIndex = 2;
@@ -236,10 +236,10 @@
             this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteButton.FlatAppearance.BorderSize = 0;
-            this.deleteButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
-            this.deleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.deleteButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.deleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.Location = new System.Drawing.Point(148, 393);
+            this.deleteButton.Location = new System.Drawing.Point(154, 393);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(40, 40);
             this.deleteButton.TabIndex = 3;
@@ -254,8 +254,8 @@
             this.editButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.editButton.Enabled = false;
             this.editButton.FlatAppearance.BorderSize = 0;
-            this.editButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
-            this.editButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.editButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.editButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editButton.Location = new System.Drawing.Point(83, 393);
             this.editButton.Name = "editButton";

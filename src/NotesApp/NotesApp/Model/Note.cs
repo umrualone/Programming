@@ -44,17 +44,17 @@ namespace NotesApp.Model
         }
         
         /// <summary>
-        /// Возвращает и задает название записки. Длина названия не должна превышать 50 символов.
+        /// Возвращает и задает название записки. Длина названия не должна превышать 100 символов.
         /// </summary>
-        /// <exception cref="ArgumentException">Символов не должно быть больше 50</exception>
+        /// <exception cref="ArgumentException">Символов не должно быть больше 100</exception>
         public string Title
         {
             get => _title;
             set
             {
-                if (value.Length > 50)
+                if (value.Length > 100)
                 {
-                    throw new ArgumentException("Символов не должно быть больше 50");
+                    throw new ArgumentException("Символов не должно быть больше 100");
                 }
                 _title = value;
             }

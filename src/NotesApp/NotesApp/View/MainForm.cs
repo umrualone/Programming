@@ -58,7 +58,12 @@ namespace NotesApp.View
         /// </summary>
         private void NotesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            if (notesListBox.SelectedIndex == -1)
+            {
+                deleteButton.Enabled = false;
+                editButton.Enabled = false;
+            }
+            else
             {
                 _currentNote = _notes[notesListBox.SelectedIndex];
                 editButton.Enabled = true;
@@ -67,11 +72,6 @@ namespace NotesApp.View
                 descriptionTextBox.Text = _currentNote.Description;
                 timeOfCreationTextBox.Text = _currentNote.Date;
                 categoryСomboBox.Text = _currentNote.Category;
-            }
-            catch
-            {
-                deleteButton.Enabled = false;
-                editButton.Enabled = false;
             }
         }
         
@@ -164,6 +164,11 @@ namespace NotesApp.View
             EnableButtonsClicks();
             DisableElements();
             DisableVisibleButtons();
+
+            if (notesListBox.SelectedIndex == -1)
+            {
+                deleteButton.Enabled = false;
+            }
         }
         
         /// <summary>

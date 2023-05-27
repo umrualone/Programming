@@ -161,7 +161,6 @@ namespace NotesApp.View
         /// </summary>
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            ClearTextBox();
             EnableButtonsClicks();
             DisableElements();
             DisableVisibleButtons();

@@ -68,11 +68,16 @@ namespace NotesApp.View
                 _currentNote = _notes[notesListBox.SelectedIndex];
                 editButton.Enabled = true;
                 deleteButton.Enabled = true;
-                titleTextBox.Text = _currentNote.Title;
-                descriptionTextBox.Text = _currentNote.Description;
-                timeOfCreationTextBox.Text = _currentNote.Date;
-                categoryСomboBox.Text = _currentNote.Category;
+                FillInfo();
             }
+        }
+
+        private void FillInfo()
+        {
+            titleTextBox.Text = _currentNote.Title;
+            descriptionTextBox.Text = _currentNote.Description;
+            timeOfCreationTextBox.Text = _currentNote.Date;
+            categoryСomboBox.Text = _currentNote.Category;
         }
         
         /// <summary>
@@ -164,10 +169,14 @@ namespace NotesApp.View
             EnableButtonsClicks();
             DisableElements();
             DisableVisibleButtons();
-
+            
             if (notesListBox.SelectedIndex == -1)
             {
                 deleteButton.Enabled = false;
+            }
+            else
+            {
+                FillInfo();
             }
         }
         
@@ -220,8 +229,6 @@ namespace NotesApp.View
         /// </summary>
         private void EnableVisibleButtons()
         {
-            timeOfCreationTextBox.Visible = false;
-            timeOfCreationLabel.Visible = false;
             cancelButton.Visible = true;
             acceptButton.Visible = true;
         }
@@ -231,8 +238,6 @@ namespace NotesApp.View
         /// </summary>
         private void DisableVisibleButtons()
         {
-            timeOfCreationTextBox.Visible = true;
-            timeOfCreationLabel.Visible = true;
             cancelButton.Visible = false;
             acceptButton.Visible = false;
         }

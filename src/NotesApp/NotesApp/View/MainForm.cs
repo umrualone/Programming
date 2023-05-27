@@ -256,7 +256,7 @@ namespace NotesApp.View
         /// </summary>
         private void TitleTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (titleTextBox.Text.Length > 50)
+            if (titleTextBox.Text.Length > 100)
             {
                 acceptButton.Enabled = false;
                 titleTextBox.BackColor = Color.Red;

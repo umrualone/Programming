@@ -15,26 +15,26 @@ namespace NotesApp.Model
         /// <summary>
         /// Путь до папки.
         /// </summary>
-        private static string directoryPath = Environment.ExpandEnvironmentVariables(@"%appdata%\NotesApps");
+        private static string _directoryPath = Environment.ExpandEnvironmentVariables(@"%appdata%\NotesApps");
         
         /// <summary>
         /// Путь до файла.
         /// </summary>
-        private static string filePath = Path.Combine(directoryPath, "Notes.json");
+        private static string _filePath = Path.Combine(_directoryPath, "Notes.json");
 
         /// <summary>
         /// Проверка на наличия папки и файла.
         /// </summary>
         public static void IsCreateFolderAndFile()
         {
-            if (Directory.Exists(directoryPath) == false)
+            if (Directory.Exists(_directoryPath) == false)
             {
-                Directory.CreateDirectory(directoryPath);
+                Directory.CreateDirectory(_directoryPath);
             }
 
-            if (File.Exists(filePath) == false)
+            if (File.Exists(_filePath) == false)
             {
-                using (FileStream fstream = new FileStream(filePath, FileMode.Create))
+                using (FileStream fstream = new FileStream(_filePath, FileMode.Create))
                 {
                     var text = "[]";
                     var buffer = Encoding.Default.GetBytes(text);
@@ -49,7 +49,7 @@ namespace NotesApp.Model
         /// <returns>Данные файла.</returns>
         public static List<Note> GetData()
         {
-            using (FileStream fstream = new FileStream(filePath, FileMode.OpenOrCreate))
+            using (FileStream fstream = new FileStream(_filePath, FileMode.OpenOrCreate))
             {
                 return JsonSerializer.Deserialize<List<Note>>(fstream);   
             }
@@ -62,7 +62,7 @@ namespace NotesApp.Model
         public static void UpdateData(List<Note> notes)
         {
             string newDate = JsonSerializer.Serialize(notes);
-            using (FileStream fstream = new FileStream(filePath, FileMode.Create))
+            using (FileStream fstream = new FileStream(_filePath, FileMode.Create))
             {
                 byte[] buffer = Encoding.Default.GetBytes(newDate);
                 

@@ -54,7 +54,9 @@
             // 
             // groupBox
             // 
-            groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             groupBox.Controls.Add(this.cancelButton);
             groupBox.Controls.Add(this.acceptButton);
             groupBox.Controls.Add(categoryLabel);
@@ -164,7 +166,9 @@
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.descriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.descriptionTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.descriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.descriptionTextBox.Enabled = false;
@@ -202,7 +206,8 @@
             // 
             // notesListBox
             // 
-            this.notesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
+            this.notesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.notesListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.notesListBox.FormattingEnabled = true;
             this.notesListBox.ItemHeight = 16;
@@ -278,10 +283,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(828, 480);
             this.Name = "MainForm";
-            this.Text = "NotesApp";
+            this.Text = "6";
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.Label timeOfCreationLabel;

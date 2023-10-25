@@ -1,15 +1,15 @@
 ﻿namespace ObjectOrientedPractics.Services
 {
     /// <summary>
-    /// 
+    /// Реализует статистическую валидацию данных.
     /// </summary>
     public static class ValueValidator
     {
         /// <summary>
         /// Проверка длины строки.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="maxLength"></param>
+        /// <param name="value">Проверяемое строка.</param>
+        /// <param name="maxLength">Максимальная длина строки.</param>
         /// <param name="propertyName">Имя свойства или объекта, которое проходит проверку.</param>
         /// <exception cref="System.ArgumentException"></exception>
         public static void AssertStringOnLength(string value, int maxLength, string propertyName)

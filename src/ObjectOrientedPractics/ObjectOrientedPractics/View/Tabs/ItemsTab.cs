@@ -7,15 +7,18 @@ using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    /// <summary>
+    /// Пользовательский интерфейс товаров.
+    /// </summary>
     public partial class ItemsTab : UserControl
     {
         /// <summary>
-        /// 
+        /// Список товаров.
         /// </summary>
         private List<Item> _items;
-        
+
         /// <summary>
-        /// 
+        /// Текущий выбранный товар.
         /// </summary>
         private Item _currentItem;
 
@@ -25,7 +28,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private bool _flag = false;
        
         /// <summary>
-        /// 
+        /// Создает экземпляр класса ItemsTab.
         /// </summary>
         public ItemsTab()
         {
@@ -61,7 +64,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Включение всех элементов TextBox.
         /// </summary>
         private void EnabledTextBox()
         {
@@ -72,7 +75,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Отключение всех элементов TextBox.
         /// </summary>
         private void DisabledTextBox()
         {
@@ -83,7 +86,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Включение всех элементов Buttons.
         /// </summary>
         private void EnabledButtons()
         {
@@ -93,7 +96,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Отключение всех элементов Buttons.
         /// </summary>
         private void DisabledButtons()
         {
@@ -103,11 +106,11 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// События добавления нового товара.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AddButtonClick(object sender, System.EventArgs e)
+        private void AddButtonClick(object sender, EventArgs e)
         {
             itemsListBox.SelectedIndex = -1;
             EnabledVisibleButtonsAccept();
@@ -119,6 +122,9 @@ namespace ObjectOrientedPractics.View.Tabs
             _flag = true;
         }
 
+        /// <summary>
+        /// Добавление товара.
+        /// </summary>
         private void AddItem()
         {
             var name = nameTextBox.Text;
@@ -137,11 +143,11 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Событие изменения товара.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EditButtonClick(object sender, System.EventArgs e)
+        private void EditButtonClick(object sender, EventArgs e)
         {
             EnabledVisibleButtonsAccept();
             EnabledTextBox();
@@ -150,6 +156,9 @@ namespace ObjectOrientedPractics.View.Tabs
             _flag = false;
         }
 
+        /// <summary>
+        /// Изменения товара.
+        /// </summary>
         private void EditItem()
         {
             _currentItem.Name = nameTextBox.Text;
@@ -167,7 +176,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Событие удаления товара.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -180,11 +189,11 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Событие принятия добавления или редактирования товара.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AcceptButtonClick(object sender, System.EventArgs e)
+        private void AcceptButtonClick(object sender, EventArgs e)
         {
             if (_flag)
             {
@@ -197,7 +206,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Событие отмены добавления или редактирования товара.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -221,7 +230,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Заполнения полей TextBox.
         /// </summary>
         private void FillInfo()
         {
@@ -232,7 +241,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Выбор элемента в itemsListBox с последующим обновлением информации в TextBox.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -253,7 +262,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Очистка всех полей.
         /// </summary>
         private void ClearTextBox()
         {
@@ -265,7 +274,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Валидация CostTextBox на цену товара.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -287,7 +296,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Валидация NameTextBox на количество символов.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -308,7 +317,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Валидация DescriptionTextBox на количество символов.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -329,7 +338,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Проверка на включение AcceptButton.
         /// </summary>
         private void CheckAcceptButton()
         {

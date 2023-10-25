@@ -7,21 +7,30 @@ using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    /// <summary>
+    /// Пользовательский интерфейс покупателей.
+    /// </summary>
     public partial class CustomersTab : UserControl
     {
+        /// <summary>
+        /// Список покупателей.
+        /// </summary>
         private List<Customer> _customers;
 
         /// <summary>
-        /// 
+        /// Текущий выбранный покупатель.
         /// </summary>
         private Customer _currentCustomer;
         
 
         /// <summary>
-        /// Флаг для смены события AcceptButton. Если он == true добавляем item, иначе редактируем.
+        /// Флаг для смены события AcceptButton. Если он == true добавляем customer иначе редактируем.
         /// </summary>
         private bool _flag = false;
 
+        /// <summary>
+        /// Создает экземпляр класса CustomerTap.
+        /// </summary>
         public CustomersTab()
         {
             InitializeComponent();
@@ -36,7 +45,6 @@ namespace ObjectOrientedPractics.View.Tabs
                 }
             }
         }
-
 
         /// <summary>
         /// Включение видимости кнопок cancelButton и acceptButton.
@@ -57,7 +65,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Включение всех элементов TextBox.
         /// </summary>
         private void EnabledTextBox()
         {
@@ -67,7 +75,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Отключение всех элементов TextBox.
         /// </summary>
         private void DisabledTextBox()
         {
@@ -77,7 +85,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Включение всех элементов Buttons.
         /// </summary>
         private void EnabledButtons()
         {
@@ -87,7 +95,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Отключение всех элементов Buttons.
         /// </summary>
         private void DisabledButtons()
         {
@@ -97,7 +105,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// События добавления нового покупателя.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -112,7 +120,10 @@ namespace ObjectOrientedPractics.View.Tabs
             _flag = true;
         }
 
-        private void AddItem()
+        /// <summary>
+        /// Добавление покупателя.
+        /// </summary>
+        private void AddCustomer()
         {
             var fullName = fullNameTextBox.Text;
             var address = addressTextBox.Text;
@@ -129,7 +140,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Событие изменения покупателя.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -142,7 +153,10 @@ namespace ObjectOrientedPractics.View.Tabs
             _flag = false;
         }
 
-        private void EditItem()
+        /// <summary>
+        /// Изменения покупателя.
+        /// </summary>
+        private void EditCustomer()
         {
             _currentCustomer.Address = addressTextBox.Text;
             _currentCustomer.FullName = fullNameTextBox.Text;
@@ -158,7 +172,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Событие удаления покупателя.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -171,7 +185,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Событие принятия добавления или редактирования покупателя.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -179,16 +193,16 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (_flag)
             {
-                AddItem();
+                AddCustomer();
             }
             else
             {
-                EditItem();
+                EditCustomer();
             }
         }
 
         /// <summary>
-        /// 
+        /// Событие отмены добавления или редактирования покупателя.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -212,7 +226,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Заполнения полей TextBox.
         /// </summary>
         private void FillInfo()
         {
@@ -222,7 +236,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Выбор элемента в customerListBox с последующим обновлением информации в TextBox.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -243,7 +257,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// 
+        /// Очистка всех полей.
         /// </summary>
         private void ClearTextBox()
         {
@@ -252,21 +266,11 @@ namespace ObjectOrientedPractics.View.Tabs
             addressTextBox.Text = "";
         }
 
-
         /// <summary>
-        /// 
+        /// Валидация fullNameTextBox на количество символов.
         /// </summary>
-        private void CheckAcceptButton()
-        {
-            var cost = fullNameTextBox.BackColor == Color.White;
-            var name = addressTextBox.BackColor == Color.White;
-
-            if (cost && name)
-            {
-                acceptButton.Enabled = true;
-            }
-        }
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FullNameTextBoxTextChanged(object sender, EventArgs e)
         {
             try
@@ -283,6 +287,11 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Валидация addressTextBox на количество символов.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddressTextBoxTextChanged(object sender, EventArgs e)
         {
             try
@@ -296,6 +305,20 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 addressTextBox.BackColor = Color.Red;
                 acceptButton.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Проверка на включение AcceptButton.
+        /// </summary>
+        private void CheckAcceptButton()
+        {
+            var cost = fullNameTextBox.BackColor == Color.White;
+            var name = addressTextBox.BackColor == Color.White;
+
+            if (cost && name)
+            {
+                acceptButton.Enabled = true;
             }
         }
     }

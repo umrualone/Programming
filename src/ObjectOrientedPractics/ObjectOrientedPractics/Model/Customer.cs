@@ -57,7 +57,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="address">Адрес. Должен быть не более 500 символов</param>
         public Customer(string fullName, string address)
         {
-            Id = IdGenerator.NewIdCustomer();
+            Id = IdGenerator.GetNewIdCustomer();
             FullName = fullName;
             Address = address;
         }

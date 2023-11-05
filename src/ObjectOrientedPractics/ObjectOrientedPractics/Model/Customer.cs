@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Services;
+using System.Text.Json.Serialization;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -11,11 +12,11 @@ namespace ObjectOrientedPractics.Model
         /// Полное имя покупателя.
         /// </summary>
         private string _fullName;
-        
+
         /// <summary>
         /// Адрес покупателя.
         /// </summary>
-        private string _address;
+        private Address _address;
 
         /// <summary>
         /// Возвращает ID покупателя.
@@ -29,37 +30,42 @@ namespace ObjectOrientedPractics.Model
         public string FullName
         {
             get => _fullName;
-            set 
+            set
             {
                 ValueValidator.AssertStringOnLength(value, 200, FullName);
-                _fullName = value; 
+                _fullName = value;
             }
         }
 
         /// <summary>
-        /// Возвращает и задает адрес. Должен быть не более 500 символов.
+        /// Возвращает и задает адрес.
         /// </summary>
-        public string Address
+        public Address Address
         {
             get => _address;
             set
             {
-                ValueValidator.AssertStringOnLength(value, 500, Address);
+
                 _address = value;
             }
         }
-
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
         /// <param name="fullName">Полное имя. Должно быть не более 200 символов.</param>
         /// <param name="address">Адрес. Должен быть не более 500 символов</param>
-        public Customer(string fullName, string address)
+        [JsonConstructor]
+        public Customer(string fullName, Address address)
         {
             Id = IdGenerator.GetNewIdCustomer();
             FullName = fullName;
             Address = address;
         }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Customer"/>.
+        /// </summary>
+        public Customer() { }
     }
 }

@@ -37,7 +37,7 @@ namespace Programming.View.Panels
                 rectanglesListBox.Items.Add(rectangle);
             }
             
-            rectanglesListBox.SelectedIndex = 0;
+            //rectanglesListBox.SelectedIndex = 0;
         }
         
         /// <summary>

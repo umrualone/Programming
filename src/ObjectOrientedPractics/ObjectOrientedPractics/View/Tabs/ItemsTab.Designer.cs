@@ -34,6 +34,8 @@
             this.removeButton = new System.Windows.Forms.Button();
             this.itemsLabel = new System.Windows.Forms.Label();
             this.selectedItemPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.acceptButton = new System.Windows.Forms.Button();
             this.descriptionLabel = new System.Windows.Forms.Label();
@@ -116,6 +118,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selectedItemPanel.BackColor = System.Drawing.Color.White;
             this.selectedItemPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.selectedItemPanel.Controls.Add(this.label1);
+            this.selectedItemPanel.Controls.Add(this.categoryComboBox);
             this.selectedItemPanel.Controls.Add(this.cancelButton);
             this.selectedItemPanel.Controls.Add(this.acceptButton);
             this.selectedItemPanel.Controls.Add(this.descriptionLabel);
@@ -133,10 +137,30 @@
             this.selectedItemPanel.Size = new System.Drawing.Size(366, 403);
             this.selectedItemPanel.TabIndex = 5;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 125);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Category:";
+            // 
+            // categoryComboBox
+            // 
+            this.categoryComboBox.Enabled = false;
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(68, 122);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(162, 21);
+            this.categoryComboBox.TabIndex = 18;
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBoxSelectedIndexChanged);
+            // 
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(219, 340);
+            this.cancelButton.Location = new System.Drawing.Point(219, 358);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(68, 28);
@@ -149,7 +173,7 @@
             // acceptButton
             // 
             this.acceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.acceptButton.Location = new System.Drawing.Point(291, 340);
+            this.acceptButton.Location = new System.Drawing.Point(291, 358);
             this.acceptButton.Margin = new System.Windows.Forms.Padding(2);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(68, 28);
@@ -162,7 +186,7 @@
             // descriptionLabel
             // 
             this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Location = new System.Drawing.Point(11, 232);
+            this.descriptionLabel.Location = new System.Drawing.Point(11, 257);
             this.descriptionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(63, 13);
@@ -172,7 +196,7 @@
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(11, 123);
+            this.nameLabel.Location = new System.Drawing.Point(11, 155);
             this.nameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(38, 13);
@@ -205,7 +229,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.descriptionTextBox.BackColor = System.Drawing.Color.White;
-            this.descriptionTextBox.Location = new System.Drawing.Point(14, 247);
+            this.descriptionTextBox.Location = new System.Drawing.Point(14, 272);
             this.descriptionTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
@@ -219,7 +243,7 @@
             this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nameTextBox.BackColor = System.Drawing.Color.White;
-            this.nameTextBox.Location = new System.Drawing.Point(14, 138);
+            this.nameTextBox.Location = new System.Drawing.Point(14, 170);
             this.nameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.nameTextBox.Multiline = true;
             this.nameTextBox.Name = "nameTextBox";
@@ -231,7 +255,7 @@
             // costTextBox
             // 
             this.costTextBox.BackColor = System.Drawing.Color.White;
-            this.costTextBox.Location = new System.Drawing.Point(52, 83);
+            this.costTextBox.Location = new System.Drawing.Point(68, 85);
             this.costTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.costTextBox.Name = "costTextBox";
             this.costTextBox.ReadOnly = true;
@@ -241,7 +265,7 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(52, 41);
+            this.idTextBox.Location = new System.Drawing.Point(68, 43);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
@@ -280,8 +304,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox itemsListBox;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Button removeButton;
@@ -298,5 +320,8 @@
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button acceptButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox categoryComboBox;
+        public System.Windows.Forms.ListBox itemsListBox;
     }
 }

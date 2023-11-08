@@ -31,10 +31,8 @@
             this.selectedItemPanel = new System.Windows.Forms.Panel();
             this.cancelButton = new System.Windows.Forms.Button();
             this.acceptButton = new System.Windows.Forms.Button();
-            this.addressLabel = new System.Windows.Forms.Label();
             this.fullNameLabel = new System.Windows.Forms.Label();
             this.idLabel = new System.Windows.Forms.Label();
-            this.addressTextBox = new System.Windows.Forms.TextBox();
             this.fullNameTextBox = new System.Windows.Forms.TextBox();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.selectedCustomerLabel = new System.Windows.Forms.Label();
@@ -43,6 +41,7 @@
             this.editButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.customersListBox = new System.Windows.Forms.ListBox();
+            this.addressControl1 = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.selectedItemPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,25 +52,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selectedItemPanel.BackColor = System.Drawing.Color.White;
             this.selectedItemPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.selectedItemPanel.Controls.Add(this.addressControl1);
             this.selectedItemPanel.Controls.Add(this.cancelButton);
             this.selectedItemPanel.Controls.Add(this.acceptButton);
-            this.selectedItemPanel.Controls.Add(this.addressLabel);
             this.selectedItemPanel.Controls.Add(this.fullNameLabel);
             this.selectedItemPanel.Controls.Add(this.idLabel);
-            this.selectedItemPanel.Controls.Add(this.addressTextBox);
             this.selectedItemPanel.Controls.Add(this.fullNameTextBox);
             this.selectedItemPanel.Controls.Add(this.idTextBox);
             this.selectedItemPanel.Controls.Add(this.selectedCustomerLabel);
             this.selectedItemPanel.Location = new System.Drawing.Point(218, 19);
             this.selectedItemPanel.Margin = new System.Windows.Forms.Padding(2);
             this.selectedItemPanel.Name = "selectedItemPanel";
-            this.selectedItemPanel.Size = new System.Drawing.Size(366, 403);
+            this.selectedItemPanel.Size = new System.Drawing.Size(414, 400);
             this.selectedItemPanel.TabIndex = 11;
             // 
             // cancelButton
             // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(219, 216);
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Location = new System.Drawing.Point(264, 314);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(68, 28);
@@ -83,8 +81,8 @@
             // 
             // acceptButton
             // 
-            this.acceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.acceptButton.Location = new System.Drawing.Point(291, 216);
+            this.acceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.acceptButton.Location = new System.Drawing.Point(336, 314);
             this.acceptButton.Margin = new System.Windows.Forms.Padding(2);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(68, 28);
@@ -93,16 +91,6 @@
             this.acceptButton.UseVisualStyleBackColor = true;
             this.acceptButton.Visible = false;
             this.acceptButton.Click += new System.EventHandler(this.AcceptButtonClick);
-            // 
-            // addressLabel
-            // 
-            this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(9, 122);
-            this.addressLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(48, 13);
-            this.addressLabel.TabIndex = 13;
-            this.addressLabel.Text = "Address:";
             // 
             // fullNameLabel
             // 
@@ -124,21 +112,6 @@
             this.idLabel.TabIndex = 11;
             this.idLabel.Text = "ID:";
             // 
-            // addressTextBox
-            // 
-            this.addressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.addressTextBox.BackColor = System.Drawing.Color.White;
-            this.addressTextBox.Location = new System.Drawing.Point(70, 119);
-            this.addressTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.addressTextBox.Multiline = true;
-            this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.ReadOnly = true;
-            this.addressTextBox.Size = new System.Drawing.Size(289, 80);
-            this.addressTextBox.TabIndex = 9;
-            this.addressTextBox.TextChanged += new System.EventHandler(this.AddressTextBoxTextChanged);
-            // 
             // fullNameTextBox
             // 
             this.fullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -148,7 +121,7 @@
             this.fullNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.fullNameTextBox.Name = "fullNameTextBox";
             this.fullNameTextBox.ReadOnly = true;
-            this.fullNameTextBox.Size = new System.Drawing.Size(289, 20);
+            this.fullNameTextBox.Size = new System.Drawing.Size(337, 20);
             this.fullNameTextBox.TabIndex = 8;
             this.fullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBoxTextChanged);
             // 
@@ -187,7 +160,7 @@
             // 
             this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.removeButton.Enabled = false;
-            this.removeButton.Location = new System.Drawing.Point(146, 392);
+            this.removeButton.Location = new System.Drawing.Point(146, 389);
             this.removeButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(68, 28);
@@ -200,7 +173,7 @@
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.editButton.Enabled = false;
-            this.editButton.Location = new System.Drawing.Point(74, 392);
+            this.editButton.Location = new System.Drawing.Point(74, 389);
             this.editButton.Margin = new System.Windows.Forms.Padding(2);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(68, 28);
@@ -212,7 +185,7 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addButton.Location = new System.Drawing.Point(2, 392);
+            this.addButton.Location = new System.Drawing.Point(2, 389);
             this.addButton.Margin = new System.Windows.Forms.Padding(2);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(68, 28);
@@ -229,9 +202,19 @@
             this.customersListBox.Location = new System.Drawing.Point(2, 33);
             this.customersListBox.Margin = new System.Windows.Forms.Padding(2);
             this.customersListBox.Name = "customersListBox";
-            this.customersListBox.Size = new System.Drawing.Size(212, 355);
+            this.customersListBox.Size = new System.Drawing.Size(212, 342);
             this.customersListBox.TabIndex = 6;
             this.customersListBox.SelectedIndexChanged += new System.EventHandler(this.CustomersListBoxSelectedIndexChanged);
+            // 
+            // addressControl1
+            // 
+            this.addressControl1.Address = null;
+            this.addressControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addressControl1.Location = new System.Drawing.Point(3, 117);
+            this.addressControl1.Name = "addressControl1";
+            this.addressControl1.Size = new System.Drawing.Size(401, 172);
+            this.addressControl1.TabIndex = 16;
             // 
             // CustomersTab
             // 
@@ -244,7 +227,7 @@
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.customersListBox);
             this.Name = "CustomersTab";
-            this.Size = new System.Drawing.Size(592, 436);
+            this.Size = new System.Drawing.Size(640, 433);
             this.selectedItemPanel.ResumeLayout(false);
             this.selectedItemPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -256,11 +239,8 @@
 
         private System.Windows.Forms.Panel selectedItemPanel;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.Button acceptButton;
-        private System.Windows.Forms.Label addressLabel;
         private System.Windows.Forms.Label fullNameLabel;
         private System.Windows.Forms.Label idLabel;
-        private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.TextBox fullNameTextBox;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label selectedCustomerLabel;
@@ -268,6 +248,8 @@
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.ListBox customersListBox;
+        private Controls.AddressControl addressControl1;
+        public System.Windows.Forms.ListBox customersListBox;
+        public System.Windows.Forms.Button acceptButton;
     }
 }

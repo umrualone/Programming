@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.View;
 
 namespace ObjectOrientedPractics
@@ -12,6 +13,7 @@ namespace ObjectOrientedPractics
         [STAThread]
         static void Main()
         {
+            Serializer.IsCreateFolderAndFile();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

@@ -15,6 +15,8 @@
         /// </summary>
         private static int _idCustomer = 0;
 
+        private static int _idOrder = 0;
+
         /// <summary>
         /// Создает новый Id и возвращает его для <see cref="Model.Item"/>.
         /// </summary>
@@ -33,6 +35,12 @@
         {
             _idCustomer++;
             return _idCustomer;
+        }
+
+        public static int GetNewIdOrder()
+        {
+            _idOrder++;
+            return _idOrder;
         }
     }
 }

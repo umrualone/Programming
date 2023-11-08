@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Services;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace ObjectOrientedPractics.Model
@@ -17,6 +18,10 @@ namespace ObjectOrientedPractics.Model
         /// Адрес покупателя.
         /// </summary>
         private Address _address;
+
+        private Cart _cart;
+
+        private List<Order> _orders = new List<Order>();
 
         /// <summary>
         /// Возвращает ID покупателя.
@@ -50,22 +55,28 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        public Cart Cart { get { return _cart; } set { _cart = value; } }
+
+        public List<Order> Orders { get { return _orders; } set { _orders = value; } }
+
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
         /// <param name="fullName">Полное имя. Должно быть не более 200 символов.</param>
         /// <param name="address">Адрес. Должен быть не более 500 символов</param>
         [JsonConstructor]
-        public Customer(string fullName, Address address)
+        public Customer(string fullName, Address address, Cart cart = null, List<Order> orders = null)
         {
             Id = IdGenerator.GetNewIdCustomer();
             FullName = fullName;
             Address = address;
+            Cart = cart ?? new Cart();
+            Orders = orders ?? new List<Order>();
         }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
-        public Customer() { }
+        public Customer() { Cart = new Cart(); }
     }
 }

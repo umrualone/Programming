@@ -31,13 +31,14 @@ namespace ObjectOrientedPractics.View
         {
             _store.Items = Serializer.GetDataItems();
             itemsTab1.Items = _store.Items;
-
+            cartsTab1.Items = _store.Items;
 
             if (itemsTab1.Items.Count > 0)
             {
                foreach (var item in itemsTab1.Items)
                 {
                     itemsTab1.itemsListBox.Items.Add(item.Name);
+                    cartsTab1.itemsListBox.Items.Add(item.Name);
                 }
             }
         }
@@ -49,13 +50,27 @@ namespace ObjectOrientedPractics.View
         {
             _store.Customers = Serializer.GetDataCustomers();
             customersTab1.Customers = _store.Customers;
+            cartsTab1.Customers = _store.Customers;
 
             if (customersTab1.Customers.Count > 0)
             {
                 foreach (var customer in customersTab1.Customers)
                 {
                     customersTab1.customersListBox.Items.Add(customer.FullName);
+                    cartsTab1.customersComboBox.Items.Add(customer.FullName);
                 }
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 2)
+            {
+                cartsTab1.RefreshData();
+            }
+            else
+            {
+                cartsTab1.customersComboBox.SelectedIndex = -1;
             }
         }
     }

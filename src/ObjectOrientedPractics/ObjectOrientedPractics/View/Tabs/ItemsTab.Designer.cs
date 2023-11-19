@@ -323,6 +323,6 @@
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox categoryComboBox;
-        public System.Windows.Forms.ListBox itemsListBox;
+        private System.Windows.Forms.ListBox itemsListBox;
     }
 }

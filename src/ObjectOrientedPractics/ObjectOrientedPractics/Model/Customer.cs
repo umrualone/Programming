@@ -19,8 +19,14 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         private Address _address;
 
+        /// <summary>
+        /// Корзина.
+        /// </summary>
         private Cart _cart;
 
+        /// <summary>
+        /// Список заказов.
+        /// </summary>
         private List<Order> _orders = new List<Order>();
 
         /// <summary>
@@ -55,8 +61,14 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает корзину.
+        /// </summary>
         public Cart Cart { get { return _cart; } set { _cart = value; } }
 
+        /// <summary>
+        /// Возвращает и задает список заказов.
+        /// </summary>
         public List<Order> Orders { get { return _orders; } set { _orders = value; } }
 
         /// <summary>
@@ -64,7 +76,8 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullName">Полное имя. Должно быть не более 200 символов.</param>
         /// <param name="address">Адрес. Должен быть не более 500 символов</param>
-        [JsonConstructor]
+        /// <param name="cart">Корзина.</param>
+        /// <param name="orders">Список заказов.</param>
         public Customer(string fullName, Address address, Cart cart = null, List<Order> orders = null)
         {
             Id = IdGenerator.GetNewIdCustomer();
@@ -75,7 +88,17 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="Customer"/>.
+        /// Создает экземпляр класса <see cref="Customer"/>. Используются для десериализации JSON файла.
+        /// </summary>
+        /// <param name="id">Id.</param>
+        [JsonConstructor]
+        public Customer(int id)
+        {
+            Id = id;
+        }
+
+        /// <summary>
+        /// Создает пустой экземпляр класса <see cref="Customer"/>.
         /// </summary>
         public Customer() { Cart = new Cart(); }
     }

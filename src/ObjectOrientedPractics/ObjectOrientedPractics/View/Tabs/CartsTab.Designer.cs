@@ -38,8 +38,8 @@
             this.itemsLabel = new System.Windows.Forms.Label();
             this.customerLabel = new System.Windows.Forms.Label();
             this.cartLabel = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.amountLabel = new System.Windows.Forms.Label();
+            this.amountCounterLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // itemsListBox
@@ -153,37 +153,37 @@
             this.cartLabel.TabIndex = 9;
             this.cartLabel.Text = "Cart:";
             // 
-            // label4
+            // amountLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(243, 255);
-            this.label4.Name = "label4";
-            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label4.Size = new System.Drawing.Size(53, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Amount:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.amountLabel.AutoSize = true;
+            this.amountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.amountLabel.Location = new System.Drawing.Point(243, 255);
+            this.amountLabel.Name = "amountLabel";
+            this.amountLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.amountLabel.Size = new System.Drawing.Size(53, 13);
+            this.amountLabel.TabIndex = 10;
+            this.amountLabel.Text = "Amount:";
+            this.amountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label5
+            // amountCounterLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label5.Location = new System.Drawing.Point(243, 278);
-            this.label5.Name = "label5";
-            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label5.Size = new System.Drawing.Size(19, 20);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "0";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.amountCounterLabel.AutoSize = true;
+            this.amountCounterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.amountCounterLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.amountCounterLabel.Location = new System.Drawing.Point(243, 278);
+            this.amountCounterLabel.Name = "amountCounterLabel";
+            this.amountCounterLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.amountCounterLabel.Size = new System.Drawing.Size(19, 20);
+            this.amountCounterLabel.TabIndex = 11;
+            this.amountCounterLabel.Text = "0";
+            this.amountCounterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CartsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.amountCounterLabel);
+            this.Controls.Add(this.amountLabel);
             this.Controls.Add(this.cartLabel);
             this.Controls.Add(this.customerLabel);
             this.Controls.Add(this.itemsLabel);
@@ -206,13 +206,13 @@
         private System.Windows.Forms.Button createOrderButton;
         private System.Windows.Forms.Button removeItemButton;
         private System.Windows.Forms.Button clearCartButton;
-        public System.Windows.Forms.ComboBox customersComboBox;
-        public System.Windows.Forms.ListBox itemsListBox;
         private System.Windows.Forms.Label itemsLabel;
         private System.Windows.Forms.Label customerLabel;
         private System.Windows.Forms.Label cartLabel;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label amountLabel;
+        private System.Windows.Forms.Label amountCounterLabel;
         private System.Windows.Forms.ListBox cartListBox;
+        private System.Windows.Forms.ComboBox customersComboBox;
+        private System.Windows.Forms.ListBox itemsListBox;
     }
 }

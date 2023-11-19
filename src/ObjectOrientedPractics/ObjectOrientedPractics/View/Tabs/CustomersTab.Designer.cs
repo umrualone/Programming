@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.selectedItemPanel = new System.Windows.Forms.Panel();
-            this.addressControl1 = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.cancelButton = new System.Windows.Forms.Button();
             this.acceptButton = new System.Windows.Forms.Button();
             this.fullNameLabel = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.editButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.customersListBox = new System.Windows.Forms.ListBox();
+            this.addressControl1 = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.selectedItemPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,16 +65,6 @@
             this.selectedItemPanel.Name = "selectedItemPanel";
             this.selectedItemPanel.Size = new System.Drawing.Size(414, 400);
             this.selectedItemPanel.TabIndex = 11;
-            // 
-            // addressControl1
-            // 
-            this.addressControl1.Address = null;
-            this.addressControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.addressControl1.Location = new System.Drawing.Point(3, 117);
-            this.addressControl1.Name = "addressControl1";
-            this.addressControl1.Size = new System.Drawing.Size(401, 172);
-            this.addressControl1.TabIndex = 16;
             // 
             // cancelButton
             // 
@@ -216,6 +206,16 @@
             this.customersListBox.TabIndex = 6;
             this.customersListBox.SelectedIndexChanged += new System.EventHandler(this.CustomersListBoxSelectedIndexChanged);
             // 
+            // addressControl1
+            // 
+            this.addressControl1.Address = null;
+            this.addressControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addressControl1.Location = new System.Drawing.Point(3, 117);
+            this.addressControl1.Name = "addressControl1";
+            this.addressControl1.Size = new System.Drawing.Size(401, 172);
+            this.addressControl1.TabIndex = 16;
+            // 
             // CustomersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,7 +249,7 @@
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Button addButton;
         private Controls.AddressControl addressControl1;
-        public System.Windows.Forms.ListBox customersListBox;
         public System.Windows.Forms.Button acceptButton;
+        private System.Windows.Forms.ListBox customersListBox;
     }
 }

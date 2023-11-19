@@ -6,21 +6,44 @@ using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    /// <summary>
+    ///  Пользовательский интерфейс корзины.
+    /// </summary>
     public partial class CartsTab : UserControl
     {
+        /// <summary>
+        /// Текущий товар.
+        /// </summary>
         private Item _currentItem;
 
+        /// <summary>
+        /// Текущий покупатель.
+        /// </summary>
         private Customer _currentCustomer;
 
+        /// <summary>
+        /// Список товаров.
+        /// </summary>
         public List<Item> Items {  get; set; }
 
+        /// <summary>
+        /// Список покупателей.
+        /// </summary>
         public List<Customer> Customers { get; set; }
 
+        /// <summary>
+        /// Создает экземпляр CartsTab.
+        /// </summary>
         public CartsTab()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// События выбора элемента в itemsListBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ItemsListBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -31,6 +54,11 @@ namespace ObjectOrientedPractics.View.Tabs
             catch { }
         }
 
+        /// <summary>
+        /// Событие выбора элемента в customersComboBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CustomersComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -38,18 +66,23 @@ namespace ObjectOrientedPractics.View.Tabs
                 _currentCustomer = Customers[customersComboBox.SelectedIndex];
                 CheckingEnablingButtons();
                 CartListUpdate();
-                AmmountTest();
+                AmmountUpdate();
                 CheckingEnablingButtons();
             }
             catch 
             {
                 cartListBox.Items.Clear();
-                label5.Text = "0";
+                amountCounterLabel.Text = "0";
                 CheckingEnablingButtons();
             }
             
         }
 
+        /// <summary>
+        /// Событие выбора элемента в CartListBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CartListBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             if (cartListBox.SelectedIndex != -1)
@@ -61,50 +94,69 @@ namespace ObjectOrientedPractics.View.Tabs
                 removeItemButton.Enabled=false;
             }
         }
-
+        
+        /// <summary>
+        /// Событие добавления товара в корзнику.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddToCartButtonClick(object sender, EventArgs e)
         {
             _currentCustomer.Cart.Items.Add(_currentItem);
-            //Customers[customersComboBox.SelectedIndex] = _currentCustomer;
             Serializer.UpdateData(Customers);
             CartListUpdate();
-            AmmountTest();
+            AmmountUpdate();
             CheckingEnablingButtons();
         }
 
+        /// <summary>
+        /// Событие создания соказа.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateOrderButtonClick(object sender, EventArgs e)
         {
-            Order order = new Order(_currentCustomer.Address, _currentCustomer.Cart.Items, _currentCustomer.Cart.Amount);
+            Order order = new Order(_currentCustomer.Address, _currentCustomer.FullName, _currentCustomer.Cart.Items, _currentCustomer.Cart.Amount);
             _currentCustomer.Orders.Add(order);
             _currentCustomer.Cart = new Cart();
-            //Customers[customersComboBox.SelectedIndex] = _currentCustomer;
             Serializer.UpdateData(Customers);
             CartListUpdate();
-            AmmountTest();
+            AmmountUpdate();
             CheckingEnablingButtons();
         }
 
+        /// <summary>
+        /// События удаления товара из корзины.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RemoveItemButtonClick(object sender, EventArgs e)
         {
             _currentCustomer.Cart.Items.RemoveAt(cartListBox.SelectedIndex);
-           // Customers[customersComboBox.SelectedIndex] = _currentCustomer;
             Serializer.UpdateData(Customers);
             CartListUpdate();
-            AmmountTest();
+            AmmountUpdate();
             removeItemButton.Enabled = false;
             CheckingEnablingButtons();
         }
 
+        /// <summary>
+        /// События очистки корзины.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClearCartButtonClick(object sender, EventArgs e)
         {
             _currentCustomer.Cart.Items.Clear();
-            //Customers[customersComboBox.SelectedIndex] = _currentCustomer;
             Serializer.UpdateData(Customers);
             CartListUpdate();
-            AmmountTest();
+            AmmountUpdate();
             CheckingEnablingButtons();
         }
 
+        /// <summary>
+        /// Провекра включения кнопок.
+        /// </summary>
         private void CheckingEnablingButtons()
         {
             if (itemsListBox.SelectedIndex != -1 && customersComboBox.SelectedIndex != -1)
@@ -127,7 +179,10 @@ namespace ObjectOrientedPractics.View.Tabs
                 createOrderButton.Enabled = false;
             }
         }
-    
+
+        /// <summary>
+        /// Заполнение cartListBox.
+        /// </summary>
         public void CartListUpdate()
         {
             cartListBox.Items.Clear();
@@ -137,11 +192,17 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        public void AmmountTest()
+        /// <summary>
+        /// Обновление инормации о цене товаров в корзине.
+        /// </summary>
+        public void AmmountUpdate()
         {
-           label5.Text = _currentCustomer.Cart.Amount.ToString();
+           amountCounterLabel.Text = _currentCustomer.Cart.Amount.ToString();
         }
 
+        /// <summary>
+        /// Обновления информации.
+        /// </summary>
         public void RefreshData()
         {
             itemsListBox.Items.Clear();
@@ -161,6 +222,14 @@ namespace ObjectOrientedPractics.View.Tabs
                     customersComboBox.Items.Add(customer.FullName);
                 }
             }
+        }
+
+        /// <summary>
+        /// customersComboBox.SelectedIndex = -1.
+        /// </summary>
+        public void IndexComboBox()
+        {
+            customersComboBox.SelectedIndex = -1;
         }
     }
 }

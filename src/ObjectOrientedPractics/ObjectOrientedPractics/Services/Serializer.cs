@@ -85,6 +85,69 @@ namespace ObjectOrientedPractics.Services
         }
 
         /// <summary>
+        /// Возвращает последний id товара.
+        /// </summary>
+        /// <returns>Id <see cref="Model.Item"/>.</returns>
+        public static int DeserializeIdItem()
+        {
+            try
+            {
+                var liat = GetDataItems();
+                return liat[liat.Count - 1].Id;
+            }
+            catch
+            {
+
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает последний id покупателя.
+        /// </summary>
+        /// <returns>Id <see cref="Model.Customer"/>.</returns>
+        public static int DeserializeIdCustomer()
+        {
+            try
+            {
+                var liat = GetDataCustomers();
+                return liat[liat.Count - 1].Id;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает последний id заказа.
+        /// </summary>
+        /// <returns>Id <see cref="Model.Order"/>.</returns>
+        public static int DeserializeIdOrder()
+        {
+            try
+            {
+                var s = 0;
+                var li = GetDataCustomers();
+                foreach (var item in li)
+                {
+                    foreach (var c in item.Orders)
+                    {
+                        if (s < c.Id)
+                        {
+                            s = c.Id;
+                        }
+                    }
+                }
+                return s;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
         /// Обновляет данные JSON файла <see cref="Item"/>.
         /// </summary>
         /// <param name="items">Список <see cref="Item"/>.</param>

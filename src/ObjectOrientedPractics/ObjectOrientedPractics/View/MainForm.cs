@@ -20,57 +20,42 @@ namespace ObjectOrientedPractics.View
         public MainForm()
         {
             InitializeComponent();
-            LoadingItems();
-            LoadingCustomers();
-        }
-
-        /// <summary>
-        /// Загрузка списка товаров.
-        /// </summary>
-        private void LoadingItems() 
-        {
-            _store.Items = Serializer.GetDataItems();
-            itemsTab1.Items = _store.Items;
-            cartsTab1.Items = _store.Items;
-
-            if (itemsTab1.Items.Count > 0)
-            {
-               foreach (var item in itemsTab1.Items)
-                {
-                    itemsTab1.itemsListBox.Items.Add(item.Name);
-                    cartsTab1.itemsListBox.Items.Add(item.Name);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Загрузка списка покупателей.
-        /// </summary>
-        private void LoadingCustomers()
-        {
             _store.Customers = Serializer.GetDataCustomers();
+            _store.Items = Serializer.GetDataItems();
+
+
             customersTab1.Customers = _store.Customers;
+            customersTab1.RefreshData();
+
+            itemsTab1.Items = _store.Items;
+            itemsTab1.RefreshData();
+
             cartsTab1.Customers = _store.Customers;
+            cartsTab1.Items = _store.Items;
+            cartsTab1.RefreshData();
 
-            if (customersTab1.Customers.Count > 0)
-            {
-                foreach (var customer in customersTab1.Customers)
-                {
-                    customersTab1.customersListBox.Items.Add(customer.FullName);
-                    cartsTab1.customersComboBox.Items.Add(customer.FullName);
-                }
-            }
+            ordersTab.Customer = _store.Customers;
         }
-
-        private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
+        
+        /// <summary>
+        /// Событие переключение страниц.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabControlSelectedIndexChanged(object sender, System.EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 2)
+            switch (ordersTabControl.SelectedIndex)
             {
-                cartsTab1.RefreshData();
-            }
-            else
-            {
-                cartsTab1.customersComboBox.SelectedIndex = -1;
+                case 2:
+                    cartsTab1.RefreshData();
+                    break;
+                case 3:
+                    ordersTab.UpdateOrders();
+                    ordersTab.UpdateOrdersDataGridView();
+                    break;
+                default:
+                    cartsTab1.IndexComboBox();
+                    break;
             }
         }
     }

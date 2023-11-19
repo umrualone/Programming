@@ -50,12 +50,12 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         public void EnabledTextBox()
         {
-            indexTextBox.Enabled = true;
-            countryTextBox.Enabled = true;
-            cityTextBox.Enabled = true;
-            streetTextBox.Enabled = true;
-            buildingTextBox.Enabled = true;
-            apartmentTextBox.Enabled = true;
+            indexTextBox.ReadOnly = false;
+            countryTextBox.ReadOnly = false;
+            cityTextBox.ReadOnly = false;
+            streetTextBox.ReadOnly = false;
+            buildingTextBox.ReadOnly = false;
+            apartmentTextBox.ReadOnly = false;
         }
 
         /// <summary>
@@ -63,12 +63,12 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         public void DisabledTextBox()
         {
-            indexTextBox.Enabled = false;
-            countryTextBox.Enabled = false;
-            cityTextBox.Enabled = false;
-            streetTextBox.Enabled = false;
-            buildingTextBox.Enabled = false;
-            apartmentTextBox.Enabled = false;
+            indexTextBox.ReadOnly = true;
+            countryTextBox.ReadOnly = true;
+            cityTextBox.ReadOnly = true;
+            streetTextBox.ReadOnly = true;
+            buildingTextBox.ReadOnly = true;
+            apartmentTextBox.ReadOnly = true;
         }
 
         /// <summary>

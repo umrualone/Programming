@@ -1,6 +1,6 @@
 ﻿using ObjectOrientedPractics.Services;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -15,6 +15,11 @@ namespace ObjectOrientedPractics.Model
         private string _fullName;
 
         /// <summary>
+        /// 
+        /// </summary>
+        private bool _isPriority;
+
+        /// <summary>
         /// Адрес покупателя.
         /// </summary>
         private Address _address;
@@ -27,17 +32,19 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Список заказов.
         /// </summary>
-        private List<Order> _orders = new List<Order>();
+        private List<Order> _orders;
 
         /// <summary>
         /// Возвращает ID покупателя.
         /// </summary>
+        [JsonProperty("Id")]
         public int Id { get; }
 
         /// <summary>
         /// Возвращает и задает полное имя покупателя. Должно быть не более 200
         /// символов.
         /// </summary>
+        [JsonProperty("Full Name")]
         public string FullName
         {
             get => _fullName;
@@ -49,14 +56,20 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("Is priority?")]
+        public bool IsPriority { get { return _isPriority; } set { _isPriority = value; } }
+
+        /// <summary>
         /// Возвращает и задает адрес.
         /// </summary>
+        [JsonProperty("Address")]
         public Address Address
         {
             get => _address;
             set
             {
-
                 _address = value;
             }
         }
@@ -64,23 +77,27 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает корзину.
         /// </summary>
+        [JsonProperty("Cart")]
         public Cart Cart { get { return _cart; } set { _cart = value; } }
 
         /// <summary>
         /// Возвращает и задает список заказов.
         /// </summary>
+        [JsonProperty("Orders")]
         public List<Order> Orders { get { return _orders; } set { _orders = value; } }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
         /// <param name="fullName">Полное имя. Должно быть не более 200 символов.</param>
+        /// <param name="isPriority"></param>
         /// <param name="address">Адрес. Должен быть не более 500 символов</param>
         /// <param name="cart">Корзина.</param>
         /// <param name="orders">Список заказов.</param>
-        public Customer(string fullName, Address address, Cart cart = null, List<Order> orders = null)
+        public Customer(string fullName, bool isPriority, Address address, Cart cart = null, List<Order> orders = null)
         {
             Id = IdGenerator.GetNewIdCustomer();
+            IsPriority = isPriority;
             FullName = fullName;
             Address = address;
             Cart = cart ?? new Cart();

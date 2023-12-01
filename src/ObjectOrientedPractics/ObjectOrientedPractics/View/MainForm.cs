@@ -12,7 +12,7 @@ namespace ObjectOrientedPractics.View
         /// <summary>
         /// Магазин.
         /// </summary>
-        private Store _store = new Store();
+        private readonly Store _store = new Store();
 
         /// <summary>
         /// Создает экземпляр главного окна.
@@ -24,15 +24,20 @@ namespace ObjectOrientedPractics.View
             _store.Items = Serializer.GetDataItems();
 
 
-            customersTab1.Customers = _store.Customers;
-            customersTab1.RefreshData();
+            customersTab.Customers = _store.Customers;
+            customersTab.RefreshData();
 
-            itemsTab1.Items = _store.Items;
-            itemsTab1.RefreshData();
+            itemsTab.Items = _store.Items;
+            itemsTab.RefreshData();
 
-            cartsTab1.Customers = _store.Customers;
-            cartsTab1.Items = _store.Items;
-            cartsTab1.RefreshData();
+            cartsTab.Customers = _store.Customers;
+            cartsTab.Items = _store.Items;
+            cartsTab.RefreshData();
+
+            priorityOrdersTab1.Customers = _store.Customers;
+            priorityOrdersTab1.Items = _store.Items;
+            priorityOrdersTab1.UpdateOrders();
+
 
             ordersTab.Customer = _store.Customers;
         }
@@ -44,17 +49,20 @@ namespace ObjectOrientedPractics.View
         /// <param name="e"></param>
         private void TabControlSelectedIndexChanged(object sender, System.EventArgs e)
         {
-            switch (ordersTabControl.SelectedIndex)
+            switch (TabControl.SelectedIndex)
             {
                 case 2:
-                    cartsTab1.RefreshData();
+                    cartsTab.RefreshData();
                     break;
                 case 3:
                     ordersTab.UpdateOrders();
                     ordersTab.UpdateOrdersDataGridView();
                     break;
+                case 4:
+                    priorityOrdersTab1.UpdateTextBox();
+                    break;
                 default:
-                    cartsTab1.IndexComboBox();
+                    cartsTab.IndexComboBox();
                     break;
             }
         }

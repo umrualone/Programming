@@ -1,7 +1,7 @@
 ﻿using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -13,6 +13,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Id заказа.
         /// </summary>
+        
         private int _id;
 
         /// <summary>
@@ -53,31 +54,37 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает дату создания заказа.
         /// </summary>
+        [JsonProperty("Created Date")]
         public DateTime CreatedDate { get { return _createdDate; } private set { _createdDate = value; } }
 
         /// <summary>
         /// Возвращает и задает состояния заказа.
         /// </summary>
+        [JsonProperty("Status")]
         public OrderStatus Status { get { return _status; } set { _status = value; } }
 
         /// <summary>
         /// Возвращает и задает адрес заказа.
         /// </summary>
+        [JsonIgnore]
         public Address Address { get { return _address; } set { _address = value; } }
 
         /// <summary>
         /// Возвращает и задает полное имя покупателя.
         /// </summary>
+        [JsonIgnore]
         public string FullName { get { return _fullName; } set { _fullName = value; } }
 
         /// <summary>
         /// Возвращает и задает список товаров.
         /// </summary>
+        [JsonProperty("Items")]
         public List<Item> Items { get { return _items; } set { _items = value; } }
 
         /// <summary>
         /// Возвращает и задает стоимость заказа.
         /// </summary>
+        [JsonProperty("Amount")]
         public double Amount { get { return _amount; } set { _amount = value; } }
 
         /// <summary>

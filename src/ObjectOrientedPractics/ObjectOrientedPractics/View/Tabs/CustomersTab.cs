@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
-using ObjectOrientedPractics.View.Controls;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -21,12 +20,12 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Флаг для смены события AcceptButton. Если он == true добавляем customer иначе редактируем.
         /// </summary>
-        private bool _flag = false;
+        private bool _flag;
 
         /// <summary>
         /// Проверка на валидацию.
         /// </summary>
-        private bool _switchValidation = false;
+        private bool _switchValidation ;
 
         /// <summary>
         /// Возвращает и задает список покупателей.
@@ -66,6 +65,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void EnabledTextBox()
         {
             fullNameTextBox.ReadOnly = false;
+            checkBox1.Enabled = true;
             addressControl1.EnabledTextBox();
             customersListBox.Enabled = false;
         }
@@ -76,6 +76,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void DisabledTextBox()
         {
             fullNameTextBox.ReadOnly = true;
+            checkBox1.Enabled = false;
             addressControl1.DisabledTextBox();
             customersListBox.Enabled = true;
         }
@@ -108,6 +109,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void AddButtonClick(object sender, System.EventArgs e)
         {
             customersListBox.SelectedIndex = -1;
+            checkBox1.Checked = false;
             EnabledVisibleButtonsAccept();
             EnabledTextBox();
             DisabledButtons();
@@ -126,8 +128,9 @@ namespace ObjectOrientedPractics.View.Tabs
         private void AddCustomer()
         {
             var fullName = _currentCustomer.FullName;
+            var isPriority = _currentCustomer.IsPriority;
             var address = addressControl1.Address;
-            var customer = new Customer(fullName, address);
+            var customer = new Customer(fullName, isPriority, address);
 
             Customers.Add(customer);
             customersListBox.Items.Add(customer.FullName);
@@ -162,6 +165,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void EditCustomer()
         {
             _currentCustomer.Address = addressControl1.Address;
+            _currentCustomer.IsPriority = checkBox1.Checked;
             _currentCustomer.FullName = fullNameTextBox.Text;
 
             Customers[customersListBox.SelectedIndex] = _currentCustomer;
@@ -240,6 +244,7 @@ namespace ObjectOrientedPractics.View.Tabs
             idTextBox.Text = _currentCustomer.Id.ToString();
             fullNameTextBox.Text = _currentCustomer.FullName;
             addressControl1.Address = _currentCustomer.Address;
+            checkBox1.Checked = _currentCustomer.IsPriority;
             addressControl1.FillInfo();
         }
 
@@ -274,6 +279,7 @@ namespace ObjectOrientedPractics.View.Tabs
             idTextBox.Text = "";
             fullNameTextBox.Text = "";
             addressControl1.ClearTextBox();
+            checkBox1.Checked = false;
         }
 
         /// <summary>
@@ -344,6 +350,14 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     customersListBox.Items.Add(customer.FullName);
                 }
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_switchValidation)
+            {
+                _currentCustomer.IsPriority = checkBox1.Checked;
             }
         }
     }

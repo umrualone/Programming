@@ -42,6 +42,7 @@
             this.addButton = new System.Windows.Forms.Button();
             this.customersListBox = new System.Windows.Forms.ListBox();
             this.addressControl1 = new ObjectOrientedPractics.View.Controls.AddressControl();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.selectedItemPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selectedItemPanel.BackColor = System.Drawing.Color.White;
             this.selectedItemPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.selectedItemPanel.Controls.Add(this.checkBox1);
             this.selectedItemPanel.Controls.Add(this.addressControl1);
             this.selectedItemPanel.Controls.Add(this.cancelButton);
             this.selectedItemPanel.Controls.Add(this.acceptButton);
@@ -69,7 +71,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(264, 314);
+            this.cancelButton.Location = new System.Drawing.Point(267, 341);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(68, 28);
@@ -82,7 +84,7 @@
             // acceptButton
             // 
             this.acceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.acceptButton.Location = new System.Drawing.Point(336, 314);
+            this.acceptButton.Location = new System.Drawing.Point(339, 341);
             this.acceptButton.Margin = new System.Windows.Forms.Padding(2);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(68, 28);
@@ -211,10 +213,22 @@
             this.addressControl1.Address = null;
             this.addressControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.addressControl1.Location = new System.Drawing.Point(3, 117);
+            this.addressControl1.Location = new System.Drawing.Point(6, 150);
             this.addressControl1.Name = "addressControl1";
             this.addressControl1.Size = new System.Drawing.Size(401, 172);
             this.addressControl1.TabIndex = 16;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(70, 127);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(68, 17);
+            this.checkBox1.TabIndex = 17;
+            this.checkBox1.Text = "Is Priority";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // CustomersTab
             // 
@@ -251,5 +265,6 @@
         private Controls.AddressControl addressControl1;
         public System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.ListBox customersListBox;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

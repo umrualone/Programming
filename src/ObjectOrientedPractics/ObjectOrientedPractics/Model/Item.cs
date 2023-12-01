@@ -1,5 +1,5 @@
 ﻿using ObjectOrientedPractics.Services;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -31,22 +31,26 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Категория товара.
         /// </summary>
+        
         private Category _category;
 
         /// <summary>
         /// Возвращает Id товара.
         /// </summary>
+        [JsonProperty("Id")]
         public int Id { get { return _id; } private set { _id = value; } }
 
         /// <summary>
         /// Возвращает и задает категорию товара.
         /// </summary>
+        [JsonProperty("Category")]
         public Category Category { get { return _category; } set { _category = value; } }
 
         /// <summary>
         /// Возвращает и задает названия товара. Должно быть не более 200
         /// символов.
         /// </summary>
+        [JsonProperty("Name")]
         public string Name
         {
             get => _name;
@@ -61,6 +65,7 @@ namespace ObjectOrientedPractics.Model
         ///  Возвращает и задает описания товара. Должно быть не более 1000
         ///  символов.
         /// </summary>
+        [JsonProperty("Info")]
         public string Info
         {
             get => _info;
@@ -74,6 +79,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает цену товара. Должно быть не более 100000.
         /// </summary>
+        [JsonProperty("Cost")]
         public double Cost
         {
             get => _cost;

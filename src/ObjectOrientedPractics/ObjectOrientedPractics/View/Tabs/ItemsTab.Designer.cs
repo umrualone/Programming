@@ -149,6 +149,7 @@
             // 
             // categoryComboBox
             // 
+            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryComboBox.Enabled = false;
             this.categoryComboBox.FormattingEnabled = true;
             this.categoryComboBox.Location = new System.Drawing.Point(68, 122);
@@ -322,6 +323,6 @@
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox categoryComboBox;
-        public System.Windows.Forms.ListBox itemsListBox;
+        private System.Windows.Forms.ListBox itemsListBox;
     }
 }

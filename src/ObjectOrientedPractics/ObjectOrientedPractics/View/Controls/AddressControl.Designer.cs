@@ -49,9 +49,9 @@
             // 
             this.apartmentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.apartmentTextBox.Enabled = false;
             this.apartmentTextBox.Location = new System.Drawing.Point(259, 139);
             this.apartmentTextBox.Name = "apartmentTextBox";
+            this.apartmentTextBox.ReadOnly = true;
             this.apartmentTextBox.Size = new System.Drawing.Size(152, 20);
             this.apartmentTextBox.TabIndex = 31;
             this.toolTip1.SetToolTip(this.apartmentTextBox, "Номер квартиры/помещения, не более 10 символов.");
@@ -61,9 +61,9 @@
             // 
             this.cityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cityTextBox.Enabled = false;
             this.cityTextBox.Location = new System.Drawing.Point(292, 70);
             this.cityTextBox.Name = "cityTextBox";
+            this.cityTextBox.ReadOnly = true;
             this.cityTextBox.Size = new System.Drawing.Size(117, 20);
             this.cityTextBox.TabIndex = 30;
             this.toolTip1.SetToolTip(this.cityTextBox, "Город (населенный пункт), строка, не более 50 символов.");
@@ -73,9 +73,9 @@
             // 
             this.streetTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.streetTextBox.Enabled = false;
             this.streetTextBox.Location = new System.Drawing.Point(68, 104);
             this.streetTextBox.Name = "streetTextBox";
+            this.streetTextBox.ReadOnly = true;
             this.streetTextBox.Size = new System.Drawing.Size(343, 20);
             this.streetTextBox.TabIndex = 29;
             this.toolTip1.SetToolTip(this.streetTextBox, "Улица, строка, не более 100 символов.");
@@ -83,9 +83,9 @@
             // 
             // buildingTextBox
             // 
-            this.buildingTextBox.Enabled = false;
             this.buildingTextBox.Location = new System.Drawing.Point(68, 139);
             this.buildingTextBox.Name = "buildingTextBox";
+            this.buildingTextBox.ReadOnly = true;
             this.buildingTextBox.Size = new System.Drawing.Size(121, 20);
             this.buildingTextBox.TabIndex = 28;
             this.toolTip1.SetToolTip(this.buildingTextBox, "Номер дома, строка, не более 10 символов.");
@@ -93,9 +93,9 @@
             // 
             // countryTextBox
             // 
-            this.countryTextBox.Enabled = false;
             this.countryTextBox.Location = new System.Drawing.Point(68, 70);
             this.countryTextBox.Name = "countryTextBox";
+            this.countryTextBox.ReadOnly = true;
             this.countryTextBox.Size = new System.Drawing.Size(185, 20);
             this.countryTextBox.TabIndex = 27;
             this.toolTip1.SetToolTip(this.countryTextBox, "Страна/регион, строка, не более 50 символов.");
@@ -174,9 +174,9 @@
             // 
             // indexTextBox
             // 
-            this.indexTextBox.Enabled = false;
             this.indexTextBox.Location = new System.Drawing.Point(68, 37);
             this.indexTextBox.Name = "indexTextBox";
+            this.indexTextBox.ReadOnly = true;
             this.indexTextBox.Size = new System.Drawing.Size(92, 20);
             this.indexTextBox.TabIndex = 19;
             this.toolTip1.SetToolTip(this.indexTextBox, "Почтовый индекс, целое шестизначное число.");

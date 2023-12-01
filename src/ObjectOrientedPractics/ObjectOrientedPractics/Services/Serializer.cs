@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace ObjectOrientedPractics.Services
 {
@@ -66,10 +66,11 @@ namespace ObjectOrientedPractics.Services
         /// <returns>Список <see cref="Item"/>.</returns>
         public static List<Item> GetDataItems()
         {
-            using (FileStream fstream = new FileStream(_filePathItems, FileMode.OpenOrCreate))
+            return JsonConvert.DeserializeObject<List<Item>>(File.ReadAllText(_filePathItems), new JsonSerializerSettings()
             {
-                return JsonSerializer.Deserialize<List<Item>>(fstream);
-            }
+                TypeNameHandling = TypeNameHandling.All,
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+            });
         }
 
         /// <summary>
@@ -78,9 +79,72 @@ namespace ObjectOrientedPractics.Services
         /// <returns>Список <see cref="Customer"/>.</returns>
         public static List<Customer> GetDataCustomers()
         {
-            using (FileStream fstream = new FileStream(_filePathCustomers, FileMode.OpenOrCreate))
+            return JsonConvert.DeserializeObject<List<Customer>>(File.ReadAllText(_filePathCustomers), new JsonSerializerSettings()
             {
-                return JsonSerializer.Deserialize<List<Customer>>(fstream);
+                TypeNameHandling = TypeNameHandling.All,
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+            });
+        }
+
+        /// <summary>
+        /// Возвращает последний id товара.
+        /// </summary>
+        /// <returns>Id <see cref="Model.Item"/>.</returns>
+        public static int DeserializeIdItem()
+        {
+            try
+            {
+                var liat = GetDataItems();
+                return liat[liat.Count - 1].Id;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает последний id покупателя.
+        /// </summary>
+        /// <returns>Id <see cref="Model.Customer"/>.</returns>
+        public static int DeserializeIdCustomer()
+        {
+            try
+            {
+                var liat = GetDataCustomers();
+                return liat[liat.Count - 1].Id;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает последний id заказа.
+        /// </summary>
+        /// <returns>Id <see cref="Model.Order"/>.</returns>
+        public static int DeserializeIdOrder()
+        {
+            try
+            {
+                var s = 0;
+                var li = GetDataCustomers();
+                foreach (var item in li)
+                {
+                    foreach (var c in item.Orders)
+                    {
+                        if (s < c.Id)
+                        {
+                            s = c.Id;
+                        }
+                    }
+                }
+                return s;
+            }
+            catch
+            {
+                return 0;
             }
         }
 
@@ -90,13 +154,11 @@ namespace ObjectOrientedPractics.Services
         /// <param name="items">Список <see cref="Item"/>.</param>
         public static void UpdateData(List<Item> items)
         {
-            string newData = JsonSerializer.Serialize(items);
-            using (FileStream fstream = new FileStream(_filePathItems, FileMode.Create))
+            string newData = JsonConvert.SerializeObject(items, Formatting.Indented, new JsonSerializerSettings()
             {
-                byte[] buffer = Encoding.Default.GetBytes(newData);
-
-                fstream.Write(buffer, 0, buffer.Length);
-            }
+                TypeNameHandling = TypeNameHandling.All,
+            });
+            File.WriteAllText(_filePathItems, newData);
         }
 
         /// <summary>
@@ -105,13 +167,12 @@ namespace ObjectOrientedPractics.Services
         /// <param name="customers">Список <see cref="Customer"/>.</param>
         public static void UpdateData(List<Customer> customers)
         {
-            string newData = JsonSerializer.Serialize(customers);
-            using (FileStream fstream = new FileStream(_filePathCustomers, FileMode.Create))
+            string newData = JsonConvert.SerializeObject(customers, Formatting.Indented, new JsonSerializerSettings()
             {
-                byte[] buffer = Encoding.Default.GetBytes(newData);
-
-                fstream.Write(buffer, 0, buffer.Length);
-            }
+                TypeNameHandling = TypeNameHandling.All,
+            });
+            File.WriteAllText(_filePathCustomers, newData);
+        
         }
     }
 }

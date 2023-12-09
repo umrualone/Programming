@@ -43,7 +43,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public int Index
         {
-            get { return _index; }
+            get => _index;
             set
             {
                 Regex regex = new Regex(@"\b\d{6}\b");
@@ -61,7 +61,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public string Country
         {
-            get { return _country; }
+            get => _country;
             set
             {
                 ValueValidator.AssertStringOnLength(value, 50, nameof(Country));
@@ -74,7 +74,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public string City
         {
-            get { return _city; }
+            get => _city;
             set
             {
                 ValueValidator.AssertStringOnLength(value, 50, nameof(City));
@@ -87,7 +87,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public string Street
         {
-            get { return _street; }
+            get => _street;
             set
             {
                 ValueValidator.AssertStringOnLength(value, 100, nameof(Street));
@@ -100,7 +100,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public string Building
         {
-            get { return _building; }
+            get => _building;
             set
             {
                 ValueValidator.AssertStringOnLength(value, 10, nameof(Building));
@@ -113,7 +113,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public string Apartment
         {
-            get { return _apartment; }
+            get => _apartment;
             set
             {
                 ValueValidator.AssertStringOnLength(value, 10, nameof(Apartment));

@@ -1,5 +1,6 @@
 ﻿using ObjectOrientedPractics.Services;
 using Newtonsoft.Json;
+using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -8,11 +9,6 @@ namespace ObjectOrientedPractics.Model
     /// </summary>
     public class Item
     {
-        /// <summary>
-        /// Id товара.
-        /// </summary>
-        private int _id;
-
         /// <summary>
         /// Названия товара.
         /// </summary>
@@ -29,22 +25,16 @@ namespace ObjectOrientedPractics.Model
         private double _cost;
 
         /// <summary>
-        /// Категория товара.
-        /// </summary>
-        
-        private Category _category;
-
-        /// <summary>
         /// Возвращает Id товара.
         /// </summary>
         [JsonProperty("Id")]
-        public int Id { get { return _id; } private set { _id = value; } }
+        public int Id { get; private set; }
 
         /// <summary>
         /// Возвращает и задает категорию товара.
         /// </summary>
         [JsonProperty("Category")]
-        public Category Category { get { return _category; } set { _category = value; } }
+        public Category Category { get; set; }
 
         /// <summary>
         /// Возвращает и задает названия товара. Должно быть не более 200

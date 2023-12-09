@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.priorityOrdersTabPage = new System.Windows.Forms.TabPage();
-            this.priorityOrdersTab1 = new ObjectOrientedPractics.View.Tabs.PriorityOrdersTab();
             this.ordersTabPage = new System.Windows.Forms.TabPage();
             this.ordersTab = new ObjectOrientedPractics.View.Tabs.OrdersTab();
             this.cartsTabPage = new System.Windows.Forms.TabPage();
@@ -40,34 +38,12 @@
             this.itemsTabPage = new System.Windows.Forms.TabPage();
             this.itemsTab = new ObjectOrientedPractics.View.Tabs.ItemsTab();
             this.TabControl = new System.Windows.Forms.TabControl();
-            this.priorityOrdersTabPage.SuspendLayout();
             this.ordersTabPage.SuspendLayout();
             this.cartsTabPage.SuspendLayout();
             this.customersTabPage.SuspendLayout();
             this.itemsTabPage.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // priorityOrdersTabPage
-            // 
-            this.priorityOrdersTabPage.Controls.Add(this.priorityOrdersTab1);
-            this.priorityOrdersTabPage.Location = new System.Drawing.Point(4, 22);
-            this.priorityOrdersTabPage.Name = "priorityOrdersTabPage";
-            this.priorityOrdersTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.priorityOrdersTabPage.Size = new System.Drawing.Size(950, 598);
-            this.priorityOrdersTabPage.TabIndex = 4;
-            this.priorityOrdersTabPage.Text = "Priority Orders";
-            this.priorityOrdersTabPage.UseVisualStyleBackColor = true;
-            // 
-            // priorityOrdersTab1
-            // 
-            this.priorityOrdersTab1.Customers = null;
-            this.priorityOrdersTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.priorityOrdersTab1.Items = null;
-            this.priorityOrdersTab1.Location = new System.Drawing.Point(3, 3);
-            this.priorityOrdersTab1.Name = "priorityOrdersTab1";
-            this.priorityOrdersTab1.Size = new System.Drawing.Size(944, 592);
-            this.priorityOrdersTab1.TabIndex = 0;
             // 
             // ordersTabPage
             // 
@@ -157,7 +133,6 @@
             this.TabControl.Controls.Add(this.customersTabPage);
             this.TabControl.Controls.Add(this.cartsTabPage);
             this.TabControl.Controls.Add(this.ordersTabPage);
-            this.TabControl.Controls.Add(this.priorityOrdersTabPage);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
@@ -175,7 +150,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Object Oriented Practics";
-            this.priorityOrdersTabPage.ResumeLayout(false);
             this.ordersTabPage.ResumeLayout(false);
             this.cartsTabPage.ResumeLayout(false);
             this.customersTabPage.ResumeLayout(false);
@@ -186,8 +160,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TabPage priorityOrdersTabPage;
         private System.Windows.Forms.TabPage ordersTabPage;
         private Tabs.OrdersTab ordersTab;
         private System.Windows.Forms.TabPage cartsTabPage;
@@ -197,6 +169,5 @@
         private System.Windows.Forms.TabPage itemsTabPage;
         private Tabs.ItemsTab itemsTab;
         private System.Windows.Forms.TabControl TabControl;
-        private Tabs.PriorityOrdersTab priorityOrdersTab1;
     }
 }

@@ -1,6 +1,8 @@
 ﻿using ObjectOrientedPractics.Services;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using ObjectOrientedPractics.Model.Discounts;
+using ObjectOrientedPractics.Model.Orders;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -13,26 +15,6 @@ namespace ObjectOrientedPractics.Model
         /// Полное имя покупателя.
         /// </summary>
         private string _fullName;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private bool _isPriority;
-
-        /// <summary>
-        /// Адрес покупателя.
-        /// </summary>
-        private Address _address;
-
-        /// <summary>
-        /// Корзина.
-        /// </summary>
-        private Cart _cart;
-
-        /// <summary>
-        /// Список заказов.
-        /// </summary>
-        private List<Order> _orders;
 
         /// <summary>
         /// Возвращает ID покупателя.
@@ -59,32 +41,27 @@ namespace ObjectOrientedPractics.Model
         /// 
         /// </summary>
         [JsonProperty("Is priority?")]
-        public bool IsPriority { get { return _isPriority; } set { _isPriority = value; } }
+        public bool IsPriority { get; set; }
 
         /// <summary>
         /// Возвращает и задает адрес.
         /// </summary>
         [JsonProperty("Address")]
-        public Address Address
-        {
-            get => _address;
-            set
-            {
-                _address = value;
-            }
-        }
+        public Address Address { get; set; }
 
         /// <summary>
         /// Возвращает и задает корзину.
         /// </summary>
         [JsonProperty("Cart")]
-        public Cart Cart { get { return _cart; } set { _cart = value; } }
+        public Cart Cart { get; set; }
 
         /// <summary>
         /// Возвращает и задает список заказов.
         /// </summary>
         [JsonProperty("Orders")]
-        public List<Order> Orders { get { return _orders; } set { _orders = value; } }
+        public List<Order> Orders { get; set; }
+
+        public List<IDiscount> Discounts { get; set; }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
@@ -102,11 +79,15 @@ namespace ObjectOrientedPractics.Model
             Address = address;
             Cart = cart ?? new Cart();
             Orders = orders ?? new List<Order>();
-        }
+            Discounts = new List<IDiscount>
+            {
+                new PointsDiscount(0)
+            };
+        } 
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>. Используются для десериализации JSON файла.
-        /// </summary>
+        /// </summary>d
         /// <param name="id">Id.</param>
         [JsonConstructor]
         public Customer(int id)
@@ -117,6 +98,13 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Создает пустой экземпляр класса <see cref="Customer"/>.
         /// </summary>
-        public Customer() { Cart = new Cart(); }
+        public Customer()
+        {
+            Cart = new Cart();
+            Discounts = new List<IDiscount>
+            {
+                new PointsDiscount(0)
+            };
+        }
     }
 }

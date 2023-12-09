@@ -1,4 +1,6 @@
 ﻿using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Model.Orders;
 using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
@@ -22,10 +24,19 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         public List<Customer> Customer { get; set; }
 
+        /// <summary>
+        /// Текущий обрабатываемый заказ.
+        /// </summary>
         private Order _currentOrder;
 
+        /// <summary>
+        /// Текущий обрабатываемый приоритетный заказ.
+        /// </summary>
         private PriorityOrder _currentPriorityOrder;
 
+        /// <summary>
+        /// Временные интервалы для доставки.
+        /// </summary>
         private object[] _time =
         {
             "9:00 - 11:00",
@@ -86,6 +97,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 ordersDataGridView.Rows[j].Cells[3].Value = _orders[j].FullName;
                 ordersDataGridView.Rows[j].Cells[4].Value = address;
                 ordersDataGridView.Rows[j].Cells[5].Value = _orders[j].Amount;
+                ordersDataGridView.Rows[j].Cells[6].Value = _orders[j].Total;
             }
         }
 
@@ -110,12 +122,12 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Обновление информации в textBoxs.
+        /// Обновление информации в TextBox.
         /// </summary>
         /// <param name="index"></param>
         private void UpdateTextBox(int index)
         {
-            var isPriority = _orders[index] is PriorityOrder priority;
+            var isPriority = _orders[index] is PriorityOrder;
 
             if (isPriority)
             {
@@ -143,7 +155,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 itemsListBox.Items.Add( item.Name );
             }
 
-            amountCounterLabel.Text = isPriority ? _currentPriorityOrder.Amount.ToString() : _currentOrder.Amount.ToString();
+            amountCounterLabel.Text = isPriority ? _currentPriorityOrder.Total.ToString() : _currentOrder.Total.ToString();
         }
 
         /// <summary>
@@ -175,21 +187,7 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void EnabledPriority()
-        {
-            priorityOptionsLabel.Visible = true;
-            deliveryTimeLabel.Visible = true;
-            deliveryTimeComboBox.Visible = true;
-        }
-
-        private void DisabledPriority()
-        {
-            priorityOptionsLabel.Visible = false;
-            deliveryTimeLabel.Visible = false;
-            deliveryTimeComboBox.Visible = false;
-        }
-
-        private void deliveryTimeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void DeliveryTimeComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {

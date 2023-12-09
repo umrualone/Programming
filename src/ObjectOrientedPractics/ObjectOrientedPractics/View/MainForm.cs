@@ -34,11 +34,6 @@ namespace ObjectOrientedPractics.View
             cartsTab.Items = _store.Items;
             cartsTab.RefreshData();
 
-            priorityOrdersTab1.Customers = _store.Customers;
-            priorityOrdersTab1.Items = _store.Items;
-            priorityOrdersTab1.UpdateOrders();
-
-
             ordersTab.Customer = _store.Customers;
         }
         
@@ -57,9 +52,6 @@ namespace ObjectOrientedPractics.View
                 case 3:
                     ordersTab.UpdateOrders();
                     ordersTab.UpdateOrdersDataGridView();
-                    break;
-                case 4:
-                    priorityOrdersTab1.UpdateTextBox();
                     break;
                 default:
                     cartsTab.IndexComboBox();

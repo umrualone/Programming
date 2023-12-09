@@ -1,15 +1,11 @@
-﻿namespace ObjectOrientedPractics.Model
+﻿namespace ObjectOrientedPractics.Model.Enums
 {
     /// <summary>
     /// Перечисление категорий товара.
     /// </summary>
     public enum Category
     {
-        /// <summary>
-        /// Без категории.
-        /// </summary>
-        NoCategory,
-
+        
         /// <summary>
         /// Электроника.
         /// </summary>Й

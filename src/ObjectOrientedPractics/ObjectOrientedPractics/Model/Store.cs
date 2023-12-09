@@ -8,24 +8,14 @@ namespace ObjectOrientedPractics.Model
     public class Store
     {
         /// <summary>
-        /// Список товаров.
+        /// Возвращает и задает список покупателей.
         /// </summary>
-        private List<Item> _items;
-        
-        /// <summary>
-        /// Список покупателей.
-        /// </summary>
-        private List<Customer> _customers;
+        public List<Item> Items { get; set; }
 
         /// <summary>
         /// Возвращает и задает список покупателей.
         /// </summary>
-        public List<Item> Items { get { return _items; } set { _items = value; } }
-
-        /// <summary>
-        /// Возвращает и задает список покупателей.
-        /// </summary>
-        public List<Customer> Customers { get { return _customers; } set { _customers = value; } }
+        public List<Customer> Customers { get; set; }
 
         /// <summary>
         /// Создают экземпляр класса <see cref="Store"/>.

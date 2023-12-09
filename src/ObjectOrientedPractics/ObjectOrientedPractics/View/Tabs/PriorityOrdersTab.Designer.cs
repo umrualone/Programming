@@ -198,7 +198,7 @@
             this.removeButton.TabIndex = 27;
             this.removeButton.Text = "Remove Item";
             this.removeButton.UseVisualStyleBackColor = true;
-            this.removeButton.Click += new System.EventHandler(this.RemoveButton_Click);
+            this.removeButton.Click += new System.EventHandler(this.RemoveButtonClick);
             // 
             // clearButton
             // 

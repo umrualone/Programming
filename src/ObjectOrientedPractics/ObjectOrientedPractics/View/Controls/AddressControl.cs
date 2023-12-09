@@ -6,19 +6,14 @@ using System.Windows.Forms;
 namespace ObjectOrientedPractics.View.Controls
 {
     /// <summary>
-    /// Пользовательский интерфейс адресса.
+    /// Пользовательский интерфейс адреса.
     /// </summary>
     public partial class AddressControl : UserControl
     {
         /// <summary>
-        /// Адресс.
-        /// </summary>
-        private Address _address;
-
-        /// <summary>
         /// Проверка на валидацию.
         /// </summary>
-        public bool _switchValidation = false;
+        public bool SwitchValidation = false;
 
         /// <summary>
         /// Событие.
@@ -26,23 +21,192 @@ namespace ObjectOrientedPractics.View.Controls
         public event EventHandler ValidationRequested;
 
         /// <summary>
-        /// 
+        /// Возвращает и задает адрес.
         /// </summary>
-        public Address Address
-        {
-            get { return _address; }
-            set
-            {
-                _address = value;
-            }
-        }
+        public Address Address { get; set; }
 
         /// <summary>
-        /// 
+        /// Конструктор класса <see cref="AddressControl"/>.
         /// </summary>
         public AddressControl()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Валидация indexTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void IndexTextBoxTextChanged(object sender, EventArgs e)
+        {
+            if (SwitchValidation)
+            {
+                try
+                {
+                    Address.Index = Convert.ToInt32(indexTextBox.Text);
+                    indexTextBox.BackColor = Color.White;
+                }
+                catch
+                {
+                    indexTextBox.BackColor = Color.Red;
+                }
+                ValidationRequested?.Invoke(this, EventArgs.Empty);
+
+            }
+            else
+            {
+                indexTextBox.BackColor = Color.White;
+            }
+        }
+
+        /// <summary>
+        /// Валидация countryTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CountryTextBoxTextChanged(object sender, EventArgs e)
+        {
+            if (SwitchValidation)
+            {
+                try
+                {
+                    Address.Country = countryTextBox.Text;
+                    countryTextBox.BackColor = Color.White;
+                }
+                catch
+                {
+                    countryTextBox.BackColor = Color.Red;
+                }
+                ValidationRequested?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                countryTextBox.BackColor = Color.White;
+            }
+
+        }
+
+        /// <summary>
+        /// Валидация cityTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CityTextBoxTextChanged(object sender, EventArgs e)
+        {
+            if (SwitchValidation)
+            {
+                try
+                {
+                    Address.City = cityTextBox.Text;
+                    cityTextBox.BackColor = Color.White;
+                }
+                catch
+                {
+                    cityTextBox.BackColor = Color.Red;
+                }
+                ValidationRequested?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                cityTextBox.BackColor = Color.White;
+            }
+
+        }
+
+        /// <summary>
+        /// Валидация streetTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StreetTextBoxTextChanged(object sender, EventArgs e)
+        {
+            if (SwitchValidation)
+            {
+                try
+                {
+                    Address.Street = streetTextBox.Text;
+                    streetTextBox.BackColor = Color.White;
+                }
+                catch
+                {
+                    streetTextBox.BackColor = Color.Red;
+                }
+                ValidationRequested?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                streetTextBox.BackColor = Color.White;
+            }
+
+        }
+
+        /// <summary>
+        /// Валидация buildingTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BuildingTextBoxTextChanged(object sender, EventArgs e)
+        {
+            if (SwitchValidation)
+            {
+                try
+                {
+                    Address.Building = buildingTextBox.Text;
+                    buildingTextBox.BackColor = Color.White;
+                }
+                catch
+                {
+                    buildingTextBox.BackColor = Color.Red;
+                }
+                ValidationRequested?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                buildingTextBox.BackColor = Color.White;
+            }
+        }
+
+        /// <summary>
+        /// Валидация apartmentTextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ApartmentTextBoxTextChanged(object sender, EventArgs e)
+        {
+            if (SwitchValidation)
+            {
+                try
+                {
+                    Address.Apartment = apartmentTextBox.Text;
+                    apartmentTextBox.BackColor = Color.White;
+                }
+                catch
+                {
+                    apartmentTextBox.BackColor = Color.Red;
+                }
+                ValidationRequested?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                apartmentTextBox.BackColor = Color.White;
+            }
+        }
+
+        /// <summary>
+        /// Проверка на включение AcceptButton.
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckAcceptButton()
+        {
+            var index = indexTextBox.BackColor == Color.White;
+            var country = countryTextBox.BackColor == Color.White;
+            var city = cityTextBox.BackColor == Color.White;
+            var street = streetTextBox.BackColor == Color.White;
+            var building = buildingTextBox.BackColor == Color.White;
+            var apartment = apartmentTextBox.BackColor == Color.White;
+
+            return index && country && city && street && building && apartment;
         }
 
         /// <summary>
@@ -95,186 +259,6 @@ namespace ObjectOrientedPractics.View.Controls
             streetTextBox.Text = "";
             buildingTextBox.Text = "";
             apartmentTextBox.Text = "";
-        }
-
-        /// <summary>
-        /// Валидация indexTextBox.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void IndexTextBoxTextChanged(object sender, System.EventArgs e)
-        {
-            if (_switchValidation == true)
-            {
-                try
-                {
-                    Address.Index = Convert.ToInt32(indexTextBox.Text);
-                    indexTextBox.BackColor = Color.White;
-                }
-                catch
-                {
-                    indexTextBox.BackColor = Color.Red;
-                }
-                ValidationRequested?.Invoke(this, EventArgs.Empty);
-
-            }
-            else
-            {
-                indexTextBox.BackColor = Color.White;
-            }
-        }
-
-        /// <summary>
-        /// Валидация countryTextBox.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CountryTextBoxTextChanged(object sender, System.EventArgs e)
-        {
-            if (_switchValidation == true)
-            {
-                try
-                {
-                    Address.Country = countryTextBox.Text;
-                    countryTextBox.BackColor = Color.White;
-                }
-                catch
-                {
-                    countryTextBox.BackColor = Color.Red;
-                }
-                ValidationRequested?.Invoke(this, EventArgs.Empty);
-            }
-            else
-            {
-                countryTextBox.BackColor = Color.White;
-            }
-
-        }
-
-        /// <summary>
-        /// Валидация cityTextBox.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CityTextBoxTextChanged(object sender, System.EventArgs e)
-        {
-            if (_switchValidation == true)
-            {
-                try
-                {
-                    Address.City = cityTextBox.Text;
-                    cityTextBox.BackColor = Color.White;
-                }
-                catch
-                {
-                    cityTextBox.BackColor = Color.Red;
-                }
-                ValidationRequested?.Invoke(this, EventArgs.Empty);
-            }
-            else
-            {
-                cityTextBox.BackColor = Color.White;
-            }
-
-        }
-
-        /// <summary>
-        /// Валидация streetTextBox.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void StreetTextBoxTextChanged(object sender, System.EventArgs e)
-        {
-            if (_switchValidation == true)
-            {
-                try
-                {
-                    Address.Street = streetTextBox.Text;
-                    streetTextBox.BackColor = Color.White;
-                }
-                catch
-                {
-                    streetTextBox.BackColor = Color.Red;
-                }
-                ValidationRequested?.Invoke(this, EventArgs.Empty);
-            }
-            else
-            {
-                streetTextBox.BackColor = Color.White;
-            }
-
-        }
-
-        /// <summary>
-        /// Валидация buildingTextBox.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BuildingTextBoxTextChanged(object sender, System.EventArgs e)
-        {
-            if (_switchValidation == true)
-            {
-                try
-                {
-                    Address.Building = buildingTextBox.Text;
-                    buildingTextBox.BackColor = Color.White;
-                }
-                catch
-                {
-                    buildingTextBox.BackColor = Color.Red;
-                }
-                ValidationRequested?.Invoke(this, EventArgs.Empty);
-            }
-            else
-            {
-                buildingTextBox.BackColor = Color.White;
-            }
-        }
-
-        /// <summary>
-        /// Валидация apartmentTextBox.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ApartmentTextBoxTextChanged(object sender, System.EventArgs e)
-        {
-            if (_switchValidation == true)
-            {
-                try
-                {
-                    Address.Apartment = apartmentTextBox.Text;
-                    apartmentTextBox.BackColor = Color.White;
-                }
-                catch
-                {
-                    apartmentTextBox.BackColor = Color.Red;
-                }
-                ValidationRequested?.Invoke(this, EventArgs.Empty);
-            }
-            else
-            {
-                apartmentTextBox.BackColor = Color.White;
-            }
-        }
-
-        /// <summary>
-        /// Проверка на включение AcceptButton.
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckAcceptButton()
-        {
-            var index = indexTextBox.BackColor == Color.White;
-            var country = countryTextBox.BackColor == Color.White;
-            var city = cityTextBox.BackColor == Color.White;
-            var street = streetTextBox.BackColor == Color.White;
-            var building = buildingTextBox.BackColor == Color.White;
-            var apartment = apartmentTextBox.BackColor == Color.White;
-
-            if (index && country && city && street && building && apartment)
-            {
-                return true;
-            }
-            return false;
         }
     }
 }

@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ObjectOrientedPractics.Model
 {
     /// <summary>
     /// Хранит данные о корзине.
     /// </summary>
-    public class Cart
+    public class Cart : ICloneable
     {
         /// <summary>
         /// Возвращает и задает список товаров.
         /// </summary>
-        public List<Item> Items { get; set; }
+        public List<Item> Items { get; private set; }
 
         /// <summary>
         /// Возвращает общую стоимость товаров.
@@ -38,6 +39,15 @@ namespace ObjectOrientedPractics.Model
         public Cart()
         {
             Items = new List<Item>();
+        }
+
+        public object Clone()
+        {
+            var clone = new Cart
+            {
+                Items = this.Items
+            };
+            return clone;
         }
     }
 }

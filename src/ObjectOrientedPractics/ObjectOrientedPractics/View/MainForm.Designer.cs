@@ -169,5 +169,6 @@
         private System.Windows.Forms.TabPage itemsTabPage;
         private Tabs.ItemsTab itemsTab;
         private System.Windows.Forms.TabControl TabControl;
+       
     }
 }

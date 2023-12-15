@@ -8,7 +8,7 @@ namespace ObjectOrientedPractics.Model.Discounts
     /// <summary>
     /// Класс, представляющий процентную скидку на товары в определенной категории.
     /// </summary>
-    public class PercentDiscount : IDiscount
+    public class PercentDiscount : IDiscount, IComparable<PercentDiscount>
     {
         private double _currentDiscountPercentage;
 
@@ -73,6 +73,13 @@ namespace ObjectOrientedPractics.Model.Discounts
             _totalSpentInCategory += items
                 .Where(item => item.Category == Category)
                 .Sum(item => item.Cost);
+        }
+
+        public int CompareTo(PercentDiscount other)
+        {
+            if (other == null) return 1;
+
+            return this.CurrentDiscountPercentage.CompareTo(other.CurrentDiscountPercentage);   
         }
 
         /// <summary>

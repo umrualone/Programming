@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using System;
+using ObjectOrientedPractics.Services;
 using System.Text.RegularExpressions;
 
 namespace ObjectOrientedPractics.Model
@@ -6,7 +7,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Хранит данные о адрессе.
     /// </summary>
-    public class Address
+    public class Address : ICloneable, IEquatable<Address>
     {
         /// <summary>
         /// Почтовый индекс.
@@ -144,5 +145,22 @@ namespace ObjectOrientedPractics.Model
         /// Создают экземпляр класса <see cref="Address"/>.
         /// </summary>
         public Address() { }
+
+        public object Clone()
+        {
+            return new Address(this.Index, this.Country, this.City, this.Street, this.Building, this.Apartment);
+        }
+
+        public bool Equals(Address other)
+        {
+            if (other == null) return false;
+
+            return other.Street == this.Street &&
+                   other.Apartment == this.Apartment &&
+                   other.Building == this.Building &&
+                   other.City == this.City &&
+                   other.Country == this.Country &&
+                   other.Index == this.Index;
+        }
     }
 }

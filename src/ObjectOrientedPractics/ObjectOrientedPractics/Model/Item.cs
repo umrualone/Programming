@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using System;
+using ObjectOrientedPractics.Services;
 using Newtonsoft.Json;
 using ObjectOrientedPractics.Model.Enums;
 
@@ -7,7 +8,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Хранит данные о товаре.
     /// </summary>
-    public class Item
+    public class Item: ICloneable, IEquatable<Item>, IComparable<Item>
     {
         /// <summary>
         /// Названия товара.
@@ -111,5 +112,31 @@ namespace ObjectOrientedPractics.Model
         /// Создает пустой экземпляр класса <see cref="Item"/>.
         /// </summary>
         public Item() { }
+
+        public object Clone()
+        {
+            var clone = new Item(this.Id)
+            {
+                Name = this.Name,
+                Category = this.Category,
+                Info = this.Info,
+                Cost = this.Cost
+            };
+            return clone;
+        }
+
+        public bool Equals(Item other)
+        {
+           if (other == null) return false;
+
+           return this.Name == other.Name;
+        }
+
+        public int CompareTo(Item other)
+        {
+            if (other == null) return 1;
+
+            return this.Cost.CompareTo(other.Cost);
+        }
     }
 }

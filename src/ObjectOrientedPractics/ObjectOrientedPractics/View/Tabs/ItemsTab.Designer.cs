@@ -47,6 +47,10 @@
             this.costTextBox = new System.Windows.Forms.TextBox();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.selectedItemLabel = new System.Windows.Forms.Label();
+            this.findTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.selectedItemPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,10 +59,10 @@
             this.itemsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.itemsListBox.FormattingEnabled = true;
-            this.itemsListBox.Location = new System.Drawing.Point(2, 33);
+            this.itemsListBox.Location = new System.Drawing.Point(2, 59);
             this.itemsListBox.Margin = new System.Windows.Forms.Padding(2);
             this.itemsListBox.Name = "itemsListBox";
-            this.itemsListBox.Size = new System.Drawing.Size(212, 355);
+            this.itemsListBox.Size = new System.Drawing.Size(212, 303);
             this.itemsListBox.TabIndex = 0;
             this.itemsListBox.SelectedIndexChanged += new System.EventHandler(this.ItemsListBoxSelectedIndexChanged);
             // 
@@ -284,10 +288,52 @@
             this.selectedItemLabel.TabIndex = 6;
             this.selectedItemLabel.Text = "Selected item";
             // 
+            // findTextBox
+            // 
+            this.findTextBox.Location = new System.Drawing.Point(39, 34);
+            this.findTextBox.Name = "findTextBox";
+            this.findTextBox.Size = new System.Drawing.Size(174, 20);
+            this.findTextBox.TabIndex = 6;
+            this.findTextBox.TextChanged += new System.EventHandler(this.FindTextBoxTextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Find:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(59, 367);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(154, 21);
+            this.comboBox1.TabIndex = 8;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 370);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Order by:";
+            // 
             // ItemsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.findTextBox);
             this.Controls.Add(this.selectedItemPanel);
             this.Controls.Add(this.itemsLabel);
             this.Controls.Add(this.removeButton);
@@ -324,5 +370,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.ListBox itemsListBox;
+        private System.Windows.Forms.TextBox findTextBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label3;
     }
 }

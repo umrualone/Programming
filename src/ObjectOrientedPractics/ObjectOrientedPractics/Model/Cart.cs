@@ -41,6 +41,10 @@ namespace ObjectOrientedPractics.Model
             Items = new List<Item>();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public object Clone()
         {
             var clone = new Cart

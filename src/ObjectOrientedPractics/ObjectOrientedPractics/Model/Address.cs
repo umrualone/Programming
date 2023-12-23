@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 namespace ObjectOrientedPractics.Model
 {
     /// <summary>
-    /// Хранит данные о адрессе.
+    /// Хранит данные о адресе.
     /// </summary>
     public class Address : ICloneable, IEquatable<Address>
     {
@@ -146,11 +146,20 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Address() { }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public object Clone()
         {
             return new Address(this.Index, this.Country, this.City, this.Street, this.Building, this.Apartment);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(Address other)
         {
             if (other == null) return false;

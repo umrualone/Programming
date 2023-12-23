@@ -84,6 +84,7 @@
     <Compile Include="Model\Cart.cs" />
     <Compile Include="Model\Enums\Category.cs" />
     <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Enums\Sorting.cs" />
     <Compile Include="Model\IDiscount.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\Orders\Order.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Model\Discounts\PointsDiscount.cs" />
     <Compile Include="Model\Orders\PrioiryOrder.cs" />
     <Compile Include="Model\Store.cs" />
+    <Compile Include="Services\DataTools.cs" />
     <Compile Include="Services\IdGenerator.cs" />
     <Compile Include="Services\Serializer.cs" />
     <Compile Include="Services\ValueValidator.cs" />

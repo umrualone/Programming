@@ -13,8 +13,6 @@ namespace ObjectOrientedPractics.View.Tabs
     /// </summary>
     public partial class ItemsTab : UserControl
     {
-        private List<Item> _items;
-
         /// <summary>
         /// Текущий выбранный товар.
         /// </summary>
@@ -23,17 +21,19 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Флаг для смены события AcceptButton. Если он == true добавляем item, иначе редактируем.
         /// </summary>
-        private bool _flag = false;
+        private bool _flag;
 
         /// <summary>
         /// Проверка на валидацию.
         /// </summary>
-        private bool _switchValidation = false;
+        private bool _switchValidation;
+
+        private List<Item> _displayedItems;
 
         /// <summary>
         /// Возвращает и задает список товаров.
         /// </summary>
-        public List<Item> Items { get { return _items; } set { _items = value; } }
+        public List<Item> Items { get; set; }
 
         /// <summary>
         /// Создает экземпляр класса ItemsTab.
@@ -42,7 +42,9 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
             var categories = Enum.GetNames(typeof(Category));
+            var sorting = Enum.GetNames(typeof(Sorting));
             categoryComboBox.Items.AddRange(categories);
+            comboBox1.Items.AddRange(sorting);
         }
 
         /// <summary>
@@ -119,7 +121,7 @@ namespace ObjectOrientedPractics.View.Tabs
             EnabledTextBox();
             DisabledButtons();
             ClearTextBox();
-            costTextBox.Text = "0";
+            costTextBox.Text = @"0";
             categoryComboBox.SelectedIndex = 0;
 
             _currentItem = new Item();
@@ -140,7 +142,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
 
             Items.Add(newItem);
-            itemsListBox.Items.Add(newItem.Name);
+            comboBox1_SelectedIndexChanged(0, EventArgs.Empty);
             Serializer.UpdateData(Items);
             _switchValidation = false;
 
@@ -172,10 +174,12 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void EditItem()
         {
-            Items[itemsListBox.SelectedIndex] = _currentItem;
-            itemsListBox.Items[itemsListBox.SelectedIndex] = _currentItem.Name;
+            var s = _displayedItems[itemsListBox.SelectedIndex];
 
+            int index = Items.IndexOf(s);
+            Items[index] = _currentItem;
             Serializer.UpdateData(Items);
+            comboBox1_SelectedIndexChanged(0, EventArgs.Empty);
             _switchValidation = false;
 
             DisabledVisibleButtonsAccept();
@@ -191,7 +195,8 @@ namespace ObjectOrientedPractics.View.Tabs
         private void RemoveButtonClick(object sender, EventArgs e)
         {
             Items.RemoveAt(itemsListBox.SelectedIndex);
-            itemsListBox.Items.RemoveAt(itemsListBox.SelectedIndex);
+            comboBox1_SelectedIndexChanged(0, EventArgs.Empty);
+
             Serializer.UpdateData(Items);
             ClearTextBox();
         }
@@ -264,7 +269,10 @@ namespace ObjectOrientedPractics.View.Tabs
             }
             else
             {
-                _currentItem = Items[itemsListBox.SelectedIndex];
+                var s = _displayedItems[itemsListBox.SelectedIndex];
+
+                int index = Items.IndexOf(s);
+                _currentItem = Items[index];
                 removeButton.Enabled = true;
                 editButton.Enabled = true;
                 FillInfo();
@@ -415,9 +423,65 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (Items.Count > 0)
             {
-                foreach(var item in Items)
+                RefreshListBox(Items);
+            }
+
+            _displayedItems = new List<Item>(Items);
+            comboBox1.SelectedIndex = 0;
+        }
+
+        private void RefreshListBox(List<Item> items)
+        {
+            itemsListBox.Items.Clear();
+            foreach (var item in items)
+            {
+                itemsListBox.Items.Add(item.Name);
+            }
+        }
+
+        private void FindTextBoxTextChanged(object sender, EventArgs e)
+        {
+            _displayedItems = new List<Item>(Items);
+            if (findTextBox.Text == "")
+            {
+                comboBox1_SelectedIndexChanged(0, EventArgs.Empty);
+                return;
+            }
+
+            _displayedItems = DataTools.GetSortedListItems(Items, 
+                s => s.IndexOf(findTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+
+            RefreshListBox(_displayedItems);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedSorting = (Sorting)comboBox1.SelectedIndex;
+            switch (selectedSorting)
+            {
+                case Sorting.ID:
                 {
-                   itemsListBox.Items.Add(item.Name);
+                    _displayedItems = DataTools.GetSortedListItems(Items, item => item.Id);
+                    RefreshListBox(_displayedItems);
+                    break;
+                }
+                case Sorting.Name:
+                {
+                    _displayedItems = DataTools.GetSortedListItems(Items, item => item.Name);
+                    RefreshListBox(_displayedItems);
+                    break;
+                }
+                case Sorting.CostGreater:
+                {
+                    _displayedItems = DataTools.GetSortedListItems(Items, item => item.Cost);
+                    RefreshListBox(_displayedItems);
+                    break;
+                }
+                case Sorting.CostLess:
+                {
+                    _displayedItems = DataTools.GetSortedListItems(Items, item => item.Cost * -1);
+                    RefreshListBox(_displayedItems);
+                    break;
                 }
             }
         }

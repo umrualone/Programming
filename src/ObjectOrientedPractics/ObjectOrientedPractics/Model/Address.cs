@@ -1,6 +1,8 @@
 ﻿using System;
 using ObjectOrientedPractics.Services;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -39,6 +41,13 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         private string _apartment;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         /// <summary>
         /// Возвращает и задает почтовый индекс. Должен быть шестизначным числом.
         /// </summary>
@@ -54,6 +63,8 @@ namespace ObjectOrientedPractics.Model
                 }
 
                 _index = value;
+                OnPropertyChanged();
+
             }
         }
 
@@ -67,6 +78,8 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 50, nameof(Country));
                 _country = value;
+                OnPropertyChanged();
+
             }
         }
 
@@ -80,6 +93,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 50, nameof(City));
                 _city = value;
+                OnPropertyChanged();
             }
         }
 
@@ -93,6 +107,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 100, nameof(Street));
                 _street = value;
+                OnPropertyChanged();
             }
         }
 
@@ -106,6 +121,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 10, nameof(Building));
                 _building = value;
+                OnPropertyChanged();
             }
         }
 
@@ -119,6 +135,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 10, nameof(Apartment));
                 _apartment = value;
+                OnPropertyChanged();
             }
         }
 

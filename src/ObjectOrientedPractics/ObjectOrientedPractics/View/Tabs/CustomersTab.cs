@@ -43,6 +43,8 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         public List<Customer> Customers { get; set; }
 
+        public event EventHandler CustomersChanged;
+
         /// <summary>
         /// Создает экземпляр класса CustomerTap.
         /// </summary>
@@ -170,6 +172,7 @@ namespace ObjectOrientedPractics.View.Tabs
             Customers.Add(customer);
             customersListBox.Items.Add(customer.FullName);
             Serializer.UpdateData(Customers);
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
 
             DisabledVisibleButtonsAccept();
             EnabledButtons();
@@ -215,7 +218,7 @@ namespace ObjectOrientedPractics.View.Tabs
             customersListBox.Items[customersListBox.SelectedIndex] = _currentCustomer.FullName;
 
             Serializer.UpdateData(Customers);
-
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
             DisabledVisibleButtonsAccept();
             EnabledButtons();
             DisabledTextBox();
@@ -231,6 +234,7 @@ namespace ObjectOrientedPractics.View.Tabs
             Customers.RemoveAt(customersListBox.SelectedIndex);
             customersListBox.Items.RemoveAt(customersListBox.SelectedIndex);
             Serializer.UpdateData(Customers);
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
             ClearTextBox();
         }
 
@@ -388,9 +392,10 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Обновляет данные в customerListBox.
         /// </summary>
-        public void RefreshData()
+        public void RefreshData(object sender, EventArgs e)
         {
             if (Customers.Count <= 0) return;
+            customersListBox.Items.Clear();
 
             foreach (var customer in Customers)
             {

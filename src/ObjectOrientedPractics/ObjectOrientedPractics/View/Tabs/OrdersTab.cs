@@ -62,7 +62,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Обновляет список товаров.
         /// </summary>
-        public void UpdateOrders()
+        public void RefreshData(object sender, EventArgs e)
         {
             _orders.Clear();
             for (int i = 0; i < Customer.Count; i++)
@@ -77,7 +77,7 @@ namespace ObjectOrientedPractics.View.Tabs
             
             _orders = _orders.OrderBy(o => o.Id).ToList();
 
-
+            UpdateOrdersDataGridView();
         }
 
         /// <summary>

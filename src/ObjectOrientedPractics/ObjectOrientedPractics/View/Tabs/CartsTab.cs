@@ -29,6 +29,8 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private double _discountAmount = 0;
 
+        public event EventHandler CartsChanged;
+
         /// <summary>
         /// Список покупателей.
         /// </summary>
@@ -150,6 +152,7 @@ namespace ObjectOrientedPractics.View.Tabs
             
             _currentCustomer.Cart = new Cart();
             Serializer.UpdateData(Customers);
+            CartsChanged?.Invoke(this, EventArgs.Empty);
             CartListUpdate();
             DiscountsListUpdate();
             AmountUpdate();
@@ -265,7 +268,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Обновления информации.
         /// </summary>
-        public void RefreshData()
+        public void RefreshData(object sender, EventArgs e)
         {
             itemsListBox.Items.Clear();
             if (Items.Count > 0)
@@ -277,12 +280,10 @@ namespace ObjectOrientedPractics.View.Tabs
             }
 
             customersComboBox.Items.Clear();
-            if (Customers.Count > 0)
+            if (Customers.Count <= 0) return;
+            foreach (var customer in Customers)
             {
-                foreach (var customer in Customers)
-                {
-                    customersComboBox.Items.Add(customer.FullName);
-                }
+                customersComboBox.Items.Add(customer.FullName);
             }
         }
 

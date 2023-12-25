@@ -5,6 +5,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model.Enums;
 using ObjectOrientedPractics.Services;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -29,6 +31,8 @@ namespace ObjectOrientedPractics.View.Tabs
         private bool _switchValidation;
 
         private List<Item> _displayedItems;
+
+        public event EventHandler ItemsChanged;
 
         /// <summary>
         /// Возвращает и задает список товаров.
@@ -145,6 +149,7 @@ namespace ObjectOrientedPractics.View.Tabs
             comboBox1_SelectedIndexChanged(0, EventArgs.Empty);
             Serializer.UpdateData(Items);
             _switchValidation = false;
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
 
 
             DisabledVisibleButtonsAccept();
@@ -181,6 +186,7 @@ namespace ObjectOrientedPractics.View.Tabs
             Serializer.UpdateData(Items);
             comboBox1_SelectedIndexChanged(0, EventArgs.Empty);
             _switchValidation = false;
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
 
             DisabledVisibleButtonsAccept();
             EnabledButtons();
@@ -196,7 +202,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             Items.RemoveAt(itemsListBox.SelectedIndex);
             comboBox1_SelectedIndexChanged(0, EventArgs.Empty);
-
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
             Serializer.UpdateData(Items);
             ClearTextBox();
         }
@@ -419,7 +425,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Обновления itemsListBox.
         /// </summary>
-        public void RefreshData()
+        public void RefreshData(object sender, EventArgs e)
         {
             if (Items.Count > 0)
             {

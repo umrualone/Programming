@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Model;
+﻿using System;
+using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
 using System.Windows.Forms;
 
@@ -24,39 +25,25 @@ namespace ObjectOrientedPractics.View
             _store.Items = Serializer.GetDataItems();
 
 
-            customersTab.Customers = _store.Customers;
-            customersTab.RefreshData();
-
             itemsTab.Items = _store.Items;
-            itemsTab.RefreshData();
-
+            customersTab.Customers = _store.Customers;
             cartsTab.Customers = _store.Customers;
             cartsTab.Items = _store.Items;
-            cartsTab.RefreshData();
-
             ordersTab.Customer = _store.Customers;
-        }
-        
-        /// <summary>
-        /// Событие переключение страниц.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TabControlSelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            switch (TabControl.SelectedIndex)
-            {
-                case 2:
-                    cartsTab.RefreshData();
-                    break;
-                case 3:
-                    ordersTab.UpdateOrders();
-                    ordersTab.UpdateOrdersDataGridView();
-                    break;
-                default:
-                    cartsTab.IndexComboBox();
-                    break;
-            }
+
+            itemsTab.RefreshData(0, EventArgs.Empty);
+            customersTab.RefreshData(0, EventArgs.Empty);
+            cartsTab.RefreshData(0, EventArgs.Empty);
+            ordersTab.RefreshData(0, EventArgs.Empty);
+
+            
+            itemsTab.ItemsChanged += cartsTab.RefreshData;
+            itemsTab.ItemsChanged += ordersTab.RefreshData;
+            customersTab.CustomersChanged += cartsTab.RefreshData;
+            customersTab.CustomersChanged += itemsTab.RefreshData;
+            customersTab.CustomersChanged += ordersTab.RefreshData;
+            cartsTab.CartsChanged += ordersTab.RefreshData;
+
         }
     }
 }

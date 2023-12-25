@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ordersTabPage = new System.Windows.Forms.TabPage();
-            this.ordersTab = new ObjectOrientedPractics.View.Tabs.OrdersTab();
             this.cartsTabPage = new System.Windows.Forms.TabPage();
-            this.cartsTab = new ObjectOrientedPractics.View.Tabs.CartsTab();
             this.customersTabPage = new System.Windows.Forms.TabPage();
-            this.customersTab = new ObjectOrientedPractics.View.Tabs.CustomersTab();
             this.itemsTabPage = new System.Windows.Forms.TabPage();
-            this.itemsTab = new ObjectOrientedPractics.View.Tabs.ItemsTab();
             this.TabControl = new System.Windows.Forms.TabControl();
+            this.itemsTab = new ObjectOrientedPractics.View.Tabs.ItemsTab();
+            this.customersTab = new ObjectOrientedPractics.View.Tabs.CustomersTab();
+            this.cartsTab = new ObjectOrientedPractics.View.Tabs.CartsTab();
+            this.ordersTab = new ObjectOrientedPractics.View.Tabs.OrdersTab();
             this.ordersTabPage.SuspendLayout();
             this.cartsTabPage.SuspendLayout();
             this.customersTabPage.SuspendLayout();
@@ -56,15 +56,6 @@
             this.ordersTabPage.Text = "Orders";
             this.ordersTabPage.UseVisualStyleBackColor = true;
             // 
-            // ordersTab
-            // 
-            this.ordersTab.Customer = null;
-            this.ordersTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ordersTab.Location = new System.Drawing.Point(3, 3);
-            this.ordersTab.Name = "ordersTab";
-            this.ordersTab.Size = new System.Drawing.Size(944, 592);
-            this.ordersTab.TabIndex = 0;
-            // 
             // cartsTabPage
             // 
             this.cartsTabPage.Controls.Add(this.cartsTab);
@@ -75,16 +66,6 @@
             this.cartsTabPage.TabIndex = 2;
             this.cartsTabPage.Text = "Carts";
             this.cartsTabPage.UseVisualStyleBackColor = true;
-            // 
-            // cartsTab
-            // 
-            this.cartsTab.Customers = null;
-            this.cartsTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cartsTab.Items = null;
-            this.cartsTab.Location = new System.Drawing.Point(3, 3);
-            this.cartsTab.Name = "cartsTab";
-            this.cartsTab.Size = new System.Drawing.Size(944, 592);
-            this.cartsTab.TabIndex = 0;
             // 
             // customersTabPage
             // 
@@ -97,15 +78,6 @@
             this.customersTabPage.Text = "Customers";
             this.customersTabPage.UseVisualStyleBackColor = true;
             // 
-            // customersTab
-            // 
-            this.customersTab.Customers = null;
-            this.customersTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customersTab.Location = new System.Drawing.Point(3, 3);
-            this.customersTab.Name = "customersTab";
-            this.customersTab.Size = new System.Drawing.Size(944, 592);
-            this.customersTab.TabIndex = 0;
-            // 
             // itemsTabPage
             // 
             this.itemsTabPage.Controls.Add(this.itemsTab);
@@ -116,16 +88,6 @@
             this.itemsTabPage.TabIndex = 0;
             this.itemsTabPage.Text = "Items";
             this.itemsTabPage.UseVisualStyleBackColor = true;
-            // 
-            // itemsTab
-            // 
-            this.itemsTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemsTab.Items = null;
-            this.itemsTab.Location = new System.Drawing.Point(3, 3);
-            this.itemsTab.Margin = new System.Windows.Forms.Padding(2);
-            this.itemsTab.Name = "itemsTab";
-            this.itemsTab.Size = new System.Drawing.Size(944, 592);
-            this.itemsTab.TabIndex = 0;
             // 
             // TabControl
             // 
@@ -139,7 +101,44 @@
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(958, 624);
             this.TabControl.TabIndex = 0;
-            this.TabControl.SelectedIndexChanged += new System.EventHandler(this.TabControlSelectedIndexChanged);
+            // 
+            // itemsTab
+            // 
+            this.itemsTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.itemsTab.Items = null;
+            this.itemsTab.Location = new System.Drawing.Point(3, 3);
+            this.itemsTab.Margin = new System.Windows.Forms.Padding(2);
+            this.itemsTab.Name = "itemsTab";
+            this.itemsTab.Size = new System.Drawing.Size(944, 592);
+            this.itemsTab.TabIndex = 0;
+            // 
+            // customersTab
+            // 
+            this.customersTab.Customers = null;
+            this.customersTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customersTab.Location = new System.Drawing.Point(3, 3);
+            this.customersTab.Name = "customersTab";
+            this.customersTab.Size = new System.Drawing.Size(944, 592);
+            this.customersTab.TabIndex = 0;
+            // 
+            // cartsTab
+            // 
+            this.cartsTab.Customers = null;
+            this.cartsTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cartsTab.Items = null;
+            this.cartsTab.Location = new System.Drawing.Point(3, 3);
+            this.cartsTab.Name = "cartsTab";
+            this.cartsTab.Size = new System.Drawing.Size(944, 592);
+            this.cartsTab.TabIndex = 0;
+            // 
+            // ordersTab
+            // 
+            this.ordersTab.Customer = null;
+            this.ordersTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ordersTab.Location = new System.Drawing.Point(3, 3);
+            this.ordersTab.Name = "ordersTab";
+            this.ordersTab.Size = new System.Drawing.Size(944, 592);
+            this.ordersTab.TabIndex = 0;
             // 
             // MainForm
             // 

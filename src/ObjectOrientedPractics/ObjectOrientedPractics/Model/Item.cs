@@ -2,6 +2,8 @@
 using ObjectOrientedPractics.Services;
 using Newtonsoft.Json;
 using ObjectOrientedPractics.Model.Enums;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -24,6 +26,13 @@ namespace ObjectOrientedPractics.Model
         /// Цена товара.
         /// </summary>
         private double _cost;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         /// <summary>
         /// Возвращает Id товара.
@@ -49,6 +58,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 200, Name);
                 _name = value;
+                OnPropertyChanged();
             }
         }
 
@@ -64,6 +74,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 1000, Info);
                 _info = value;
+                OnPropertyChanged();
             }
         }
 
@@ -78,6 +89,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertValueInRange(value, 0, 100000, nameof(Cost));
                 _cost = value;
+                OnPropertyChanged();
             }
         }
 
